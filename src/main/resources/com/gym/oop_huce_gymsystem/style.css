@@ -1,0 +1,63 @@
+#nameColumn .label {
+    -fx-text-fill: white;
+}
+
+#phoneColumn .label {
+    -fx-text-fill: white;
+}
+
+#cardtypeColumn .label {
+    -fx-text-fill: white;
+}
+
+#dateregisColumn .label {
+    -fx-text-fill: white;
+}
+
+#cardstatusColumn .label {
+    -fx-text-fill: white;
+}
+
+#statusColumn .label {
+    -fx-text-fill: white;
+}
+
+.date-picker {
+    -fx-background-color: #1a1a1a;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-border-color: linear-gradient(to right, #0093ff, #9700ff);
+    -fx-border-width: 2px;
+}
+
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-background-radius: 15px 0 0 15px;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #6495ed;
+    -fx-background-radius: 0 15px 15px 0;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: #4169e1;
+}
+
+.date-picker .arrow {
+    -fx-background-color: white;
+}
+
+.date-picker:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.date-check .label {
+    -fx-text-fill: white;
+}
+
+.avatar {
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+}
