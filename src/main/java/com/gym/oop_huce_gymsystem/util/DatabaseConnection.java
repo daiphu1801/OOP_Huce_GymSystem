@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/gymmanagement?useSSL=false&serverTimezone=UTC";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/MySQL?allowPublicKeyRetrieval=true&useSSL=false";
     private static final String USER = "root";       // Thay đổi thành tài khoản của bạn
-    private static final String PASSWORD = "123456"; // Thay đổi thành mật khẩu của bạn
+    private static final String PASSWORD = "1234"; // Thay đổi thành mật khẩu của bạn
 
     public static Connection getConnection() throws SQLException {
         try {

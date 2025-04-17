@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1284.0" style="-fx-background-color: #000;" styleClass="background-pane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.revenueController">
+    <children>
+        <VBox alignment="CENTER" layoutX="-5.0" layoutY="-4.0" prefHeight="721.0" prefWidth="265.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 0 40px 40px 0;" styleClass="menu_tab">
+            <children>
+                <ImageView fitHeight="134.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="logo_gym" VBox.vgrow="ALWAYS">
+                    <image>
+                        <Image url="@../../../IMAGE/gym_logo.png" />
+                    </image>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin></ImageView>
+                <ImageView fitHeight="83.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true" />
+
+                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="49.0" prefWidth="255.0" style="-fx-background-color: #1a1a1a;" styleClass="HV_btn" text="Hội viên" textFill="WHITE">
+                    <font>
+                        <Font name="Tektur Regular" size="23.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="381.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="386.0" style="-fx-background-color: #1a1a1a;" styleClass="TB_btn" text="Thiết Bị" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Tektur Regular" size="23.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="144.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="362.0" style="-fx-background-color: #1a1a1a;" styleClass="thetap_btn" text="Thẻ Tập" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Tektur Regular" size="23.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="193.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="404.0" style="-fx-background-color: #1a1a1a;" styleClass="thanhtoan_btn" text="Thanh Toán" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Tektur Regular" size="23.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="389.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="488.0" style="-fx-background-color: #1a1a1a;" styleClass="thongke_btn" text="Thống Kê &amp; Báo Cáo" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Tektur Regular" size="23.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                </Button>
+                <ImageView fitHeight="250.0" fitWidth="202.0" layoutX="33.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" />
+            </children>
+        </VBox>
+      <VBox layoutX="281.0" layoutY="19.0" prefHeight="676.0" prefWidth="989.0" style="-fx-background-color: white; -fx-background-radius: 15px;">
+         <children>
+            <BarChart fx:id="barChart" legendSide="TOP" prefHeight="561.0" prefWidth="989.0" title="Thống kê doanh thu">
+              <xAxis>
+                <CategoryAxis label="Thời gian" side="BOTTOM" fx:id="xAxis" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="yAxis" label="Triệu (VNĐ)" side="LEFT" />
+              </yAxis>
+            </BarChart>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: transparent;">
+               <children>
+                  <Button fx:id="btnMonth" mnemonicParsing="false" onAction="#showMonthlyRevenue" style="-fx-background-color: black; -fx-background-radius: 15px;" text="Doanh thu tháng" textFill="WHITE">
+                     <font>
+                        <Font name="Tektur Regular" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnYear" layoutX="410.0" layoutY="40.0" mnemonicParsing="false" onAction="#showYearlyRevenue" style="-fx-background-color: black; -fx-background-radius: 15px;" text="Doanh thu năm" textFill="WHITE">
+                     <font>
+                        <Font name="Tektur Regular" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnQuarter" layoutX="505.0" layoutY="40.0" mnemonicParsing="false" onAction="#showQuarterlyRevenue" style="-fx-background-color: black; -fx-background-radius: 15px;" text="Doanh thu quý" textFill="WHITE">
+                     <font>
+                        <Font name="Tektur Regular" size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children></VBox>
+    </children>
+</AnchorPane>
