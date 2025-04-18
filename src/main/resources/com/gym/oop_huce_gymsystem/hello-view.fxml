@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1284.0" style="-fx-background-color: #000;" styleClass="background-pane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1284.0" style="-fx-background-color: #000;" styleClass="background-pane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.ScenceController">
    <children>
       <ImageView fitHeight="802.0" fitWidth="1284.0" layoutX="107.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="107.0">
          <image>
@@ -25,12 +25,15 @@
                <image>
                   <Image url="@../../../IMAGE/gym_logo.png" />
                </image>
+<!--               <StackPane.margin>-->
+<!--                  <Insets bottom="100.0" />-->
+<!--               </StackPane.margin>-->
                <VBox.margin>
                   <Insets />
                </VBox.margin></ImageView>
             <ImageView fitHeight="83.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true" />
 
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="49.0" prefWidth="255.0" style="-fx-background-color: #1a1a1a;" text="Hội viên" textFill="WHITE">
+            <Button fx:id="hoivienBTN" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#SwitchTolisthoivien" prefHeight="49.0" prefWidth="255.0" style="-fx-background-color: #1a1a1a;" text="Hội viên" textFill="WHITE">
                <font>
                   <Font name="Tektur Regular" size="23.0" />
                </font>
@@ -38,7 +41,7 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </Button>
-            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="381.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="386.0" style="-fx-background-color: #1a1a1a;" text="Thiết Bị" textAlignment="CENTER" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="381.0" mnemonicParsing="false" onAction="#SwitchTothiet_bi" prefHeight="49.0" prefWidth="386.0" style="-fx-background-color: #1a1a1a;" text="Thiết Bị" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Tektur Regular" size="23.0" />
                </font>
@@ -62,7 +65,7 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </Button>
-            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="389.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="488.0" style="-fx-background-color: #1a1a1a;" text="Thống Kê &amp; Báo Cáo" textAlignment="CENTER" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="389.0" mnemonicParsing="false" onAction="#SwitchTothongke" prefHeight="49.0" prefWidth="488.0" style="-fx-background-color: #1a1a1a;" text="Thống Kê &amp; Báo Cáo" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Tektur Regular" size="23.0" />
                </font>

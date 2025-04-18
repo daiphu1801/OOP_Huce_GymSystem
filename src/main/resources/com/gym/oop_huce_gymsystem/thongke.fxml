@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1284.0" style="-fx-background-color: #000;" styleClass="background-pane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.revenueController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1284.0" style="-fx-background-color: #000;" styleClass="background-pane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.ScenceController">
     <children>
         <VBox alignment="CENTER" layoutX="-5.0" layoutY="-4.0" prefHeight="721.0" prefWidth="265.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 0 40px 40px 0;" styleClass="menu_tab">
             <children>
@@ -25,7 +25,7 @@
                     </VBox.margin></ImageView>
                 <ImageView fitHeight="83.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true" />
 
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="49.0" prefWidth="255.0" style="-fx-background-color: #1a1a1a;" styleClass="HV_btn" text="Hội viên" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#SwitchTolisthoivien" prefHeight="49.0" prefWidth="255.0" style="-fx-background-color: #1a1a1a;" styleClass="HV_btn" text="Hội viên" textFill="WHITE">
                     <font>
                         <Font name="Tektur Regular" size="23.0" />
                     </font>
@@ -33,7 +33,7 @@
                         <Insets left="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="381.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="386.0" style="-fx-background-color: #1a1a1a;" styleClass="TB_btn" text="Thiết Bị" textAlignment="CENTER" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="381.0" mnemonicParsing="false" onAction="#SwitchTothiet_bi" prefHeight="49.0" prefWidth="386.0" style="-fx-background-color: #1a1a1a;" styleClass="TB_btn" text="Thiết Bị" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="Tektur Regular" size="23.0" />
                     </font>
@@ -57,7 +57,7 @@
                         <Insets left="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="389.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="488.0" style="-fx-background-color: #1a1a1a;" styleClass="thongke_btn" text="Thống Kê &amp; Báo Cáo" textAlignment="CENTER" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="389.0" mnemonicParsing="false" onAction="#SwitchTothongke" prefHeight="49.0" prefWidth="488.0" style="-fx-background-color: #1a1a1a;" styleClass="thongke_btn" text="Thống Kê &amp; Báo Cáo" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="Tektur Regular" size="23.0" />
                     </font>
@@ -80,7 +80,7 @@
             </BarChart>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: transparent;">
                <children>
-                  <Button fx:id="btnMonth" mnemonicParsing="false" onAction="#showMonthlyRevenue" style="-fx-background-color: black; -fx-background-radius: 15px;" text="Doanh thu tháng" textFill="WHITE">
+                  <Button fx:id="btnMonth" mnemonicParsing="false"    style="-fx-background-color: black; -fx-background-radius: 15px;" text="Doanh thu tháng" textFill="WHITE">
                      <font>
                         <Font name="Tektur Regular" size="20.0" />
                      </font>
@@ -88,7 +88,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnYear" layoutX="410.0" layoutY="40.0" mnemonicParsing="false" onAction="#showYearlyRevenue" style="-fx-background-color: black; -fx-background-radius: 15px;" text="Doanh thu năm" textFill="WHITE">
+                  <Button fx:id="btnYear" layoutX="410.0" layoutY="40.0" mnemonicParsing="false"  style="-fx-background-color: black; -fx-background-radius: 15px;" text="Doanh thu năm" textFill="WHITE">
                      <font>
                         <Font name="Tektur Regular" size="20.0" />
                      </font>
@@ -96,7 +96,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnQuarter" layoutX="505.0" layoutY="40.0" mnemonicParsing="false" onAction="#showQuarterlyRevenue" style="-fx-background-color: black; -fx-background-radius: 15px;" text="Doanh thu quý" textFill="WHITE">
+                  <Button fx:id="btnQuarter" layoutX="505.0" layoutY="40.0" mnemonicParsing="false"  style="-fx-background-color: black; -fx-background-radius: 15px;" text="Doanh thu quý" textFill="WHITE">
                      <font>
                         <Font name="Tektur Regular" size="20.0" />
                      </font>
