@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1284.0" style="-fx-background-color: #000;" styleClass="background-pane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1284.0" style="-fx-background-color: #000;" styleClass="background-pane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.ScenceController">
     <children>
         <VBox alignment="CENTER" layoutX="-5.0" layoutY="-4.0" prefHeight="721.0" prefWidth="265.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 0 40px 40px 0;" styleClass="menu_tab">
             <children>
@@ -26,7 +26,7 @@
                     </VBox.margin></ImageView>
                 <ImageView fitHeight="83.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true" />
 
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="49.0" prefWidth="255.0" style="-fx-background-color: #1a1a1a;" styleClass="HV_btn" text="Hội viên" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#SwitchTolisthoivien" prefHeight="49.0" prefWidth="255.0" style="-fx-background-color: #1a1a1a;" styleClass="HV_btn" text="Hội viên" textFill="WHITE">
                     <font>
                         <Font name="Tektur Regular" size="23.0" />
                     </font>
@@ -58,7 +58,7 @@
                         <Insets left="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="389.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="488.0" style="-fx-background-color: #1a1a1a;" styleClass="thongke_btn" text="Thống Kê &amp; Báo Cáo" textAlignment="CENTER" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="389.0" mnemonicParsing="false" onAction="#SwitchTothongke" prefHeight="49.0" prefWidth="488.0" style="-fx-background-color: #1a1a1a;" styleClass="thongke_btn" text="Thống Kê &amp; Báo Cáo" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="Tektur Regular" size="23.0" />
                     </font>
@@ -73,7 +73,7 @@
             <children>
                 <HBox alignment="CENTER" prefHeight="39.0" prefWidth="996.0">
                     <children>
-                        <Button fx:id="roundButton1" layoutX="749.0" layoutY="15.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="search_button" text="Thêm thiết bị" textFill="WHITE">
+                        <Button fx:id="roundButton1" layoutX="749.0" layoutY="15.0" mnemonicParsing="false" onAction="#SwitchTothietbi_regis" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="search_button" text="Thêm thiết bị" textFill="WHITE">
                             <font>
                                 <Font name="Tektur Regular" size="13.0" />
                             </font>
