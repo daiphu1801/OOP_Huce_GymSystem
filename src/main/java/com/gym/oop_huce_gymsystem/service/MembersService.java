@@ -20,8 +20,8 @@ public class MembersService {
         if (member.getName() == null || member.getName().trim().isEmpty()) {
             throw new Exception("Tên hội viên không được để trống.");
         }
-        if (member.getPhone() == null || !member.getPhone().matches("\\d{11}") || member.getPhone().length() != 11 || member.getPhone().charAt(0) != '0'){
-            throw new Exception("Số điện thoại không hợp lệ (phải có 11 chữ số) hoặc là phải là chữ số không ở đầu.");
+        if (member.getPhone() == null || !member.getPhone().matches("\\d{10}") || member.getPhone().length() != 10 || member.getPhone().charAt(0) != '0'){
+            throw new Exception("Số điện thoại không hợp lệ (phải có 10 chữ số) hoặc là phải là chữ số không ở đầu.");
         }
         if (member.getMembershipType() == null) {
             throw new Exception("Loại gói tập không được để trống");

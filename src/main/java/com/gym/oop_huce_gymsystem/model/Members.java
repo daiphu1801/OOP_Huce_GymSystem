@@ -42,9 +42,6 @@ public class Members {
 
     public String getMembershipType() { return membershipType; }
     public void setMembershipType(String membershipType) {
-        if (!Arrays.asList("BASIC", "PREMIUM", "VIP").contains(membershipType)) {
-            throw new IllegalArgumentException("Membership type must be BASIC, PREMIUM, or VIP");
-        }
         this.membershipType = membershipType;
     }
 
