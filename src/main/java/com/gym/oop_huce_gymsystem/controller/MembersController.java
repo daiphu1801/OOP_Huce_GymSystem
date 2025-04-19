@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.time.LocalDate;
+import java.util.*;
 import com.gym.oop_huce_gymsystem.model.*;
 import com.gym.oop_huce_gymsystem.dao.*;
 import com.gym.oop_huce_gymsystem.controller.*;
@@ -16,32 +17,22 @@ public class MembersController {
     private final TableView<Members> tableView;
     private final TextField nameField;
     private final TextField phoneField;
-    private final ComboBox<String> membershipCombo;
+    private final TextField membershipField;
     private final DatePicker registrationDatePicker;
     private final DatePicker expiryDatePicker;
 
     public MembersController(TableView<Members> tableView, TextField nameField, TextField phoneField,
-                            ComboBox<String> membershipCombo, DatePicker registrationDatePicker,
-                            DatePicker expiryDatePicker) {
+                             TextField membershipField, DatePicker registrationDatePicker,
+                             DatePicker expiryDatePicker) {
         this.memberService = new MembersService();
         this.tableView = tableView;
         this.nameField = nameField;
         this.phoneField = phoneField;
-        this.membershipCombo = membershipCombo;
+        this.membershipField = membershipField;
         this.registrationDatePicker = registrationDatePicker;
         this.expiryDatePicker = expiryDatePicker;
         initializeTable();
         loadMembers();
-    }
-
-    public MembersController(MembersService memberService, TableView<Members> tableView, TextField nameField, TextField phoneField, ComboBox<String> membershipCombo, DatePicker registrationDatePicker, DatePicker expiryDatePicker) {
-        this.memberService = memberService;
-        this.tableView = tableView;
-        this.nameField = nameField;
-        this.phoneField = phoneField;
-        this.membershipCombo = membershipCombo;
-        this.registrationDatePicker = registrationDatePicker;
-        this.expiryDatePicker = expiryDatePicker;
     }
 
     private void initializeTable() {
@@ -72,7 +63,7 @@ public class MembersController {
             if (newSelection != null) {
                 nameField.setText(newSelection.getName());
                 phoneField.setText(newSelection.getPhone());
-                membershipCombo.setValue(newSelection.getMembershipType());
+                membershipField.setText(newSelection.getMembershipType());
                 registrationDatePicker.setValue(newSelection.getRegistrationDate());
             }
         });
@@ -83,7 +74,7 @@ public class MembersController {
             Members member = new Members(
                     nameField.getText(),
                     phoneField.getText(),
-                    membershipCombo.getValue(),
+                    membershipField.getText(),
                     registrationDatePicker.getValue()
             );
             memberService.addMember(member);
@@ -104,7 +95,7 @@ public class MembersController {
         try {
             selected.setName(nameField.getText());
             selected.setPhone(phoneField.getText());
-            selected.setMembershipType(membershipCombo.getValue());
+            selected.setMembershipType(membershipField.getText());
             selected.setRegistrationDate(registrationDatePicker.getValue());
             memberService.updateMember(selected);
             loadMembers();
@@ -134,16 +125,19 @@ public class MembersController {
     private void loadMembers() {
         try {
             memberData.clear();
-            memberData.addAll(memberService.getAllMembers());
+            List<Members> members = memberService.getAllMembers();
+            System.out.println("Số lượng hội viên tải được: " + members.size()); // Debug
+            memberData.addAll(members);
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Lỗi", "Không thể tải danh sách hội viên: " + e.getMessage());
+            e.printStackTrace(); // In stack trace để debug
         }
     }
 
     private void clearFields() {
         nameField.clear();
         phoneField.clear();
-        membershipCombo.setValue("BASIC");
+        membershipField.setText("BASIC");
         registrationDatePicker.setValue(null);
         expiryDatePicker.setValue(null);
         tableView.getSelectionModel().clearSelection();
