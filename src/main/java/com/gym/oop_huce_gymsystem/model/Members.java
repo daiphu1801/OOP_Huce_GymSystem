@@ -41,7 +41,9 @@ public class Members {
     public void setPhone(String phone) { this.phone = phone; }
 
     public String getMembershipType() { return membershipType; }
-    public void setMembershipType(String membershipType) {this.membershipType = membershipType;}
+    public void setMembershipType(String membershipType) {
+        this.membershipType = membershipType;
+    }
 
     public LocalDate getRegistrationDate() { return registrationDate; }
     public void setRegistrationDate(LocalDate registrationDate) { this.registrationDate = registrationDate; }

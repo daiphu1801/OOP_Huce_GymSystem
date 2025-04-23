@@ -1,26 +1,53 @@
-#nameColumn .label {
-    -fx-text-fill: white;
+/*MEMBER TABLE - New styles*/
+
+/* Style riêng cho column header */
+.table-view .column-header.cardNum {
+    -fx-background-color: linear-gradient(to right, #0093FF, #2D7DFF);
 }
 
-#phoneColumn .label {
-    -fx-text-fill: white;
+.table-view .column-header.nameColumn {
+    -fx-background-color: linear-gradient(to right, #2D7DFF, #5166FF);
 }
 
-#cardtypeColumn .label {
-    -fx-text-fill: white;
+.table-view .column-header.phoneColumn {
+    -fx-background-color: linear-gradient(to right, #5166FF, #714EFF);
 }
 
-#dateregisColumn .label {
-    -fx-text-fill: white;
+.table-view .column-header.gtColumn {
+    -fx-background-color: linear-gradient(to right, #714EFF, #8E32FF);
 }
 
-#cardstatusColumn .label {
-    -fx-text-fill: white;
+.table-view .column-header.cardtypeColumn {
+    -fx-background-color: linear-gradient(to right, #8E32FF, #A80DFF);
 }
 
-#statusColumn .label {
-    -fx-text-fill: white;
+.table-view .column-header.dateColumn {
+    -fx-background-color: linear-gradient(to right, #A80DFF, #9700FF);
 }
+
+.table-view .column-header.statusColumn {
+    -fx-background-color: #9700FF;
+}
+
+/* Force table cell background to be black and text to be white */
+.table-view .table-row-cell .table-cell {
+    -fx-background-color: #1a1a1a !important;
+    -fx-text-fill: white !important;
+}
+
+/* Gradient background only for selected rows */
+.table-view .table-row-cell:selected .table-cell {
+    -fx-background-color: #ccc !important;
+    -fx-text-fill: black !important;
+}
+
+/* Override any inline column styles */
+.table-column {
+    -fx-background-color: #1a1a1a;
+}
+
+/* Complete CSS file */
+/*REGISTER CSS*/
 
 .date-picker {
     -fx-background-color: #1a1a1a;
@@ -60,4 +87,129 @@
 .avatar {
     -fx-border-radius: 50%;
     -fx-background-radius: 50%;
+}
+
+/* Common styles for register form controls */
+.register-form .text-field {
+    -fx-text-fill: white;
+}
+
+.register-form .combo-box,
+.register-form .combo-box .cell {
+    -fx-text-fill: white;
+}
+
+.register-form .combo-box-popup .list-view .list-cell {
+    -fx-text-fill: white;
+    -fx-background-color: #1a1a1a;
+}
+
+.register-form .combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #0093ff;
+}
+
+.register-form .combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: #9700ff;
+}
+
+.register-form .combo-box-base > .arrow-button > .arrow {
+    -fx-background-color: white;
+}
+
+/*MEMBER TABLE*/
+
+.table-view {
+    -fx-background-color: #1a1a1a;
+    -fx-background-radius: 20px;
+    -fx-padding: 0;
+    -fx-vgrow: ALWAYS;
+}
+
+.table-view .column-header {
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-size: 40px;
+}
+
+.table-view .column-header-background {
+    -fx-background-radius: 20px 20px 0 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-view .virtual-flow {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-resize-line {
+    -fx-background-color: white;
+    -fx-pref-width: 1px;
+}
+
+/* Scroll bar styles for table view */
+.table-view .scroll-bar:vertical {
+    -fx-background-color: #1a1a1a;
+    -fx-background-radius: 0 20px 20px 0;
+}
+
+.table-view .scroll-bar:horizontal {
+    -fx-background-color: #1a1a1a;
+    -fx-background-radius: 0 0 20px 20px;
+}
+
+.table-view .scroll-bar .thumb {
+    -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);
+    -fx-background-radius: 20px;
+}
+
+.table-view .scroll-bar .increment-button,
+.table-view .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 10px;
+}
+
+/* Style for content area */
+.root-vbox {
+    -fx-background-color: transparent;
+    -fx-vgrow: ALWAYS;
+}
+
+/* Custom styles for buttons */
+.search_button,
+.previous_page,
+.next_page {
+    -fx-background-radius: 30px;
+    -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);
+    -fx-text-fill: white;
+}
+
+.previous_page,
+.next_page {
+    -fx-background-radius: 50px;
+}
+
+.search_button:hover,
+.previous_page:hover,
+.next_page:hover {
+    -fx-opacity: 0.9;
+}
+
+/* Sidebar and layout styles */
+#sidebarVBox {
+    -fx-background-color: #1a1a1a;
+    -fx-background-radius: 0 40px 40px 0;
+}
+
+#mainLayout {
+    -fx-background-color: black;
+}
+
+.searching {
+    -fx-background-radius: 15px;
+    -fx-background-color: #1a1a1a;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: gray;
 }
