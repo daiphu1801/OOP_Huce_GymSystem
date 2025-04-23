@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.ScenceController">
+<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.ListHoiVienController">
     <children>
         <HBox fx:id="mainLayout">
             <children>
@@ -62,7 +62,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="productBTN" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="152.0" maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTothiet_bi" prefHeight="49.0" prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Sản phẩm" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="productBTN" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="152.0" maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Sản phẩm" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -87,51 +87,47 @@
                 </VBox>
                 <AnchorPane fx:id="contentArea" prefHeight="720.0" prefWidth="982.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <VBox alignment="CENTER" layoutX="12.0" layoutY="15.0" prefHeight="691.0" prefWidth="958.0" style="-fx-background-color: white; -fx-background-radius: 30px;" styleClass="root-vbox" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="15.0">
+                        <VBox alignment="CENTER" layoutX="12.0" layoutY="15.0" prefHeight="691.0" prefWidth="996.0" styleClass="root-vbox" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="15.0">
                             <children>
-                                <VBox prefHeight="600.0" prefWidth="958.0" style="-fx-background-color: white; -fx-background-radius: 15px;" VBox.vgrow="ALWAYS">
+                                <HBox alignment="CENTER" prefHeight="39.0" prefWidth="996.0">
                                     <children>
-                                        <BarChart fx:id="barChart" animated="false" legendSide="TOP" prefHeight="561.0" prefWidth="989.0" title="Thống kê doanh thu" VBox.vgrow="ALWAYS">
-                                            <xAxis>
-                                                <CategoryAxis label="Thời gian" side="BOTTOM" fx:id="xAxis" />
-                                            </xAxis>
-                                            <yAxis>
-                                                <NumberAxis fx:id="yAxis" label="Triệu (VNĐ)" side="LEFT" />
-                                            </yAxis>
-                                            <VBox.margin>
-                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                            </VBox.margin>
-                                        </BarChart>
-                                    </children>
-                                </VBox>
-                                <HBox alignment="CENTER" prefHeight="80.0" prefWidth="958.0" style="-fx-background-color: transparent;">
-                                    <children>
-                                        <Button fx:id="btnMonth" mnemonicParsing="false" style="-fx-background-color: black; -fx-background-radius: 15px; -fx-cursor: hand;" text="Doanh thu tháng" textFill="WHITE">
+                                        <Button fx:id="addMemberButton" layoutX="749.0" layoutY="15.0" mnemonicParsing="false" onAction="#SwitchToregister" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Thêm thẻ" textFill="WHITE">
                                             <font>
-                                                <Font name="Tektur Regular" size="20.0" />
+                                                <Font name="Tektur Regular" size="13.0" />
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="20.0" />
+                                                <Insets right="10.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button fx:id="btnYear" layoutX="410.0" layoutY="40.0" mnemonicParsing="false" style="-fx-background-color: black; -fx-background-radius: 15px; -fx-cursor: hand;" text="Doanh thu năm" textFill="WHITE">
+                                        <Button fx:id="deleteMemberButton" layoutX="182.0" layoutY="15.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Xoá thẻ" textFill="WHITE">
                                             <font>
-                                                <Font name="Tektur Regular" size="20.0" />
+                                                <Font name="Tektur Regular" size="13.0" />
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="20.0" />
+                                                <Insets right="10.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button fx:id="btnQuarter" layoutX="505.0" layoutY="40.0" mnemonicParsing="false" style="-fx-background-color: black; -fx-background-radius: 15px; -fx-cursor: hand;" text="Doanh thu quý" textFill="WHITE">
-                                            <font>
-                                                <Font name="Tektur Regular" size="20.0" />
-                                            </font>
-                                        </Button>
+                                        <TextField fx:id="searchField" prefHeight="34.0" prefWidth="532.0" promptText="Nhập để tìm kiếm" style="-fx-background-radius: 15px; -fx-background-color: #1a1a1a;" styleClass="searching" />
                                     </children>
                                     <VBox.margin>
-                                        <Insets bottom="5.0" top="5.0" />
+                                        <Insets bottom="15.0" />
                                     </VBox.margin>
                                 </HBox>
+                                <VBox prefHeight="729.0" prefWidth="958.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <TableView fx:id="memberTable" prefHeight="614.0" prefWidth="934.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 20px;" styleClass="memberTable" stylesheets="@style.css" VBox.vgrow="ALWAYS">
+                                            <columns>
+                                                <TableColumn fx:id="memberIdColumn" prefWidth="164.0" styleClass="cardNum" text="Mã thẻ" />
+                                                <TableColumn fx:id="fullNameColumn" prefWidth="166.0" styleClass="nameColumn" text="Mã hội viên" />
+                                                <TableColumn fx:id="phoneNumberColumn" prefWidth="134.0" styleClass="phoneColumn" text="Tên thẻ" />
+                                                <TableColumn fx:id="packageTypeColumn" minWidth="0.0" prefWidth="123.0" styleClass="gtColumn" text="Số lượng gia hạn" />
+                                                <TableColumn fx:id="cardTypeColumn" prefWidth="125.0" styleClass="cardtypeColumn" text="Ngày đăng ký" />
+                                                <TableColumn fx:id="registerDateColumn" prefWidth="117.0" styleClass="dateColumn" text="Ngày hết hạn" />
+                                                <TableColumn fx:id="cardStatusColumn" prefWidth="129.0" styleClass="statusColumn" text="Thời gian check-in" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </VBox>
                             </children>
                         </VBox>
                     </children>
