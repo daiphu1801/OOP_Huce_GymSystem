@@ -10,29 +10,44 @@ public class Member implements Serializable {
     private String memberId;
     private String fullName;
     private String phoneNumber;
+    private LocalDate dateOfBirth;
+    private String gender;
     private String packageType;
     private String cardType;
     private LocalDate registerDate;
     private String cardStatus;
 
-    // Date formatter for display
+    // Định dạng ngày tháng cho việc hiển thị
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    // Default constructor
+    // Constructor mặc định
     public Member() {
     }
 
-    // Constructor with full name, phone number, package type, card type, and register date
+    // Constructor với tên đầy đủ, số điện thoại, loại gói tập, loại thẻ, và ngày đăng ký
     public Member(String fullName, String phoneNumber, String packageType, String cardType, LocalDate registerDate) {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.packageType = packageType;
         this.cardType = cardType;
         this.registerDate = registerDate;
-        this.cardStatus = "Còn hạn"; // Default value, will be updated by DAO
+        this.cardStatus = "Còn hạn"; // Giá trị mặc định, sẽ được cập nhật bởi DAO
     }
 
-    // Getters and setters
+    // Constructor đầy đủ bao gồm thêm ngày sinh và giới tính
+    public Member(String fullName, String phoneNumber, LocalDate dateOfBirth, String gender,
+                  String packageType, String cardType, LocalDate registerDate) {
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.packageType = packageType;
+        this.cardType = cardType;
+        this.registerDate = registerDate;
+        this.cardStatus = "Còn hạn"; // Giá trị mặc định, sẽ được cập nhật bởi DAO
+    }
+
+    // Các phương thức getter và setter
     public String getMemberId() {
         return memberId;
     }
@@ -55,6 +70,24 @@ public class Member implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    // Getter và setter cho ngày sinh
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    // Getter và setter cho giới tính
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getPackageType() {
@@ -89,9 +122,14 @@ public class Member implements Serializable {
         this.cardStatus = cardStatus;
     }
 
-    // Helper method to get formatted register date
+    // Phương thức hỗ trợ để lấy ngày đăng ký đã được định dạng
     public String getFormattedRegisterDate() {
         return registerDate != null ? registerDate.format(DATE_FORMATTER) : "";
+    }
+
+    // Phương thức hỗ trợ để lấy ngày sinh đã được định dạng
+    public String getFormattedDateOfBirth() {
+        return dateOfBirth != null ? dateOfBirth.format(DATE_FORMATTER) : "";
     }
 
     @Override
@@ -100,6 +138,8 @@ public class Member implements Serializable {
                 "memberId='" + memberId + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", dateOfBirth=" + getFormattedDateOfBirth() + '\'' +
+                ", gender='" + gender + '\'' +
                 ", packageType='" + packageType + '\'' +
                 ", cardType='" + cardType + '\'' +
                 ", registerDate=" + getFormattedRegisterDate() +

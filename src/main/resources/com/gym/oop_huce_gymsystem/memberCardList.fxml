@@ -46,7 +46,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" onAction="#switchToPTList" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Personal Trainer" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" onAction="#switchToPTList" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -107,7 +107,7 @@
                                                 <Insets right="10.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <TextField fx:id="searchField" prefHeight="34.0" prefWidth="532.0" promptText="Nhập để tìm kiếm" style="-fx-background-radius: 15px; -fx-background-color: #1a1a1a;" styleClass="searching" />
+                                        <TextField fx:id="searchField" prefHeight="34.0" prefWidth="532.0" promptText="Nhập để tìm kiếm" style="-fx-background-radius: 15px; -fx-background-color: #1a1a1a;" styleClass="searching" stylesheets="@style.css" />
                                     </children>
                                     <VBox.margin>
                                         <Insets bottom="15.0" />
@@ -117,13 +117,12 @@
                                     <children>
                                         <TableView fx:id="memberTable" prefHeight="614.0" prefWidth="934.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 20px;" styleClass="memberTable" stylesheets="@style.css" VBox.vgrow="ALWAYS">
                                             <columns>
-                                                <TableColumn fx:id="memberIdColumn" prefWidth="164.0" styleClass="cardNum" text="Mã thẻ" />
-                                                <TableColumn fx:id="fullNameColumn" prefWidth="166.0" styleClass="nameColumn" text="Mã hội viên" />
-                                                <TableColumn fx:id="phoneNumberColumn" prefWidth="134.0" styleClass="phoneColumn" text="Tên thẻ" />
-                                                <TableColumn fx:id="packageTypeColumn" minWidth="0.0" prefWidth="123.0" styleClass="gtColumn" text="Số lượng gia hạn" />
-                                                <TableColumn fx:id="cardTypeColumn" prefWidth="125.0" styleClass="cardtypeColumn" text="Ngày đăng ký" />
-                                                <TableColumn fx:id="registerDateColumn" prefWidth="117.0" styleClass="dateColumn" text="Ngày hết hạn" />
-                                                <TableColumn fx:id="cardStatusColumn" prefWidth="129.0" styleClass="statusColumn" text="Thời gian check-in" />
+                                                <TableColumn fx:id="memberIdColumn" prefWidth="221.0" styleClass="cardNum" text="Mã thẻ" />
+                                                <TableColumn fx:id="fullNameColumn" prefWidth="174.0" styleClass="nameColumn" text="Tên thẻ" />
+                                                <TableColumn fx:id="phoneNumberColumn" prefWidth="174.0" styleClass="phoneColumn" text="Giá thẻ" />
+                                                <TableColumn fx:id="packageTypeColumn" minWidth="0.0" prefWidth="109.0" styleClass="gtColumn" text="Số lượng gia hạn" />
+                                                <TableColumn fx:id="cardTypeColumn" prefWidth="141.0" styleClass="cardtypeColumn" text="Ngày đăng ký" />
+                                                <TableColumn fx:id="registerDateColumn" prefWidth="139.0" styleClass="dateColumn" text="Ngày hết hạn" />
                                             </columns>
                                         </TableView>
                                     </children>

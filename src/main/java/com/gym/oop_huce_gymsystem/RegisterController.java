@@ -137,6 +137,12 @@ public class RegisterController implements Initializable {
     }
 
     @FXML
+    public void switchHome (javafx.scene.input.MouseEvent event) throws IOException {
+        ActionEvent actionEvent = new ActionEvent(event.getSource(), event.getTarget());
+        switchToHelloView(actionEvent);
+    }
+
+    @FXML
     public void switchToHelloView(ActionEvent event) throws IOException {
         setupScene("hello-view.fxml", event);
     }
