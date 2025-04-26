@@ -2,6 +2,7 @@ package com.gym.oop_huce_gymsystem.model;
 
 import java.time.*;
 import java.util.*;
+
 public class Members {
     private int memberId; //ID của từng hội viên
     private String name; //Tên hội viên
@@ -12,7 +13,7 @@ public class Members {
 
     //Constructor
     public Members(int memberId, String name, String phone, String membershipType,
-                  LocalDate registrationDate, LocalDateTime createdAt) {
+                   LocalDate registrationDate, LocalDateTime createdAt) {
         this.memberId = memberId;
         this.name = name;
         this.phone = phone;
@@ -23,7 +24,7 @@ public class Members {
 
     //Constuctor để create
     public Members(String name, String phone, String membershipType,
-                  LocalDate registrationDate) {
+                   LocalDate registrationDate) {
         this.name = name;
         this.phone = phone;
         this.membershipType = membershipType;
@@ -31,25 +32,53 @@ public class Members {
     }
 
     // Getters and Setters
-    public int getMemberId() { return memberId; }
-    public void setMemberId(int memberId) { this.memberId = memberId; }
+    public int getMemberId() {
+        return memberId;
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
+    }
 
-    public String getPhone() { return phone; }
-    public void setPhone(String phone) { this.phone = phone; }
+    public String getName() {
+        return name;
+    }
 
-    public String getMembershipType() { return membershipType; }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getMembershipType() {
+        return membershipType;
+    }
+
     public void setMembershipType(String membershipType) {
         this.membershipType = membershipType;
     }
 
-    public LocalDate getRegistrationDate() { return registrationDate; }
-    public void setRegistrationDate(LocalDate registrationDate) { this.registrationDate = registrationDate; }
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
+    }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
     @Override
     public String toString() {

@@ -9,51 +9,84 @@ public class Equipments {
     private String Status;
     private String Quantity;
     private LocalDate Purchase_Date;
-    private String Create_at;
+    private LocalDate Create_at;
 
-    public Equipments(int equipmentId, String Name, String Status, String Quantity, LocalDate Purchase_Date, String Create_at){
-    this.equipmentId=equipmentId;
-    this.Name=Name;
-    this.Status=Status;
-    this.Quantity=Quantity;
-    this.Purchase_Date=Purchase_Date;
-    this.Create_at=Create_at;}
-
-    public Equipments(int equipmentId, String Name, String Status, String Quantity, LocalDate Purchase_Date ){
-        this.equipmentId=equipmentId;
-        this.Name=Name;
-        this.Status=Status;
-        this.Quantity=Quantity;
-        this.Purchase_Date=Purchase_Date;
+    public Equipments(int equipmentId, String Name, String Status, String Quantity, LocalDate Purchase_Date, LocalDate Create_at) {
+        this.equipmentId = equipmentId;
+        this.Name = Name;
+        this.Status = Status;
+        this.Quantity = Quantity;
+        this.Purchase_Date = Purchase_Date;
+        this.Create_at = Create_at;
     }
-//getter setter
-    public int getEquipmentId(){ return equipmentId;}
-    public void setEquipmentId(int equipmentId ){ this.equipmentId= equipmentId; }
 
-    public String getName(){ return Name; }
-    public void setName(String name){ this.Name= name; }
+    public Equipments(int equipmentId, String Name, String Status, String Quantity, LocalDate Purchase_Date) {
+        this.equipmentId = equipmentId;
+        this.Name = Name;
+        this.Status = Status;
+        this.Quantity = Quantity;
+        this.Purchase_Date = Purchase_Date;
+    }
 
-    public String getStatus(){ return Status; }
-    public void setStatus(String Status){ this.Status= Status; }
+    //getter setter
+    public int getEquipmentId() {
+        return equipmentId;
+    }
 
-    public String getQuantity(){ return Quantity; }
-    public void setQuantity(String Quantity){ this.Quantity= Quantity; }
+    public void setEquipmentId(int equipmentId) {
+        this.equipmentId = equipmentId;
+    }
 
-    public LocalDate getPurchase_Date(){ return Purchase_Date; }
-    public void setPurchase_Date(LocalDate Purchase_Date){ this.Purchase_Date= Purchase_Date; }
+    public String getName() {
+        return Name;
+    }
 
-    public String getCreate_at(){ return Create_at; }
-    public void setCreate_at(String Create_at){ this.Create_at= Create_at; }
-   @Override
-   public String toString() {
-       return "Equipments{" +
-               "equipmentId=" + equipmentId +
-               ", name='" + Name + '\'' +
-               ", status='" + Status + '\'' +
-               ", quantity='" + Quantity + '\'' +
-               ", purchaseDate='" + Purchase_Date + '\'' +
-               ", createAt='" + Create_at + '\'' +
-               '}';
+    public void setName(String name) {
+        this.Name = name;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
+
+    public String getQuantity() {
+        return Quantity;
+    }
+
+    public void setQuantity(String Quantity) {
+        this.Quantity = Quantity;
+    }
+
+    public LocalDate getPurchase_Date() {
+        return Purchase_Date;
+    }
+
+    public void setPurchase_Date(LocalDate Purchase_Date) {
+        this.Purchase_Date = Purchase_Date;
+    }
+
+    public LocalDate getCreate_at() {
+        return Create_at;
+    }
+
+    public void setCreate_at(LocalDate Create_at) {
+        this.Create_at = Create_at;
+    }
+
+    @Override
+    public String toString() {
+        return "Equipments{" +
+                "equipmentId=" + equipmentId +
+                ", name='" + Name + '\'' +
+                ", status='" + Status + '\'' +
+                ", quantity='" + Quantity + '\'' +
+                ", purchaseDate='" + Purchase_Date + '\'' +
+                ", createAt='" + Create_at + '\'' +
+                '}';
 
     }
 }
@@ -61,8 +94,3 @@ public class Equipments {
 
 
 
-
-
-
-
-}

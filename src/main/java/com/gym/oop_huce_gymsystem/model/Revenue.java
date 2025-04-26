@@ -8,9 +8,9 @@ public class Revenue {
     private double amount;
     private LocalDate transaction_date;
     private String description;
-    private String create_at;
+    private LocalDate create_at;
 
-    public Revenue(String revenueId, String source_type, double amount, LocalDate transaction_date, String description, String create_at) {
+    public Revenue(String revenueId, String source_type, double amount, LocalDate transaction_date, String description, LocalDate create_at) {
         this.revenueId = revenueId;
         this.source_type = source_type;
         this.amount = amount;
@@ -20,23 +20,54 @@ public class Revenue {
 
 
     }
-    public String getRevenueId() {return revenueId;}
-    public void setRevenueId(String revenueId) {this.revenueId = revenueId;}
 
-    public String getSource_type() {return source_type;}
-    public void setSource_type(String source_type) {this.source_type = source_type;}
+    public String getRevenueId() {
+        return revenueId;
+    }
 
-    public double getAmount() {return amount;}
-    public void setAmount(double amount) {this.amount = amount;}
+    public void setRevenueId(String revenueId) {
+        this.revenueId = revenueId;
+    }
 
-    public LocalDate getTransaction_date() {return transaction_date;}
-    public void setTransaction_date(LocalDate transaction_date) {this.transaction_date = transaction_date;}
+    public String getSource_type() {
+        return source_type;
+    }
 
-    public String getDescription() {return description;}
-    public void setDescription(String description) {this.description = description;}
+    public void setSource_type(String source_type) {
+        this.source_type = source_type;
+    }
 
-    public String getCreate_at() {return create_at;}
-    public void setCreate_at(String create_at) {this.create_at = create_at;}
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public LocalDate getTransaction_date() {
+        return transaction_date;
+    }
+
+    public void setTransaction_date(LocalDate transaction_date) {
+        this.transaction_date = transaction_date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDate getCreate_at() {
+        return create_at;
+    }
+
+    public void setCreate_at(LocalDate create_at) {
+        this.create_at = create_at;
+    }
 
     @Override
     public String toString() {
@@ -49,8 +80,6 @@ public class Revenue {
                 ", createAt=" + create_at +
                 "]";
     }
-    }
-
-
-
 }
+
+
