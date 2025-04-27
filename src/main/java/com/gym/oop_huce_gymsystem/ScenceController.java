@@ -114,6 +114,11 @@ public class ScenceController {
     }
 
     @FXML
+    public void switchToMemberCardList(ActionEvent event) throws IOException {
+        setupScene("memberCardList.fxml", event);
+    }
+
+    @FXML
     public void switchToHoiVienFullInfo(ActionEvent event) throws IOException {
         setupScene("hoivien_full_info.fxml", event);
     }
@@ -201,6 +206,11 @@ public class ScenceController {
     @FXML
     public void SwitchTotrainerList(ActionEvent event) throws IOException {
         switchToPTList(event);
+    }
+
+    @FXML
+    public void switchToMemberCard(ActionEvent event) throws IOException {
+        switchToMemberCardList(event);
     }
 
 }
