@@ -46,7 +46,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" onAction="#switchToPTList" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Personal Trainer" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" onAction="#switchToPTList" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -107,14 +107,6 @@
                                 <HBox alignment="CENTER" prefHeight="80.0" prefWidth="958.0" style="-fx-background-color: transparent;">
                                     <children>
                                         <Button fx:id="btnMonth" mnemonicParsing="false" style="-fx-background-color: black; -fx-background-radius: 15px; -fx-cursor: hand;" text="Doanh thu tháng" textFill="WHITE">
-                                            <font>
-                                                <Font name="Tektur Regular" size="20.0" />
-                                            </font>
-                                            <HBox.margin>
-                                                <Insets right="20.0" />
-                                            </HBox.margin>
-                                        </Button>
-                                        <Button fx:id="btnYear" layoutX="410.0" layoutY="40.0" mnemonicParsing="false" style="-fx-background-color: black; -fx-background-radius: 15px; -fx-cursor: hand;" text="Doanh thu năm" textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="20.0" />
                                             </font>

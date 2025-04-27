@@ -46,7 +46,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" onAction="#switchToPTList" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Personal Trainer" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" onAction="#switchToPTList" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -115,7 +115,7 @@
                                                 <Insets right="10.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <TextField fx:id="searchField" prefHeight="34.0" prefWidth="532.0" promptText="Nhập để tìm kiếm" style="-fx-background-radius: 15px; -fx-background-color: #1a1a1a;" styleClass="searching" />
+                                        <TextField fx:id="searchField" prefHeight="34.0" prefWidth="532.0" promptText="Nhập để tìm kiếm" style="-fx-background-radius: 15px; -fx-background-color: #1a1a1a;" styleClass="searching" stylesheets="@style.css" />
                                     </children>
                                     <VBox.margin>
                                         <Insets bottom="15.0" />
@@ -127,7 +127,7 @@
                                             <columns>
                                                 <TableColumn fx:id="ptNum" prefWidth="184.0" styleClass="cardNum" text="Mã sản phẩm" />
                                                 <TableColumn fx:id="ptName" prefWidth="190.33331298828125" styleClass="nameColumn" text="Tên sản phẩm" />
-                                                <TableColumn fx:id="ptPhone" prefWidth="159.66668701171875" styleClass="phoneColumn" text="Giá thành" />
+                                                <TableColumn fx:id="ptPhone" prefWidth="159.66668701171875" styleClass="phoneColumn" text="Giá sản phẩm" />
                                                 <TableColumn fx:id="ptEmail" minWidth="0.0" prefWidth="227.0" styleClass="gtColumn" text="Số lượng tồn kho" />
                                                 <TableColumn fx:id="ptSpec" prefWidth="196.0" styleClass="cardtypeColumn" text="Số lượng đã bán" />
                                             </columns>

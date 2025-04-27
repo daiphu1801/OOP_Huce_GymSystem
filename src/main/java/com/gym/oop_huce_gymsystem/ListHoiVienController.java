@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.controlsfx.control.action.Action;
 
 import java.io.IOException;
 import java.net.URL;
@@ -167,6 +168,12 @@ public class ListHoiVienController implements Initializable {
     public void refreshData() {
         memberDAO.updateAllCardStatuses();
         loadMemberData();
+    }
+
+    @FXML
+    public void switchHome (javafx.scene.input.MouseEvent event) throws IOException {
+        ActionEvent actionEvent = new ActionEvent(event.getSource(), event.getTarget());
+        switchToHelloView(actionEvent);
     }
 
     @FXML
