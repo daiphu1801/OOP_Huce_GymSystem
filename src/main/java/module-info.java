@@ -9,6 +9,7 @@ module com.gym.oop_huce_gymsystem {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires java.desktop;
 
     opens com.gym.oop_huce_gymsystem to javafx.fxml;
     exports com.gym.oop_huce_gymsystem;

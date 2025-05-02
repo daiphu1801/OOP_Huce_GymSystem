@@ -11,11 +11,11 @@ public class Members {
     private LocalDateTime createdAt; // Thời điểm tạo
     private String trainingPackage; // Gói tập luyện
 
-    public Members() {}
+    public Members() {
+    }
 
     // Constructor đầy đủ
-    public Members(int memberId, String name, String phone, String membershipType,String trainingPackage,
-                   LocalDate registrationDate, LocalDateTime createdAt) {
+    public Members(int memberId, String name, String phone, String membershipType, String trainingPackage, LocalDate registrationDate, LocalDateTime createdAt) {
         this.memberId = memberId;
         this.name = name;
         this.phone = phone;
@@ -26,8 +26,7 @@ public class Members {
     }
 
     // Constructor dùng khi tạo mới
-    public Members(String name, String phone, String membershipType,String trainingPackage,
-                   LocalDate registrationDate) {
+    public Members(String name, String phone, String membershipType, String trainingPackage, LocalDate registrationDate) {
         this.name = name;
         this.phone = phone;
         this.membershipType = membershipType;
@@ -95,14 +94,6 @@ public class Members {
 
     @Override
     public String toString() {
-        return "Members{" +
-                "memberId=" + memberId +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", membershipType='" + membershipType + '\'' +
-                ", registrationDate=" + registrationDate +
-                ", createdAt=" + createdAt +
-                ", trainingPackage='" + trainingPackage + '\'' +
-                '}';
+        return "Members{" + "memberId=" + memberId + ", name='" + name + '\'' + ", phone='" + phone + '\'' + ", membershipType='" + membershipType + '\'' + ", registrationDate=" + registrationDate + ", createdAt=" + createdAt + ", trainingPackage='" + trainingPackage + '\'' + '}';
     }
 }

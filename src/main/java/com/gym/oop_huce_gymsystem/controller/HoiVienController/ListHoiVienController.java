@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.application.Platform;
 
+import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -88,6 +89,31 @@ public class ListHoiVienController implements Initializable {
         // Đảm bảo bảng được style đúng
         memberTable.getStyleClass().add("memberTable");
     }
+
+    @FXML
+    public void handleDoubleClick(MouseEvent event) {
+        // Kiểm tra nhấp đúp (2 lần nhấp)
+        if (event.getClickCount() == 2) {
+            Members selected = memberTable.getSelectionModel().getSelectedItem();
+            if (selected == null) {
+                System.out.println("[ListHoiVienController] Lỗi: Không có hội viên nào được chọn để xem chi tiết.");
+                showAlert(Alert.AlertType.WARNING, "Chưa chọn hội viên", "Vui lòng chọn hội viên để xem thông tin chi tiết.");
+                return;
+            }
+
+            System.out.println("[ListHoiVienController] Nhấp đúp vào hội viên: " + selected.getName() + ", SĐT: " + selected.getPhone());
+            try {
+                // Chỉ truyền memberId thay vì toàn bộ đối tượng Members
+                HoiVienFullInfoController controller = scenceController.switchToHoiVienFullInfo(new ActionEvent(event.getSource(), null), selected.getMemberId());
+                System.out.println("[ListHoiVienController] Đã chuyển sang HoiVienFullInfoController thành công.");
+            } catch (Exception e) {
+                System.out.println("[ListHoiVienController] Lỗi khi chuyển sang HoiVienFullInfoController: " + e.getMessage());
+                e.printStackTrace();
+                showAlert(Alert.AlertType.ERROR, "Lỗi", "Không thể mở giao diện chi tiết: " + e.getMessage());
+            }
+        }
+    }
+
 
     // Helper method để tạo TableCell với style rõ ràng
     private <T> TableCell<Members, T> createStringTableCell() {
@@ -207,8 +233,8 @@ public class ListHoiVienController implements Initializable {
     }
 
     @FXML
-    public void switchToHoiVienFullInfo(ActionEvent event) throws IOException {
-        scenceController.switchToHoiVienFullInfo(event);
+    public void switchToHoiVienFullInfo(ActionEvent event,int memberId) throws IOException {
+        scenceController.switchToHoiVienFullInfo(event,memberId);
     }
 
     @FXML
