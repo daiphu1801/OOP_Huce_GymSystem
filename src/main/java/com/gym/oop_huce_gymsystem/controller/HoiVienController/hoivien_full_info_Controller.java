@@ -1,11 +1,14 @@
-package com.gym.oop_huce_gymsystem;
+package com.gym.oop_huce_gymsystem.controller.HoiVienController;
 
+import com.gym.oop_huce_gymsystem.ScenceController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
 
 public class hoivien_full_info_Controller {
+
+
 
     private final ScenceController scenceController = new ScenceController();
 

@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.application.Platform;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,6 +41,14 @@ public class ListHoiVienController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Thiết lập kích thước tối thiểu cho các cột
+        memberIdColumn.setMinWidth(50);
+        fullNameColumn.setMinWidth(150);
+        phoneNumberColumn.setMinWidth(100);
+        membershipTypeColumn.setMinWidth(120);
+        trainingPackageColumn.setMinWidth(100);
+        registrationDateColumn.setMinWidth(100);
+
         // Thiết lập ánh xạ cột với thuộc tính của Members
         memberIdColumn.setCellValueFactory(new PropertyValueFactory<>("memberId"));
         fullNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -63,17 +72,12 @@ public class ListHoiVienController implements Initializable {
             }
         });
 
-<<<<<<< HEAD:src/main/java/com/gym/oop_huce_gymsystem/controller/ListHoiVienController.java
         // Thiết lập cell factory với text màu trắng rõ ràng
         memberIdColumn.setCellFactory(column -> createStringTableCell());
         fullNameColumn.setCellFactory(column -> createStringTableCell());
         phoneNumberColumn.setCellFactory(column -> createStringTableCell());
         membershipTypeColumn.setCellFactory(column -> createStringTableCell());
         trainingPackageColumn.setCellFactory(column -> createStringTableCell());
-=======
-        // Đặt màu chữ để tránh trùng nền
-        memberTable.setStyle("-fx-text-fill: white;");
->>>>>>> f311f085028dd4181cb6866a91e506d354203123:src/main/java/com/gym/oop_huce_gymsystem/controller/HoiVienController/ListHoiVienController.java
 
         // Tải dữ liệu ban đầu
         loadMemberData();
@@ -85,7 +89,6 @@ public class ListHoiVienController implements Initializable {
         memberTable.getStyleClass().add("memberTable");
     }
 
-<<<<<<< HEAD:src/main/java/com/gym/oop_huce_gymsystem/controller/ListHoiVienController.java
     // Helper method để tạo TableCell với style rõ ràng
     private <T> TableCell<Members, T> createStringTableCell() {
         return new TableCell<Members, T>() {
@@ -104,20 +107,32 @@ public class ListHoiVienController implements Initializable {
         };
     }
 
-=======
->>>>>>> f311f085028dd4181cb6866a91e506d354203123:src/main/java/com/gym/oop_huce_gymsystem/controller/HoiVienController/ListHoiVienController.java
     private void loadMemberData() {
         try {
             List<Members> members = memberService.getAllMembers();
             memberList = FXCollections.observableArrayList(members);
-            memberTable.setItems(memberList);
-            memberTable.refresh(); // Đảm bảo giao diện cập nhật
-            System.out.println("Đã tải " + members.size() + " hội viên.");
-            for (Members member : members) {
-                System.out.println("Hội viên: " + member.getMemberId() + ", " + member.getName() + ", " +
-                        member.getPhone() + ", " + member.getMembershipType() + ", " +
-                        member.getTrainingPackage() + ", " + member.getRegistrationDate());
+
+            // Kiểm tra danh sách thành viên
+            if (members.isEmpty()) {
+                System.out.println("Danh sách hội viên trống!");
+            } else {
+                System.out.println("Đã tải " + members.size() + " hội viên.");
+                for (Members member : members) {
+                    System.out.println("Hội viên: " + member.getMemberId() + ", " + member.getName() + ", " +
+                            member.getPhone() + ", " + member.getMembershipType() + ", " +
+                            member.getTrainingPackage() + ", " + member.getRegistrationDate());
+                }
             }
+
+            // Sử dụng Platform.runLater để đảm bảo UI được cập nhật trên thread JavaFX
+            Platform.runLater(() -> {
+                memberTable.setItems(memberList);
+                memberTable.refresh();
+
+                // Debug: Kiểm tra số lượng dòng trong bảng
+                System.out.println("Số dòng trong bảng: " + memberTable.getItems().size());
+            });
+
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Lỗi", "Không tải được dữ liệu: " + e.getMessage());
             e.printStackTrace();
@@ -137,6 +152,7 @@ public class ListHoiVienController implements Initializable {
             );
             memberTable.setItems(filtered);
         }
+        memberTable.refresh();
     }
 
     @FXML
@@ -174,7 +190,7 @@ public class ListHoiVienController implements Initializable {
         alert.showAndWait();
     }
 
-    // Chuyển scene
+    // Các phương thức chuyển scene giữ nguyên như cũ
     @FXML
     public void switchHome (javafx.scene.input.MouseEvent event) throws IOException {
         ActionEvent actionEvent = new ActionEvent(event.getSource(), event.getTarget());
