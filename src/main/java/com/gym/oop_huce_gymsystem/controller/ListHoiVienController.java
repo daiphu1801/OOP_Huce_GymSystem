@@ -68,11 +68,12 @@ public class ListHoiVienController implements Initializable {
                     setText(null);
                 } else {
                     setText(item.format(dtf));
+//                    setStyle("-fx-text-fill: white !important;");
                 }
             }
         });
 
-        // Thiết lập cell factory để đảm bảo hiển thị text
+        // Thiết lập cell factory với text màu trắng rõ ràng
         memberIdColumn.setCellFactory(column -> createStringTableCell());
         fullNameColumn.setCellFactory(column -> createStringTableCell());
         phoneNumberColumn.setCellFactory(column -> createStringTableCell());
@@ -84,6 +85,9 @@ public class ListHoiVienController implements Initializable {
 
         // Thiết lập tính năng tìm kiếm
         searchField.textProperty().addListener((obs, oldVal, newVal) -> filterMembers(newVal));
+
+        // Đảm bảo bảng được style đúng
+        memberTable.getStyleClass().add("memberTable");
     }
 
     // Helper method để tạo TableCell với style rõ ràng
@@ -95,10 +99,10 @@ public class ListHoiVienController implements Initializable {
 
                 if (empty || item == null) {
                     setText(null);
-                    setStyle("-fx-text-fill: white;");
+                    setStyle("");
                 } else {
                     setText(item.toString());
-                    setStyle("-fx-text-fill: white;");
+//                    setStyle("-fx-text-fill: white !important;");
                 }
             }
         };

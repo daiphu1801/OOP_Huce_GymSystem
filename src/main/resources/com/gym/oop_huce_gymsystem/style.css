@@ -36,9 +36,13 @@
 
 /* Thiết lập màu chữ trắng cho tất cả các ô trong bảng */
 .table-view .table-cell {
-    -fx-text-fill: white !important;
+    -fx-text-fill: white;
     -fx-alignment: center-left;
     -fx-padding: 5px;
+}
+
+.table-row-cell {
+    -fx-background-color: #1a1a1a;
 }
 
 /* Màu cho các dòng lẻ */
@@ -56,29 +60,33 @@
     -fx-background-color: #3a3a3a;
 }
 
-/* Màu khi chọn/click vào một dòng */
-.table-row-cell:selected {
+.table-view .table-row-cell:selected {
     -fx-background-color: #ccc;
+
 }
 
-.table-row-cell:selected .table-cell {
-    -fx-text-fill: black !important;
+.table-view .table-row-cell:selected .table-cell{
+    -fx-text-fill: #000;
+    -fx-font-weight: bold;
+
 }
 
-/* Loại bỏ viền khi focus */
-.table-view:focused {
-    -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
-}
+
+
+/*!* Loại bỏ viền khi focus *!*/
+/*.table-view:focused {*/
+/*    -fx-focus-color: transparent;*/
+/*    -fx-faint-focus-color: transparent;*/
+/*}*/
 
 /* Sửa lỗi rỗng/null trong table */
 .table-row-cell:empty {
     -fx-background-color: #1a1a1a;
 }
 
-.table-row-cell:empty .table-cell {
-    -fx-border-width: 0px;
-}
+/*.table-row-cell:empty .table-cell {*/
+/*    -fx-border-width: 0px;*/
+/*}*/
 
 /* Đảm bảo các cell trong table row hiển thị đúng */
 .table-view .table-row-cell {
@@ -86,12 +94,7 @@
     -fx-border-insets: 0;
 }
 
-/* Chỉnh sửa kiểu dáng cho cell content */
-.table-cell .text {
-    -fx-fill: white;
-}
 
-/* Complete CSS file */
 /*REGISTER CSS*/
 
 .date-picker {
@@ -105,6 +108,7 @@
 .date-picker .text-field {
     -fx-background-color: transparent;
     -fx-background-radius: 15px 0 0 15px;
+    -fx-text-fill: white;
 }
 
 .date-picker .arrow-button {
