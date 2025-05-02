@@ -9,13 +9,13 @@ import javafx.geometry.Rectangle2D;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Lấy kích thước màn hình của người dùng
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
 
         // Tạo scene với kích thước mặc định 1280x720
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);

@@ -10,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.TableView;
-import com.gym.oop_huce_gymsystem.controller.HoiVienController.HoiVienFullInfoController;
+import com.gym.oop_huce_gymsystem.controller.HoiVienController.*;
 
 import java.io.IOException;
 
@@ -123,7 +123,6 @@ public class ScenceController {
                 System.out.println("[ScenceController] Lỗi: Không thể lấy HoiVienFullInfoController từ loader.");
                 throw new IOException("Không thể lấy controller từ loader.");
             }
-            // Truyền memberId cho controller để lấy dữ liệu từ database
             controller.setMemberId(memberId);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -136,6 +135,31 @@ public class ScenceController {
         }
     }
 
+    public HoiVienEditController switchToHoiVienEdit(ActionEvent event, int memberId) throws IOException {
+        System.out.println("[ScenceController] Bắt đầu chuyển sang HoiVienEditController với memberId: " + memberId);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/HoiVienEdit.fxml"));
+            if (loader.getLocation() == null) {
+                System.out.println("[ScenceController] Lỗi: Không tìm thấy tệp HoiVienEdit.fxml");
+                throw new IOException("Không tìm thấy tệp HoiVienEdit.fxml");
+            }
+            Parent root = loader.load();
+            HoiVienEditController controller = loader.getController();
+            if (controller == null) {
+                System.out.println("[ScenceController] Lỗi: Không thể lấy HoiVienEditController từ loader.");
+                throw new IOException("Không thể lấy controller từ loader.");
+            }
+            controller.setMemberId(memberId);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+            System.out.println("[ScenceController] Chuyển sang HoiVienEditController thành công.");
+            return controller;
+        } catch (Exception e) {
+            System.out.println("[ScenceController] Lỗi khi tải HoiVienEdit.fxml: " + e.getMessage());
+            throw e;
+        }
+    }
 
     @FXML
     public void switchHome (javafx.scene.input.MouseEvent event) throws IOException {

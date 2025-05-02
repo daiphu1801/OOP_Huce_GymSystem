@@ -28,6 +28,9 @@ public class HoiVienFullInfoController implements Initializable {
     @FXML private Label phoneNumberLabel;
     @FXML private Label membershipTypeLabel;
     @FXML private Label trainingPackageLabel;
+//    @FXML private TableView<CheckInHistory> historyTable;
+//    @FXML private TableColumn<CheckInHistory, LocalDate> dateCheckColumn;
+//    @FXML private TableColumn<CheckInHistory, String> timeCheckinColumn;
     @FXML private Button backButton;
     @FXML private Button editInfoButton;
 
@@ -43,14 +46,12 @@ public class HoiVienFullInfoController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Kiểm tra xem các thành phần có được inject không
         if (memberIdLabel == null) {
             System.out.println("[HoiVienFullInfoController] Lỗi: memberIdLabel không được inject từ FXML.");
         } else {
             System.out.println("[HoiVienFullInfoController] memberIdLabel đã được inject thành công.");
         }
 
-        // Load dữ liệu sau khi các thành phần giao diện đã được inject
         if (memberId != 0) {
             loadMemberData();
         }
@@ -58,7 +59,6 @@ public class HoiVienFullInfoController implements Initializable {
 
     public void setMemberId(int memberId) {
         this.memberId = memberId;
-        // Load dữ liệu sau khi các thành phần giao diện đã được inject
         if (memberIdLabel != null) {
             loadMemberData();
         } else {
@@ -79,6 +79,7 @@ public class HoiVienFullInfoController implements Initializable {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 LocalDate registrationDate = currentMember.getRegistrationDate();
 
+//                loadCheckInHistory();
             } else {
                 System.out.println("[HoiVienFullInfoController] Không tìm thấy hội viên với ID: " + memberId);
             }
@@ -88,6 +89,15 @@ public class HoiVienFullInfoController implements Initializable {
         }
     }
 
+//    private void loadCheckInHistory() {
+//        ObservableList<CheckInHistory> historyList = FXCollections.observableArrayList();
+//        historyList.add(new CheckInHistory(LocalDate.now(), "08:30"));
+//        historyList.add(new CheckInHistory(LocalDate.now().minusDays(1), "07:15"));
+//
+//        dateCheckColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+//        timeCheckinColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
+//        historyTable.setItems(historyList);
+//    }
 
     @FXML
     public void backToList(ActionEvent event) throws IOException {
@@ -97,5 +107,24 @@ public class HoiVienFullInfoController implements Initializable {
     @FXML
     public void switchToEdit(ActionEvent event) throws IOException {
         System.out.println("[HoiVienFullInfoController] Chuyển sang giao diện sửa thông tin cho: " + (currentMember != null ? currentMember.getName() : "N/A"));
+        HoiVienEditController controller = scenceController.switchToHoiVienEdit(event, memberId);
     }
 }
+
+//class CheckInHistory {
+//    private LocalDate date;
+//    private String time;
+//
+//    public CheckInHistory(LocalDate date, String time) {
+//        this.date = date;
+//        this.time = time;
+//    }
+//
+//    public LocalDate getDate() {
+//        return date;
+//    }
+//
+//    public String getTime() {
+//        return time;
+//    }
+//}

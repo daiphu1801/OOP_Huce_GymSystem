@@ -267,3 +267,18 @@
     -fx-border-color: linear-gradient(to right, #0093ff, #9700ff);
     -fx-border-radius: 0 30px 30px 0;
 }
+
+.white-label {
+    -fx-text-fill: white;
+}
+
+.white-textfield {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: white;
+}
+
+.date-picker {
+    -fx-font-family: "Tektur Regular";
+    -fx-font-size: 31px;
+    -fx-text-fill: white;
+}
