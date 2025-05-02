@@ -99,7 +99,7 @@
                                                 <Insets right="10.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button fx:id="deleteMemberButton" layoutX="182.0" layoutY="15.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Xoá hội viên" textFill="WHITE">
+                                        <Button fx:id="deleteMemberButton" layoutX="182.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleDeleteMember" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Xoá hội viên" textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="13.0" />
                                             </font>
@@ -120,10 +120,9 @@
                                                 <TableColumn fx:id="memberIdColumn" prefWidth="184.0" styleClass="cardNum" text="Mã thẻ" />
                                                 <TableColumn fx:id="fullNameColumn" prefWidth="190.33331298828125" styleClass="nameColumn" text="Họ và tên" />
                                                 <TableColumn fx:id="phoneNumberColumn" prefWidth="159.66668701171875" styleClass="phoneColumn" text="Số điện thoại" />
-                                                <TableColumn fx:id="trainingPackageColumn" minWidth="0.0" prefWidth="77.66668701171875" styleClass="gtColumn" text="Gói tập" />
-                                                <TableColumn fx:id="membershipTypeColumn" prefWidth="101.33331298828125" styleClass="cardtypeColumn" text="Loại thẻ" />
-                                                <TableColumn fx:id="registrationDateColumn" prefWidth="129.33331298828125" styleClass="dateColumn" text="Ngày đăng ký" />
-<!--                                                <TableColumn fx:id="cardStatusColumn" prefWidth="113.0" styleClass="statusColumn" text="Tình trạng thẻ" />-->
+                                                <TableColumn fx:id="trainingPackageColumn" minWidth="0.0" prefWidth="120.0" styleClass="gtColumn" text="Gói tập" />
+                                                <TableColumn fx:id="membershipTypeColumn" prefWidth="160.0" styleClass="cardtypeColumn" text="Loại thẻ" />
+                                                <TableColumn fx:id="registrationDateColumn" prefWidth="143.0" styleClass="dateColumn" text="Ngày đăng ký" />
                                             </columns>
                                         </TableView>
                                     </children>

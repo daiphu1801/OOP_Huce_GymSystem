@@ -29,21 +29,66 @@
     -fx-background-color: #9700FF;
 }
 
-/* Force table cell background to be black and text to be white */
-.table-view .table-row-cell .table-cell {
-    -fx-background-color: #1a1a1a !important;
-    -fx-text-fill: white !important;
-}
-
-/* Gradient background only for selected rows */
-.table-view .table-row-cell:selected .table-cell {
-    -fx-background-color: #ccc !important;
-    -fx-text-fill: white !important;
-}
-
-/* Override any inline column styles */
-.table-column {
+/* CSS cho TableView */
+.table-view {
     -fx-background-color: #1a1a1a;
+}
+
+/* Thiết lập màu chữ trắng cho tất cả các ô trong bảng */
+.table-view .table-cell {
+    -fx-text-fill: white !important;
+    -fx-alignment: center-left;
+    -fx-padding: 5px;
+}
+
+/* Màu cho các dòng lẻ */
+.table-row-cell:odd {
+    -fx-background-color: #262626;
+}
+
+/* Màu cho các dòng chẵn */
+.table-row-cell:even {
+    -fx-background-color: #1a1a1a;
+}
+
+/* Màu khi hover */
+.table-row-cell:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+/* Màu khi chọn/click vào một dòng */
+.table-row-cell:selected {
+    -fx-background-color: #ccc;
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: black !important;
+}
+
+/* Loại bỏ viền khi focus */
+.table-view:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* Sửa lỗi rỗng/null trong table */
+.table-row-cell:empty {
+    -fx-background-color: #1a1a1a;
+}
+
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}
+
+/* Đảm bảo các cell trong table row hiển thị đúng */
+.table-view .table-row-cell {
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+}
+
+/* Chỉnh sửa kiểu dáng cho cell content */
+.table-cell .text {
+    -fx-fill: white;
 }
 
 /* Complete CSS file */
@@ -212,10 +257,6 @@
     -fx-background-color: #1a1a1a;
     -fx-text-fill: white;
     -fx-prompt-text-fill: gray;
-}
-
-.searching {
-    -fx-text-fill: white;
 }
 
 .menu-feature {
