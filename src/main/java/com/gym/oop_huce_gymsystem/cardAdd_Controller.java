@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class cardAdd_Controller {
+public class    cardAdd_Controller {
     private final ScenceController scenceController = new ScenceController();
 
     @FXML
