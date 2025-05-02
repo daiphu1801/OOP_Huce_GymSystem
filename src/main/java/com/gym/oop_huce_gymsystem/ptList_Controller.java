@@ -1,21 +1,11 @@
 package com.gym.oop_huce_gymsystem;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
 
-public class memberCardController {
-
+public class ptList_Controller {
     private final ScenceController scenceController = new ScenceController();
 
     @FXML
@@ -91,8 +81,5 @@ public class memberCardController {
     public void SwitchToPT_Regis(ActionEvent event) throws IOException {
         scenceController.SwitchToPT_Regis(event);
     }
-
-
-
 
 }

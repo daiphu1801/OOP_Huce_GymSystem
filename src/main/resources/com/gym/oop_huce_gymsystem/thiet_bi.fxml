@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.ScenceController">
+<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.thiet_biController">
     <children>
         <HBox fx:id="mainLayout">
             <children>
                 <VBox fx:id="sidebarVBox" alignment="CENTER" maxWidth="298.0" minWidth="250.0" prefHeight="720.0" prefWidth="274.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 0 40px 40px 0;" styleClass="menu-feature" stylesheets="@style.css">
                     <children>
-                        <ImageView fitHeight="134.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="logo_gym" VBox.vgrow="NEVER">
+                        <ImageView fitHeight="134.0" fitWidth="100.0" onMouseClicked="#switchHome" pickOnBounds="true" preserveRatio="true" styleClass="logo_gym" VBox.vgrow="NEVER">
                             <image>
                                 <Image url="@../../../IMAGE/gym_logo.png" />
                             </image>
@@ -38,7 +38,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="cardBTN" alignment="BASELINE_LEFT" maxWidth="673.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="673.0" style="-fx-background-color: #1a1a1a;" styleClass="cardBTN" text="Thẻ Tập" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="cardBTN" alignment="BASELINE_LEFT" maxWidth="673.0" minWidth="230.0" mnemonicParsing="false" onAction="#switchToMemberCard" prefHeight="49.0" prefWidth="673.0" style="-fx-background-color: #1a1a1a;" styleClass="cardBTN" text="Thẻ Tập" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -46,7 +46,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" onAction="#switchToPTList" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTotrainerList" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -62,7 +62,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="productBTN" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="152.0" maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTothiet_bi" prefHeight="49.0" prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Sản phẩm" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="productBTN" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="152.0" maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchtoProduct" prefHeight="49.0" prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Sản phẩm" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>

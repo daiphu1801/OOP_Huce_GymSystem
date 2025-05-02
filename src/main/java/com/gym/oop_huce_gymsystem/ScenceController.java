@@ -109,6 +109,12 @@ public class ScenceController {
     }
 
     @FXML
+    public void switchHome (javafx.scene.input.MouseEvent event) throws IOException {
+        ActionEvent actionEvent = new ActionEvent(event.getSource(), event.getTarget());
+        switchToHelloView(actionEvent);
+    }
+
+    @FXML
     public void switchToHelloView(ActionEvent event) throws IOException {
         setupScene("hello-view.fxml", event);
     }
@@ -164,6 +170,19 @@ public class ScenceController {
     }
 
     @FXML
+    private void switchtoProduct(ActionEvent event) throws IOException {
+        setupScene("product.fxml", event);
+    }
+
+    @FXML
+    private void switchtoProductRegis(ActionEvent event) throws IOException {
+        setupScene("productRegis.fxml", event);
+    }
+    @FXML
+    private void switchtoCardAdd(ActionEvent event) throws IOException {
+        setupScene("cardAdd.fxml", event);
+    }
+    @FXML
     public void SwitchTohelloview(ActionEvent event) throws IOException {
         switchToHelloView(event);
     }
@@ -212,6 +231,22 @@ public class ScenceController {
     public void switchToMemberCard(ActionEvent event) throws IOException {
         switchToMemberCardList(event);
     }
+    @FXML
+    public void SwitchToCardAdd(ActionEvent event) throws IOException {
+        switchtoCardAdd(event);
+    }
 
+    @FXML
+    public void SwitchtoProduct(ActionEvent event) throws IOException {
+        switchtoProduct(event);
+    }
+    @FXML
+    public void SwitchtoProductRegis(ActionEvent event) throws IOException {
+        switchtoProductRegis(event);
+    }
+    @FXML
+    public void SwitchToPT_Regis(ActionEvent event) throws IOException {
+        switchToPTdangky(event);
+    }
 }
 

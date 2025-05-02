@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.ListHoiVienController">
+<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.controller.ListHoiVienController">
     <children>
         <HBox fx:id="mainLayout">
             <children>
@@ -38,7 +38,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="cardBTN" alignment="BASELINE_LEFT" maxWidth="673.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="673.0" style="-fx-background-color: #1a1a1a;" styleClass="cardBTN" text="Thẻ Tập" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="cardBTN" alignment="BASELINE_LEFT" maxWidth="673.0" minWidth="230.0" mnemonicParsing="false" onAction="#switchToMemberCard" prefHeight="49.0" prefWidth="673.0" style="-fx-background-color: #1a1a1a;" styleClass="cardBTN" text="Thẻ Tập" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -46,7 +46,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" onAction="#switchToPTList" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTotrainerList" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -62,7 +62,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="productBTN" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="152.0" maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Sản phẩm" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="productBTN" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="152.0" maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchtoProduct" prefHeight="49.0" prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Sản phẩm" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -120,10 +120,10 @@
                                                 <TableColumn fx:id="memberIdColumn" prefWidth="184.0" styleClass="cardNum" text="Mã thẻ" />
                                                 <TableColumn fx:id="fullNameColumn" prefWidth="190.33331298828125" styleClass="nameColumn" text="Họ và tên" />
                                                 <TableColumn fx:id="phoneNumberColumn" prefWidth="159.66668701171875" styleClass="phoneColumn" text="Số điện thoại" />
-                                                <TableColumn fx:id="packageTypeColumn" minWidth="0.0" prefWidth="77.66668701171875" styleClass="gtColumn" text="Gói tập" />
-                                                <TableColumn fx:id="cardTypeColumn" prefWidth="101.33331298828125" styleClass="cardtypeColumn" text="Loại thẻ" />
-                                                <TableColumn fx:id="registerDateColumn" prefWidth="129.33331298828125" styleClass="dateColumn" text="Ngày đăng ký" />
-                                                <TableColumn fx:id="cardStatusColumn" prefWidth="113.0" styleClass="statusColumn" text="Tình trạng thẻ" />
+                                                <TableColumn fx:id="trainingPackageColumn" minWidth="0.0" prefWidth="77.66668701171875" styleClass="gtColumn" text="Gói tập" />
+                                                <TableColumn fx:id="membershipTypeColumn" prefWidth="101.33331298828125" styleClass="cardtypeColumn" text="Loại thẻ" />
+                                                <TableColumn fx:id="registrationDateColumn" prefWidth="129.33331298828125" styleClass="dateColumn" text="Ngày đăng ký" />
+<!--                                                <TableColumn fx:id="cardStatusColumn" prefWidth="113.0" styleClass="statusColumn" text="Tình trạng thẻ" />-->
                                             </columns>
                                         </TableView>
                                     </children>

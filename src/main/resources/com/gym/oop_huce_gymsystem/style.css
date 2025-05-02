@@ -38,7 +38,7 @@
 /* Gradient background only for selected rows */
 .table-view .table-row-cell:selected .table-cell {
     -fx-background-color: #ccc !important;
-    -fx-text-fill: black !important;
+    -fx-text-fill: white !important;
 }
 
 /* Override any inline column styles */

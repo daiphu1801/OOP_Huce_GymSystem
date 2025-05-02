@@ -9,11 +9,8 @@ import java.util.*;
 
 
 public class MembersService {
-    private final MembersDao membersDao;
+    private final MembersDao membersDao = new MembersDao();
 
-    public MembersService() {
-        this.membersDao =  new MembersDao();
-    }
 
     public void addMember(Members member) throws Exception {
         // Kiểm tra dữ liệu
@@ -26,6 +23,11 @@ public class MembersService {
         if (member.getMembershipType() == null) {
             throw new Exception("Loại gói tập không được để trống");
         }
+
+        // Kiểm tra số điện thoại đã tồn tại
+        if (membersDao.isPhoneExists(member.getPhone())) {
+            throw new Exception("Số điện thoại đã tồn tại trong hệ thống.");
+        }
         try {
             membersDao.addMember(member);
         } catch (SQLException e) {
@@ -35,9 +37,11 @@ public class MembersService {
 
     public List<Members> getAllMembers() throws Exception {
         try {
-            return membersDao.getAllMembers();
+            List<Members> members = membersDao.getAllMembers();
+            System.out.println("MembersService: Trả về " + members.size() + " hội viên.");
+            return members;
         } catch (SQLException e) {
-            throw new Exception("Không thể lấy danh sách hội viên: " + e.getMessage());
+            throw new Exception("Lỗi khi lấy danh sách hội viên: " + e.getMessage());
         }
     }
 

@@ -68,7 +68,7 @@
                               <Insets bottom="10.0" top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="productBTN" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="152.0" maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Sản phẩm" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="productBTN" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="152.0" maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchtoProduct" prefHeight="49.0" prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Sản phẩm" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Tektur Regular" size="23.0" />
                            </font>

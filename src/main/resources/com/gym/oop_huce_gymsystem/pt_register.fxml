@@ -12,14 +12,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.RegisterController">
+<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.ScenceController">
     <children>
         <HBox fx:id="mainLayout">
             <children>
                 <!-- Sidebar menu - chiều rộng cố định -->
                 <VBox fx:id="sidebarVBox" alignment="CENTER" maxWidth="298.0" minWidth="250.0" prefHeight="720.0" prefWidth="274.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 0 40px 40px 0;" styleClass="menu-feature" stylesheets="@style.css">
                     <children>
-                        <ImageView fitHeight="134.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="logo_gym" VBox.vgrow="NEVER">
+                        <ImageView fitHeight="134.0" fitWidth="100.0" onMouseClicked="#switchHome" pickOnBounds="true" preserveRatio="true" styleClass="logo_gym" VBox.vgrow="NEVER">
                             <image>
                                 <Image url="@../../../IMAGE/gym_logo.png" />
                             </image>
@@ -46,7 +46,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTotrainerList" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -185,7 +185,7 @@
                                                 <Insets right="100.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#dangKyHoiVien" prefHeight="55.0" prefWidth="156.0" style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="previous_page" text="Đồng ý" textAlignment="CENTER" textFill="WHITE">
+                                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="55.0" prefWidth="156.0" style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="previous_page" text="Đồng ý" textAlignment="CENTER" textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="28.0" />
                                             </font>

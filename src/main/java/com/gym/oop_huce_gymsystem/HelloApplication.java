@@ -23,6 +23,7 @@ public class HelloApplication extends Application {
         stage.setTitle("Gym Management System");
 
         // Thiết lập scene cho stage trước khi áp dụng các tùy chỉnh khác
+
         stage.setScene(scene);
 
         // Áp dụng scale để fit với màn hình

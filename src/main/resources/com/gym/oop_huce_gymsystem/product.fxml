@@ -19,7 +19,7 @@
             <children>
                 <VBox fx:id="sidebarVBox" alignment="CENTER" maxWidth="298.0" minWidth="250.0" prefHeight="720.0" prefWidth="274.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 0 40px 40px 0;" styleClass="menu-feature" stylesheets="@style.css">
                     <children>
-                        <ImageView fitHeight="134.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="logo_gym" VBox.vgrow="NEVER">
+                        <ImageView fitHeight="134.0" fitWidth="100.0" onMouseClicked="#switchHome" pickOnBounds="true" preserveRatio="true" styleClass="logo_gym" VBox.vgrow="NEVER">
                             <image>
                                 <Image url="@../../../IMAGE/gym_logo.png" />
                             </image>
@@ -46,7 +46,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" onAction="#switchToPTList" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTotrainerList" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -91,15 +91,7 @@
                             <children>
                                 <HBox alignment="CENTER" prefHeight="39.0" prefWidth="996.0">
                                     <children>
-                              <Button fx:id="BackBTN" layoutX="106.0" layoutY="10.0" mnemonicParsing="false" onAction="#SwitchToregister" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Trở về" textFill="WHITE">
-                                 <font>
-                                    <Font name="Tektur Regular" size="13.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets right="10.0" />
-                                 </HBox.margin>
-                              </Button>
-                                        <Button fx:id="addPTBTN" layoutX="749.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Thêm sản phẩm" textFill="WHITE">
+                                        <Button fx:id="addPTBTN" layoutX="749.0" layoutY="15.0" mnemonicParsing="false" onAction="#SwitchtoProductRegis" prefHeight="25.0" prefWidth="130.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Thêm sản phẩm" textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="13.0" />
                                             </font>
