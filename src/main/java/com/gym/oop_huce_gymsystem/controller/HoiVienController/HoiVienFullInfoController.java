@@ -100,8 +100,68 @@ public class HoiVienFullInfoController implements Initializable {
 //    }
 
     @FXML
-    public void backToList(ActionEvent event) throws IOException {
+    public void switchHome (javafx.scene.input.MouseEvent event) throws IOException {
+        ActionEvent actionEvent = new ActionEvent(event.getSource(), event.getTarget());
+        scenceController.switchToHelloView(actionEvent);
+    }
+    @FXML
+    public void SwitchToregister(ActionEvent event) throws IOException {
+        scenceController.switchToRegister(event);
+    }
+
+    @FXML
+    public void switchToHelloView(ActionEvent event) throws IOException {
+        scenceController.switchToHelloView(event);
+    }
+
+    @FXML
+    public void switchToHoiVienFullInfo(ActionEvent event,int memberId) throws IOException {
+        scenceController.switchToHoiVienFullInfo(event,memberId);
+    }
+
+    @FXML
+    public void SwitchTolisthoivien(ActionEvent event) throws IOException {
         scenceController.switchToListHoiVien(event);
+    }
+
+    @FXML
+    public void SwitchTothiet_bi(ActionEvent event) throws IOException {
+        scenceController.switchToThietBi(event);
+    }
+
+    @FXML
+    public void SwitchTothongke(ActionEvent event) throws IOException {
+        scenceController.switchToThongKe(event);
+    }
+
+    @FXML
+    public void SwitchTotrainerList(ActionEvent event) throws IOException {
+        scenceController.SwitchTotrainerList(event);
+    }
+
+    @FXML
+    public void switchToMemberCard(ActionEvent event) throws IOException {
+        scenceController.switchToMemberCardList(event);
+    }
+
+    @FXML
+    public void switchToCardAdd(ActionEvent event) throws IOException {
+        scenceController.SwitchToCardAdd(event);
+    }
+
+    @FXML
+    public void SwitchtoProduct(ActionEvent event) throws IOException {
+        scenceController.SwitchtoProduct(event);
+    }
+
+    @FXML
+    public void switchToProductRegis(ActionEvent event) throws IOException {
+        scenceController.SwitchtoProductRegis(event);
+    }
+
+    @FXML
+    public void switchToPTRegis(ActionEvent event) throws IOException {
+        scenceController.SwitchToPT_Regis(event);
     }
 
     @FXML

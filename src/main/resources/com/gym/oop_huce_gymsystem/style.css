@@ -282,3 +282,13 @@
     -fx-font-size: 31px;
     -fx-text-fill: white;
 }
+
+/*!*HOI VIEN FULL INFO*!*/
+/*.hvInfo .hbox .label {*/
+/*    -fx-max-width: infinity;*/
+/*    -fx-wrap-text: true;*/
+/*}*/
+
+/*.hvInfo .hbox {*/
+/*    -fx-alignment: center-left;*/
+/*}*/

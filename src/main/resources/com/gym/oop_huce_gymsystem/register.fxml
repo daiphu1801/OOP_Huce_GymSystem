@@ -182,7 +182,7 @@
                                                 <Insets right="5.0" />
                                             </HBox.margin>
                                         </Label>
-                                        <DatePicker fx:id="ngayDangKyPicker" prefHeight="48.0" prefWidth="444.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 30px;" styleClass="date-picker" stylesheets="@style.css" />
+                                        <DatePicker fx:id="ngayDangKyPicker" prefHeight="40.0" prefWidth="444.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 30px;" styleClass="date-picker" stylesheets="@style.css" />
                                     </children>
                                     <VBox.margin>
                                         <Insets bottom="40.0" />
