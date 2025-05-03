@@ -105,6 +105,12 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>12.4.2.jre11</version> <!-- Hoặc phiên bản phù hợp với JDK -->
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 
