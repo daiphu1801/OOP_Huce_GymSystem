@@ -5,20 +5,20 @@ import java.time.LocalDate;
 public class Trainers {
     private int trainerId;
     private String name;
+    private String gender;
     private String phone;
     private String email;
     private String specialization;
-    private LocalDate create_at;
 
-    public Trainers(int trainerId, String name, String phone, String email, String specialization, LocalDate create_at) {
+    public Trainers() {}
+
+    public Trainers(int trainerId, String name, String gender, String phone, String email, String specialization) {
         this.trainerId = trainerId;
         this.name = name;
+        this.gender = gender;
         this.phone = phone;
         this.email = email;
         this.specialization = specialization;
-        this.create_at = create_at;
-
-
     }
 
     public int getTrainerId() {
@@ -35,6 +35,14 @@ public class Trainers {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getPhone() {
@@ -59,24 +67,5 @@ public class Trainers {
 
     public void setSpecialization(String specialization) {
         this.specialization = specialization;
-    }
-
-    public LocalDate getCreate_at() {
-        return create_at;
-    }
-
-    public void setCreate_at(LocalDate create_at) {
-        this.create_at = create_at;
-    }
-
-    @Override
-    public String toString() {
-        return "Trainers[trainerId=" + trainerId +
-                ", name=" + name +
-                ", phone=" + phone +
-                ", email=" + email +
-                ", specialization=" + specialization +
-                ", create_at=" + create_at + "]";
-
     }
 }

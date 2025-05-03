@@ -5,17 +5,26 @@ import java.time.LocalDate;
 public class Products {
     private int productId;
     private String name;
-    private Double price;
-    private String quantity;
-    private LocalDate create_at;
+    private String price;
+    private int quantity;
+    private int quantitySold;
 
-    public Products(int productId, String name, Double price, String quantity, LocalDate create_at) {
+    public Products() {
+    }
+
+    public Products(int productId, String name, String price, int quantity, int quantitySold) {
         this.productId = productId;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-        this.create_at = create_at;
+        this.quantitySold = quantitySold;
+    }
 
+    public Products(String name, String price, int quantity, int quantitySold) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.quantitySold = quantitySold;
     }
 
     public int getProductId() {
@@ -34,33 +43,33 @@ public class Products {
         this.name = name;
     }
 
-    public Double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public LocalDate getCreate_at() {
-        return create_at;
+    public int getQuantitySold() {
+        return quantitySold;
     }
 
-    public void setCreate_at(LocalDate create_at) {
-        this.create_at = create_at;
+    public void setQuantitySold(int quantitySold) {
+        this.quantitySold = quantitySold;
     }
 
     @Override
     public String toString() {
-        return "Product [productId=" + productId + ", name=" + name + ", price=" + price + ", quantity=" + quantity + ", create_at=" + create_at + "]";
+        return "Product [productId=" + productId + ", name=" + name + ", price=" + price + ", quantity=" + quantity + ", quantitySold= " + quantitySold + "]";
     }
 
 }

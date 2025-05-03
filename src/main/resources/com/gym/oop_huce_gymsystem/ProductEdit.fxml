@@ -2,6 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -12,14 +14,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.controller.ProductsController.ThemProduct_Controller">
+<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.controller.ProductsController.ProductEditController" stylesheets="@style.css">
     <children>
         <HBox fx:id="mainLayout">
             <children>
                 <!-- Sidebar menu - chiều rộng cố định -->
                 <VBox fx:id="sidebarVBox" alignment="CENTER" maxWidth="298.0" minWidth="250.0" prefHeight="720.0" prefWidth="274.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 0 40px 40px 0;" styleClass="menu-feature" stylesheets="@style.css">
                     <children>
-                        <ImageView fitHeight="134.0" fitWidth="100.0" onMouseClicked="#switchHome" pickOnBounds="true" preserveRatio="true" styleClass="logo_gym" VBox.vgrow="NEVER">
+                        <ImageView fitHeight="134.0" fitWidth="100.0" onMouseClicked="#backToList" pickOnBounds="true" preserveRatio="true" styleClass="logo_gym" VBox.vgrow="NEVER">
                             <image>
                                 <Image url="@../../../IMAGE/gym_logo.png" />
                             </image>
@@ -29,8 +31,7 @@
                         </ImageView>
                         <VBox alignment="CENTER" prefHeight="141.0" prefWidth="274.0">
                             <children>
-
-                                <Button fx:id="hoivienBTN" alignment="BASELINE_LEFT" maxWidth="830.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTolisthoivien" prefHeight="49.0" prefWidth="288.0" style="-fx-background-color: #1a1a1a;" styleClass="hoivienBTN" text="Hội viên" textFill="WHITE">
+                                <Button fx:id="hoivienBTN" alignment="BASELINE_LEFT" maxWidth="830.0" minWidth="230.0" mnemonicParsing="false" onAction="#backToList" prefHeight="49.0" prefWidth="288.0" style="-fx-background-color: #1a1a1a;" styleClass="hoivienBTN" text="Hội viên" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -46,7 +47,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTotrainerList" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -54,7 +55,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="thietbiBTN" alignment="BASELINE_LEFT" maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTothiet_bi" prefHeight="49.0" prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Thiết Bị" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="thietbiBTN" alignment="BASELINE_LEFT" maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Thiết Bị" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -62,7 +63,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="productBTN" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="152.0" maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTothiet_bi" prefHeight="49.0" prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Sản phẩm" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="productBTN" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="152.0" maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Sản phẩm" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -70,7 +71,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="thongkeBTN" alignment="BASELINE_LEFT" maxWidth="400.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTothongke" prefHeight="49.0" prefWidth="400.0" style="-fx-background-color: #1a1a1a;" styleClass="thongkeBTN" text="Thống Kê &amp; Báo Cáo" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="thongkeBTN" alignment="BASELINE_LEFT" maxWidth="400.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="400.0" style="-fx-background-color: #1a1a1a;" styleClass="thongkeBTN" text="Thống Kê &amp; Báo Cáo" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -85,11 +86,42 @@
                         </VBox>
                     </children>
                 </VBox>
-                <!-- Content area - registration form -->
+
+                <!-- Content area - edit form -->
                 <AnchorPane fx:id="contentArea" prefHeight="720.0" prefWidth="982.0" HBox.hgrow="ALWAYS">
                     <children>
                         <VBox alignment="CENTER" layoutX="12.0" layoutY="15.0" prefHeight="691.0" prefWidth="996.0" styleClass="register-form" stylesheets="@style.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="15.0">
                             <children>
+                                <Label text="CHỈNH SỬA SẢN PHẨM" textFill="WHITE">
+                                    <font>
+                                        <Font name="Tektur Regular" size="28.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets bottom="30.0" />
+                                    </VBox.margin>
+                                </Label>
+
+                                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
+                                    <children>
+                                        <Label text="Mã sản phẩm: " textFill="WHITE">
+                                            <font>
+                                                <Font name="Tektur Regular" size="24.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets right="75.0" />
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="productIdField" editable="false" prefHeight="48.0" prefWidth="448.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px; -fx-text-fill: white;">
+                                            <font>
+                                                <Font name="Tektur Regular" size="17.0" />
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" />
+                                    </VBox.margin>
+                                </HBox>
+
                                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
                                     <children>
                                         <Label text="Tên sản phẩm: " textFill="WHITE">
@@ -97,10 +129,10 @@
                                                 <Font name="Tektur Regular" size="24.0" />
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="60.0" />
+                                                <Insets right="45.0" />
                                             </HBox.margin>
                                         </Label>
-                                        <TextField fx:id="productField" prefHeight="48.0" prefWidth="448.0" promptText="Creatine Monohydrate" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
+                                        <TextField fx:id="nameField" prefHeight="48.0" prefWidth="448.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px; -fx-text-fill: white;">
                                             <font>
                                                 <Font name="Tektur Regular" size="17.0" />
                                             </font>
@@ -110,9 +142,10 @@
                                         <Insets bottom="10.0" />
                                     </VBox.margin>
                                 </HBox>
+
                                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
                                     <children>
-                                        <Label text="Giá sản phâm: " textFill="WHITE">
+                                        <Label text="Giá sản pẩm: " textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="24.0" />
                                             </font>
@@ -120,7 +153,7 @@
                                                 <Insets right="5.0" />
                                             </HBox.margin>
                                         </Label>
-                                        <TextField fx:id="priceField" prefHeight="48.0" prefWidth="448.0" promptText="500.000đ" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
+                                        <TextField fx:id="priceField" prefHeight="48.0" prefWidth="448.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px; -fx-text-fill: white;">
                                             <font>
                                                 <Font name="Tektur Regular" size="17.0" />
                                             </font>
@@ -130,54 +163,44 @@
                                         <Insets bottom="10.0" />
                                     </VBox.margin>
                                 </HBox>
+
                                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
                                     <children>
-                                        <Label text="Số lượng nhập hàng: " textFill="WHITE">
+                                        <Label text="Số lượng sản phẩm" textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="24.0" />
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="70.0" />
+                                                <Insets right="65.0" />
                                             </HBox.margin>
                                         </Label>
-                                     <TextField fx:id="quantityField" prefHeight="48.0" prefWidth="448.0" promptText="100" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
-                                        <font>
-                                            <Font name="Tektur Regular" size="17.0" />
-                                        </font>
-                                        </TextField>
+                                        <TextField fx:id="quantityField" prefHeight="48.0" prefWidth="448.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px; -fx-text-fill: white;">
                                     </children>
                                     <VBox.margin>
                                         <Insets bottom="10.0" />
                                     </VBox.margin>
                                 </HBox>
+
                                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
                                     <children>
-                                        <Label text="Số lượng đã bán: " textFill="WHITE">
+                                        <Label text="Số lượng đã bán " textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="24.0" />
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="70.0" />
+                                                <Insets right="80.0" />
                                             </HBox.margin>
                                         </Label>
-                                        <TextField fx:id="quantity_soldField" prefHeight="48.0" prefWidth="448.0" promptText="0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
-                                            <font>
-                                                <Font name="Tektur Regular" size="17.0" />
-                                            </font>
-                                        </TextField>
+                                        <TextField fx:id="quantity_soldField" prefHeight="48.0" prefWidth="448.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px; -fx-text-fill: white;">
                                     </children>
                                     <VBox.margin>
                                         <Insets bottom="10.0" />
                                     </VBox.margin>
                                 </HBox>
-                                <HBox alignment="CENTER" prefHeight="38.0" prefWidth="958.0">
-                                    <VBox.margin>
-                                        <Insets bottom="40.0" />
-                                    </VBox.margin>
-                                </HBox>
+
                                 <HBox alignment="CENTER" prefHeight="0.0" prefWidth="996.0" styleClass="regis_btn" stylesheets="@style.css">
                                     <children>
-                                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#SwitchtoProduct" prefHeight="54.0" prefWidth="150.0" style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="previous_page" text="Trở về" textAlignment="CENTER" textFill="WHITE">
+                                        <Button alignment="CENTER" fx:id="backButton" mnemonicParsing="false" onAction="#backToList" prefHeight="54.0" prefWidth="150.0" style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="previous_page" text="Trở về" textAlignment="CENTER" textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="25.0" />
                                             </font>
@@ -185,7 +208,7 @@
                                                 <Insets right="100.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="55.0" prefWidth="156.0" style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="previous_page" text="Đồng ý" textAlignment="CENTER" textFill="WHITE">
+                                        <Button fx:id="saveButton" alignment="CENTER" mnemonicParsing="false" onAction="#saveChanges" prefHeight="55.0" prefWidth="156.0" style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="previous_page" text="Lưu" textAlignment="CENTER" textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="28.0" />
                                             </font>

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.ScenceController">
+<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.controller.ProductsController.ListProductController">
     <children>
         <HBox fx:id="mainLayout">
             <children>
@@ -99,7 +99,7 @@
                                                 <Insets right="10.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button fx:id="deletePTBTN" layoutX="182.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Xoá sản phẩm" textFill="WHITE">
+                                        <Button fx:id="deletePTBTN" onAction="#handleDeleteProduct" layoutX="182.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Xoá sản phẩm" textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="13.0" />
                                             </font>
@@ -115,13 +115,13 @@
                                 </HBox>
                                 <VBox prefHeight="729.0" prefWidth="958.0" VBox.vgrow="ALWAYS">
                                     <children>
-                                        <TableView fx:id="memberTable" prefHeight="614.0" prefWidth="934.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 20px;" styleClass="memberTable" stylesheets="@style.css" VBox.vgrow="ALWAYS">
+                                        <TableView fx:id="productTable" onMouseClicked="#handleDoubleClick" prefHeight="614.0" prefWidth="934.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 20px;" styleClass="memberTable" stylesheets="@style.css" VBox.vgrow="ALWAYS">
                                             <columns>
-                                                <TableColumn fx:id="ptNum" prefWidth="184.0" styleClass="cardNum" text="Mã sản phẩm" />
-                                                <TableColumn fx:id="ptName" prefWidth="190.33331298828125" styleClass="nameColumn" text="Tên sản phẩm" />
-                                                <TableColumn fx:id="ptPhone" prefWidth="159.66668701171875" styleClass="phoneColumn" text="Giá sản phẩm" />
-                                                <TableColumn fx:id="ptEmail" minWidth="0.0" prefWidth="227.0" styleClass="gtColumn" text="Số lượng tồn kho" />
-                                                <TableColumn fx:id="ptSpec" prefWidth="196.0" styleClass="cardtypeColumn" text="Số lượng đã bán" />
+                                                <TableColumn fx:id="productListId" prefWidth="184.0" styleClass="cardNum" text="Mã sản phẩm" />
+                                                <TableColumn fx:id="productListName" prefWidth="190.33331298828125" styleClass="nameColumn" text="Tên sản phẩm" />
+                                                <TableColumn fx:id="productListPrice" prefWidth="159.66668701171875" styleClass="phoneColumn" text="Giá sản phẩm" />
+                                                <TableColumn fx:id="productListQuantity" minWidth="0.0" prefWidth="227.0" styleClass="gtColumn" text="Số lượng tồn kho" />
+                                                <TableColumn fx:id="productListQuantity_sold" prefWidth="196.0" styleClass="cardtypeColumn" text="Số lượng đã bán" />
                                             </columns>
                                         </TableView>
                                     </children>

@@ -3,14 +3,14 @@ package com.gym.oop_huce_gymsystem.model;
 import java.time.LocalDate;
 
 public class Revenue {
-    private String revenueId;
+    private int revenueId;
     private String source_type;
     private double amount;
     private LocalDate transaction_date;
     private String description;
     private LocalDate create_at;
 
-    public Revenue(String revenueId, String source_type, double amount, LocalDate transaction_date, String description, LocalDate create_at) {
+    public Revenue(int revenueId, String source_type, double amount, LocalDate transaction_date, String description, LocalDate create_at) {
         this.revenueId = revenueId;
         this.source_type = source_type;
         this.amount = amount;
@@ -21,11 +21,11 @@ public class Revenue {
 
     }
 
-    public String getRevenueId() {
+    public int getRevenueId() {
         return revenueId;
     }
 
-    public void setRevenueId(String revenueId) {
+    public void setRevenueId(int revenueId) {
         this.revenueId = revenueId;
     }
 

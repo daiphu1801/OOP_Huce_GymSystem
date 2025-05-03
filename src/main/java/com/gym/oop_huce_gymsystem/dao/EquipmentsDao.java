@@ -17,7 +17,7 @@ public class EquipmentsDao {
             stmt.setString(1, equipment.getName());
             stmt.setString(2, equipment.getStatus());
             stmt.setString(3, equipment.getQuantity());
-            stmt.setDate(4, equipment.getCreate_at());
+            stmt.setDate(4, java.sql.Date.valueOf(equipment.getCreate_at()));
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {

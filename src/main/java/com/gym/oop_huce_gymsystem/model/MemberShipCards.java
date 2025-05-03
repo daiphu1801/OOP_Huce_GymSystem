@@ -4,90 +4,72 @@ import java.time.LocalDate;
 
 
 public class MemberShipCards {
-    private int card_id;
-    private int member_id;
-    private String name_card;
-    private Double renewal_count;
-    private LocalDate issue_date;
-    private LocalDate expiry_date;
-    private LocalDate last_checkin_time;
+    private String cardId;
+    private String trainingPackage;
+    private String cardType;
+    private Double price;
+    private LocalDate registrationDate;
+    private LocalDate expiryDate;
 
-    public MemberShipCards(int card_id, int member_id, String name_card, Double renewal_count, LocalDate issue_date, LocalDate expiry_date, LocalDate last_checkin_time) {
-        this.card_id = card_id;
-        this.member_id = member_id;
-        this.name_card = name_card;
-        this.renewal_count = renewal_count;
-        this.issue_date = issue_date;
-        this.expiry_date = expiry_date;
-        this.last_checkin_time = last_checkin_time;
+    // Default constructor
+    public MemberShipCards() {
     }
 
-    public int getCard_id() {
-        return card_id;
+    // Parameterized constructor
+    public MemberShipCards(String cardId, double price, String trainingPackage, String cardType, LocalDate registrationDate, LocalDate expiryDate) {
+        this.cardId = cardId;
+        this.trainingPackage = trainingPackage;
+        this.cardType = cardType;
+        this.price = price;
+        this.registrationDate = registrationDate;
+        this.expiryDate = expiryDate;
     }
 
-    public void setCard_id(int card_id) {
-        this.card_id = card_id;
+    public String getCardId() {
+        return cardId;
     }
 
-    public int getMember_id() {
-        return member_id;
+    public void setCardId(String cardId) {
+        this.cardId = cardId;
     }
 
-    public void setMember_id(int member_id) {
-        this.member_id = member_id;
+    public String getTrainingPackage() {
+        return trainingPackage;
     }
 
-    public String getName_card() {
-        return name_card;
+    public void setTrainingPackage(String trainingPackage) {
+        this.trainingPackage = trainingPackage;
     }
 
-    public void setName_card(String name_card) {
-        this.name_card = name_card;
+    public String getCardType() {
+        return cardType;
     }
 
-    public Double getRenewal_count() {
-        return renewal_count;
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
     }
 
-    public void setRenewal_count(Double renewal_count) {
-        this.renewal_count = renewal_count;
+    public Double getPrice() {
+        return price;
     }
 
-    public LocalDate getIssue_date() {
-        return issue_date;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
-    public void setIssue_date(LocalDate issue_date) {
-        this.issue_date = issue_date;
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
     }
 
-    public LocalDate getExpiry_date() {
-        return expiry_date;
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
     }
 
-    public void setExpiry_date(LocalDate expiry_date) {
-        this.expiry_date = expiry_date;
+    public LocalDate getExpiryDate() {
+        return expiryDate;
     }
 
-    public LocalDate getlast_checkin_time() {
-        return last_checkin_time;
-    }
-
-    public void setlast_checkin_time(LocalDate last_checkin_time) {
-        this.last_checkin_time = last_checkin_time;
-    }
-
-    @Override
-    public String toString() {
-        return "MemberShipCards[" +
-                "cardId=" + card_id +
-                ", memberId=" + member_id +
-                ", nameCard='" + name_card + '\'' +
-                ", renewalCount=" + renewal_count +
-                ", issueDate=" + issue_date +
-                ", expiryDate=" + expiry_date +
-                ", lastCheckinTime=" + last_checkin_time +
-                "]";
+    public void setExpiryDate(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
     }
 }
