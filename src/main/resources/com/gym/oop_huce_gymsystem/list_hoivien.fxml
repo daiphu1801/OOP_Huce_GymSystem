@@ -117,12 +117,12 @@
                                     <children>
                                         <TableView fx:id="memberTable" onMouseClicked="#handleDoubleClick" prefHeight="614.0" prefWidth="934.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 20px;" styleClass="memberTable" stylesheets="@style.css" VBox.vgrow="ALWAYS">
                                             <columns>
-                                                <TableColumn fx:id="memberIdColumn" prefWidth="184.0" styleClass="cardNum" text="Mã hội viên" />
-                                                <TableColumn fx:id="memberCardColumn" prefWidth="184.0" styleClass="cardNum" text="Mã thẻ" />
+                                                <TableColumn fx:id="memberIdColumn" prefWidth="184.0" styleClass="cardNum" text="Mã thẻ" />
                                                 <TableColumn fx:id="fullNameColumn" prefWidth="190.33331298828125" styleClass="nameColumn" text="Họ và tên" />
                                                 <TableColumn fx:id="phoneNumberColumn" prefWidth="159.66668701171875" styleClass="phoneColumn" text="Số điện thoại" />
-                                                <TableColumn fx:id="genderColumn" minWidth="0.0" prefWidth="120.0" styleClass="gtColumn" text="Giới tính" />
-                                                <TableColumn fx:id="emailColumn" prefWidth="160.0" styleClass="cardtypeColumn" text="Email" />
+                                                <TableColumn fx:id="trainingPackageColumn" minWidth="0.0" prefWidth="120.0" styleClass="gtColumn" text="Gói tập" />
+                                                <TableColumn fx:id="membershipTypeColumn" prefWidth="160.0" styleClass="cardtypeColumn" text="Loại thẻ" />
+                                                <TableColumn fx:id="registrationDateColumn" prefWidth="143.0" styleClass="dateColumn" text="Ngày đăng ký" />
                                             </columns>
                                         </TableView>
                                     </children>

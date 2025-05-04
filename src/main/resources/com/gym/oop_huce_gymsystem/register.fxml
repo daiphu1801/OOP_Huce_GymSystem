@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -140,9 +139,26 @@
                                         <Insets bottom="10.0" />
                                     </VBox.margin>
                                 </HBox>
+                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
+                           <children>
+                              <Label text="Email: " textFill="WHITE">
+                                 <font>
+                                    <Font name="Tektur Regular" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="95.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="emailTextField" prefHeight="48.0" prefWidth="448.0" promptText="abc@gmail.com" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
+                                 <font>
+                                    <Font name="Tektur Regular" size="17.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
                                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
                                     <children>
-                                        <Label text="Loại thẻ: " textFill="WHITE">
+                                        <Label text="Giới tính: " textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="24.0" />
                                             </font>
@@ -150,42 +166,10 @@
                                                 <Insets right="65.0" />
                                             </HBox.margin>
                                         </Label>
-                                        <ComboBox fx:id="loaiTheComboBox" prefHeight="48.0" prefWidth="444.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;" />
+                                        <ComboBox fx:id="genderComboBox" prefHeight="48.0" prefWidth="444.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;" />
                                     </children>
                                     <VBox.margin>
                                         <Insets bottom="10.0" />
-                                    </VBox.margin>
-                                </HBox>
-                                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
-                                    <children>
-                                        <Label text="Gói tập: " textFill="WHITE">
-                                            <font>
-                                                <Font name="Tektur Regular" size="24.0" />
-                                            </font>
-                                            <HBox.margin>
-                                                <Insets right="80.0" />
-                                            </HBox.margin>
-                                        </Label>
-                                        <ComboBox fx:id="goiTapComboBox" prefHeight="48.0" prefWidth="444.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;" />
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets bottom="10.0" />
-                                    </VBox.margin>
-                                </HBox>
-                                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
-                                    <children>
-                                        <Label text="Ngày đăng ký: " textFill="WHITE">
-                                            <font>
-                                                <Font name="Tektur Regular" size="24.0" />
-                                            </font>
-                                            <HBox.margin>
-                                                <Insets right="5.0" />
-                                            </HBox.margin>
-                                        </Label>
-                                        <DatePicker fx:id="ngayDangKyPicker" prefHeight="40.0" prefWidth="444.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 30px;" styleClass="date-picker" stylesheets="@style.css" />
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets bottom="40.0" />
                                     </VBox.margin>
                                 </HBox>
                                 <HBox alignment="CENTER" prefHeight="0.0" prefWidth="996.0" styleClass="regis_btn" stylesheets="@style.css">
