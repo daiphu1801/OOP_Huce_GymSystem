@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.ptList_Controller">
+<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.controller.TrainersController.ListTrainersController">
     <children>
         <HBox fx:id="mainLayout">
             <children>
@@ -117,12 +117,12 @@
                                     <children>
                                         <TableView fx:id="trainerTable" prefHeight="614.0" prefWidth="934.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 20px;" styleClass="memberTable" stylesheets="@style.css" VBox.vgrow="ALWAYS">
                                             <columns>
-                                                <TableColumn fx:id="ptNum" prefWidth="184.0" styleClass="cardNum" text="Mã PT" />
-                                                <TableColumn fx:id="ptName" prefWidth="190.33331298828125" styleClass="nameColumn" text="Họ và tên" />
-                                                <TableColumn fx:id="ptPhone" prefWidth="159.66668701171875" styleClass="phoneColumn" text="Số điện thoại" />
-                                                <TableColumn fx:id="ptGender" prefWidth="159.66668701171875" styleClass="genderColumn" text="Giới tính" />
-                                                <TableColumn fx:id="ptEmail" minWidth="0.0" prefWidth="227.0" styleClass="gtColumn" text="Email" />
-                                                <TableColumn fx:id="ptSpec" prefWidth="196.0" styleClass="cardtypeColumn" text="Chuyên môn" />
+                                                <TableColumn fx:id="trainerIdColumn" prefWidth="184.0" styleClass="cardNum" text="Mã PT" />
+                                                <TableColumn fx:id="nameColumn" prefWidth="190.33331298828125" styleClass="nameColumn" text="Họ và tên" />
+                                                <TableColumn fx:id="genderColumn" prefWidth="159.66668701171875" styleClass="genderColumn" text="Giới tính" />
+                                                <TableColumn fx:id="phoneColumn" prefWidth="159.66668701171875" styleClass="phoneColumn" text="Số điện thoại" />
+                                                <TableColumn fx:id="emailColumn" minWidth="0.0" prefWidth="227.0" styleClass="gtColumn" text="Email" />
+                                                <TableColumn fx:id="specializationColumn" prefWidth="196.0" styleClass="cardtypeColumn" text="Chuyên môn" />
                                             </columns>
                                         </TableView>
                                     </children>

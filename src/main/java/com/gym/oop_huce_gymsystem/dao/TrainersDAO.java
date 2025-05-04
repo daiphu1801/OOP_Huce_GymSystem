@@ -8,14 +8,15 @@ import com.gym.oop_huce_gymsystem.util.*;
 
 public class TrainersDAO {
     public void addTrainers(Trainers trainer) throws Exception {
-        String query = "INSERT INTO trainer (name, phone, email, specialization,) " +
-                "VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO trainers (name, gender, phone, email, specialization) " +
+                "VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, trainer.getName());
-            stmt.setString(2, trainer.getPhone());
-            stmt.setString(3, trainer.getEmail());
-            stmt.setString(4, trainer.getSpecialization());
+            stmt.setString(2, trainer.getGender());
+            stmt.setString(3, trainer.getPhone());
+            stmt.setString(4, trainer.getEmail());
+            stmt.setString(5, trainer.getSpecialization());
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
@@ -27,16 +28,18 @@ public class TrainersDAO {
             throw e;
         }
     }
-    public void updateMember(Trainers trainer) throws SQLException {
-        String query = "UPDATE trainer SET name = ?, phone = ?, email = ?, " +
-                "specialization = ?, training_package = ? WHERE trainer_id = ?";
+
+    public void updateTrainers(Trainers trainer) throws SQLException {
+        String query = "UPDATE trainers SET name = ?, gender = ?, phone = ?, email = ?, " +
+                "specialization = ? WHERE trainer_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, trainer.getName());
-            stmt.setString(2, trainer.getPhone());
-            stmt.setString(3, trainer.getEmail());
-            stmt.setString(4, trainer.getSpecialization());
-            stmt.setInt(5, trainer.getTrainerId());
+            stmt.setString(2, trainer.getGender());
+            stmt.setString(3, trainer.getPhone());
+            stmt.setString(4, trainer.getEmail());
+            stmt.setString(5, trainer.getSpecialization());
+            stmt.setInt(6, trainer.getTrainerId());
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 0) {
                 throw new SQLException("Không tìm thấy huấn luyện viên với ID: " + trainer.getTrainerId());
@@ -48,18 +51,91 @@ public class TrainersDAO {
             throw e;
         }
     }
-    //xóa
-    public void deleteTrainer(int trainerId) throws SQLException {
-        String query = "DELETE FROM trainer WHERE trainer_id = ?";
+
+    public void deleteTrainers(int trainerId) throws SQLException {
+        String query = "DELETE FROM trainers WHERE trainer_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, trainerId);
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 0) {
-                throw new SQLException("Không tìm thấy huấn luyện viên  với ID: " + trainerId);
+                throw new SQLException("Không tìm thấy huấn luyện viên với ID: " + trainerId);
             }
         }
     }
 
+    // Lấy danh sách tất cả huấn luyện viên
+    public List<Trainers> getAllTrainers() throws SQLException {
+        List<Trainers> trainers = new ArrayList<>();
+        String query = "SELECT trainer_id, name, gender, phone, email, specialization FROM trainers";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Trainers trainer = new Trainers(
+                        rs.getInt("trainer_id"),
+                        rs.getString("name"),
+                        rs.getString("gender"),
+                        rs.getString("phone"),
+                        rs.getString("email"),
+                        rs.getString("specialization")
+                );
+                trainers.add(trainer);
+            }
+        }
+        return trainers;
+    }
 
+    // Lấy chi tiết huấn luyện viên theo ID
+    public Trainers getTrainerById(int trainerId) throws SQLException {
+        String query = "SELECT trainer_id, name, gender, phone, email, specialization FROM trainers WHERE trainer_id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, trainerId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return new Trainers(
+                            rs.getInt("trainer_id"),
+                            rs.getString("name"),
+                            rs.getString("gender"),
+                            rs.getString("phone"),
+                            rs.getString("email"),
+                            rs.getString("specialization")
+                    );
+                } else {
+                    throw new SQLException("Không tìm thấy huấn luyện viên với ID: " + trainerId);
+                }
+            }
+        }
+    }
+
+    // Kiểm tra sự tồn tại của huấn luyện viên theo ID
+    public boolean trainerExists(int trainerId) throws SQLException {
+        String query = "SELECT COUNT(*) FROM trainers WHERE trainer_id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, trainerId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        }
+        return false;
+    }
+
+        //Kiem tra so dien thoai
+    public boolean isPhoneExists(String phone) throws SQLException {
+        String query = "SELECT COUNT(*) FROM trainers WHERE phone = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, phone);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        }
+        return false;
+    }
 }

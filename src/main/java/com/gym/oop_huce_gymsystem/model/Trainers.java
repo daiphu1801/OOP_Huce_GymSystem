@@ -21,6 +21,14 @@ public class Trainers {
         this.specialization = specialization;
     }
 
+    public Trainers(String name, String gender, String phone, String email, String specialization) {
+        this.name = name;
+        this.gender = gender;
+        this.phone = phone;
+        this.email = email;
+        this.specialization = specialization;
+    }
+
     public int getTrainerId() {
         return trainerId;
     }
