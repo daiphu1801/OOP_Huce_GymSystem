@@ -19,4 +19,6 @@ module com.gym.oop_huce_gymsystem {
     opens com.gym.oop_huce_gymsystem.model;
     exports com.gym.oop_huce_gymsystem.controller.ProductsController;
     opens com.gym.oop_huce_gymsystem.controller.ProductsController to javafx.fxml;
+    exports com.gym.oop_huce_gymsystem.controller.MemberShipCardsController;
+    opens com.gym.oop_huce_gymsystem.controller.MemberShipCardsController to javafx.fxml;
 }

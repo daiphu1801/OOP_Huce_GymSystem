@@ -35,7 +35,7 @@ public class ProductsDao {
     // Sửa sản phẩm
     public void updateProduct(Products product) throws SQLException {
         String query = "UPDATE products SET name = ?, price = ?, quantity = ?, " +
-                "create_at=? WHERE product_id = ?";
+                "quantity_sold = ? WHERE product_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, product.getName());

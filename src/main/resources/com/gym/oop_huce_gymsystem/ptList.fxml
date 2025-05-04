@@ -115,11 +115,12 @@
                                 </HBox>
                                 <VBox prefHeight="729.0" prefWidth="958.0" VBox.vgrow="ALWAYS">
                                     <children>
-                                        <TableView fx:id="memberTable" prefHeight="614.0" prefWidth="934.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 20px;" styleClass="memberTable" stylesheets="@style.css" VBox.vgrow="ALWAYS">
+                                        <TableView fx:id="trainerTable" prefHeight="614.0" prefWidth="934.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 20px;" styleClass="memberTable" stylesheets="@style.css" VBox.vgrow="ALWAYS">
                                             <columns>
                                                 <TableColumn fx:id="ptNum" prefWidth="184.0" styleClass="cardNum" text="Mã PT" />
                                                 <TableColumn fx:id="ptName" prefWidth="190.33331298828125" styleClass="nameColumn" text="Họ và tên" />
                                                 <TableColumn fx:id="ptPhone" prefWidth="159.66668701171875" styleClass="phoneColumn" text="Số điện thoại" />
+                                                <TableColumn fx:id="ptGender" prefWidth="159.66668701171875" styleClass="genderColumn" text="Giới tính" />
                                                 <TableColumn fx:id="ptEmail" minWidth="0.0" prefWidth="227.0" styleClass="gtColumn" text="Email" />
                                                 <TableColumn fx:id="ptSpec" prefWidth="196.0" styleClass="cardtypeColumn" text="Chuyên môn" />
                                             </columns>

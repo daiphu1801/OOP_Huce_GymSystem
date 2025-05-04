@@ -2,6 +2,9 @@ package com.gym.oop_huce_gymsystem;
 
 import com.gym.oop_huce_gymsystem.controller.ProductsController.ProductDetailsController;
 import com.gym.oop_huce_gymsystem.controller.ProductsController.ProductEditController;
+import com.gym.oop_huce_gymsystem.controller.MemberShipCardsController.MemberShipCardDetailsController;
+import com.gym.oop_huce_gymsystem.controller.MemberShipCardsController.MemberShipCardEditController;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -164,7 +167,44 @@ public class ScenceController {
 //        }
 //    }
 
-        public ProductEditController switchToProductEdit(ActionEvent event, int productId) throws IOException {
+    public void switchToMemberCardDetail(ActionEvent event, String cardId) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/MemberShipCardDetails.fxml"));
+        root = loader.load();
+        MemberShipCardDetailsController controller = loader.getController();
+        controller.setCardId(cardId);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+
+    public MemberShipCardEditController switchToCardEdit(ActionEvent event, String cardId) throws IOException {
+        System.out.println("[ScenceController] Bắt đầu chuyển sang MemberShipCardEditController với cardId: " + cardId);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/MemberShipCardEdit.fxml"));
+            if (loader.getLocation() == null) {
+                System.out.println("[ScenceController] Lỗi: Không tìm thấy tệp MemberShipCardEdit.fxml");
+                throw new IOException("Không tìm thấy tệp MemberShipCardEdit.fxml");
+            }
+            Parent root = loader.load();
+            MemberShipCardEditController controller = loader.getController();
+            if (controller == null) {
+                System.out.println("[ScenceController] Lỗi: Không thể lấy MemberShipCardEditController từ loader.");
+                throw new IOException("Không thể lấy controller từ loader.");
+            }
+            controller.setCardId(cardId);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+            System.out.println("[ScenceController] Chuyển sang MemberShipCardEditController thành công.");
+            return controller;
+        } catch (Exception e) {
+            System.out.println("[ScenceController] Lỗi khi tải MemberShipCardEdit.fxml: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    public ProductEditController switchToProductEdit(ActionEvent event, int productId) throws IOException {
         System.out.println("[ScenceController] Bắt đầu chuyển sang HoiVienEditController với productId: " + productId);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/ProductEdit.fxml"));
@@ -201,7 +241,7 @@ public class ScenceController {
     }
 
     @FXML
-    public void switchHome (javafx.scene.input.MouseEvent event) throws IOException {
+    public void switchHome(javafx.scene.input.MouseEvent event) throws IOException {
         ActionEvent actionEvent = new ActionEvent(event.getSource(), event.getTarget());
         switchToHelloView(actionEvent);
     }
@@ -270,10 +310,12 @@ public class ScenceController {
     private void switchtoProductRegis(ActionEvent event) throws IOException {
         setupScene("productRegis.fxml", event);
     }
+
     @FXML
     private void switchtoCardAdd(ActionEvent event) throws IOException {
         setupScene("cardAdd.fxml", event);
     }
+
     @FXML
     public void SwitchTohelloview(ActionEvent event) throws IOException {
         switchToHelloView(event);
@@ -323,6 +365,7 @@ public class ScenceController {
     public void switchToMemberCard(ActionEvent event) throws IOException {
         switchToMemberCardList(event);
     }
+
     @FXML
     public void SwitchToCardAdd(ActionEvent event) throws IOException {
         switchtoCardAdd(event);
@@ -332,10 +375,12 @@ public class ScenceController {
     public void SwitchtoProduct(ActionEvent event) throws IOException {
         switchtoProduct(event);
     }
+
     @FXML
     public void SwitchtoProductRegis(ActionEvent event) throws IOException {
         switchtoProductRegis(event);
     }
+
     @FXML
     public void SwitchToPT_Regis(ActionEvent event) throws IOException {
         switchToPTdangky(event);

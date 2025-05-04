@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.cardAdd_Controller">
+<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.controller.MemberShipCardsController.MemberShipCardAddController">
     <children>
         <HBox fx:id="mainLayout">
             <children>
@@ -102,7 +102,7 @@
                                                 <Insets right="65.0" />
                                             </HBox.margin>
                                         </Label>
-                                        <TextField fx:id="soDienThoaiField" prefHeight="48.0" prefWidth="448.0" promptText="1.000.000đ" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
+                                        <TextField fx:id="priceCard" prefHeight="48.0" prefWidth="448.0" promptText="1.000.000đ" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
                                             <font>
                                                 <Font name="Tektur Regular" size="17.0" />
                                             </font>
@@ -157,6 +157,26 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </HBox>
+                                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
+                                    <children>
+                                        <Label text="Ngày hết hạn: " textFill="WHITE">
+                                            <font>
+                                                <Font name="Tektur Regular" size="24.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets right="25.0" />
+                                            </HBox.margin>
+                                        </Label>
+                                        <Label fx:id="expiryDateLabel" text="N/A" textFill="WHITE">
+                                            <font>
+                                                <Font name="Tektur Regular" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" top="10.0" />
+                                    </VBox.margin>
+                                </HBox>
                                 <HBox alignment="CENTER" prefHeight="0.0" prefWidth="996.0" styleClass="regis_btn" stylesheets="@style.css">
                                     <children>
                                         <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToMemberCard" prefHeight="54.0" prefWidth="150.0" style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="previous_page" text="Trở về" textAlignment="CENTER" textFill="WHITE">
@@ -167,7 +187,7 @@
                                                 <Insets right="100.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="55.0" prefWidth="156.0" style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="previous_page" text="Đồng ý" textAlignment="CENTER" textFill="WHITE">
+                                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="55.0" prefWidth="156.0" style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="previous_page" text="Đồng ý" textAlignment="CENTER" textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="28.0" />
                                             </font>
