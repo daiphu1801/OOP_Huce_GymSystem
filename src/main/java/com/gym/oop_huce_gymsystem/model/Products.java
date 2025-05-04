@@ -5,14 +5,14 @@ import java.time.LocalDate;
 public class Products {
     private int productId;
     private String name;
-    private String price;
+    private double price;
     private int quantity;
     private int quantitySold;
 
     public Products() {
     }
 
-    public Products(int productId, String name, String price, int quantity, int quantitySold) {
+    public Products(int productId, String name, double price, int quantity, int quantitySold) {
         this.productId = productId;
         this.name = name;
         this.price = price;
@@ -20,7 +20,7 @@ public class Products {
         this.quantitySold = quantitySold;
     }
 
-    public Products(String name, String price, int quantity, int quantitySold) {
+    public Products(String name, double price, int quantity, int quantitySold) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -43,11 +43,11 @@ public class Products {
         this.name = name;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

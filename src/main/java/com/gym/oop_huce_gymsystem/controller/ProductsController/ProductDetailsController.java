@@ -61,7 +61,7 @@ public class ProductDetailsController implements Initializable {
             if (currentProduct != null) {
                 productIdLabel.setText(String.valueOf(currentProduct.getProductId()));
                 nameLabel.setText(currentProduct.getName());
-                priceLabel.setText(currentProduct.getPrice());
+                priceLabel.setText(String.valueOf(currentProduct.getPrice()));
                 quantityLabel.setText(String.valueOf(currentProduct.getQuantity()));
                 quantitySoldLabel.setText(String.valueOf(currentProduct.getQuantitySold()));
             } else {

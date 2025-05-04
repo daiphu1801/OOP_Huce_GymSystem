@@ -64,7 +64,7 @@ public class ProductEditController implements Initializable {
             if (product != null) {
                 productIdField.setText(String.valueOf(product.getProductId()));
                 nameField.setText(product.getName() != null ? product.getName() : "");
-                priceField.setText(product.getPrice() != null ? product.getPrice() : "");
+                priceField.setText(String.valueOf(product.getPrice()));
                 quantityField.setText(String.valueOf(product.getQuantity()));
                 quantity_soldField.setText(String.valueOf(product.getQuantitySold()));
             } else {
@@ -91,13 +91,22 @@ public class ProductEditController implements Initializable {
         try {
             // Thu thập dữ liệu từ TextField
             String name = nameField.getText().trim();
-            String price = priceField.getText().trim();
+            String priceStr = priceField.getText().trim();
             String quantityStr = quantityField.getText().trim();
             String quantitySoldStr = quantity_soldField.getText().trim();
 
             // Kiểm tra cơ bản để tránh gửi dữ liệu rỗng
             if (name.isEmpty()) {
                 showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Tên sản phẩm không được để trống.");
+                return;
+            }
+
+            // Chuyển đổi price
+            double price;
+            try {
+                price = Double.parseDouble(priceStr);
+            } catch (NumberFormatException e) {
+                showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Giá phải là một số hợp lệ.");
                 return;
             }
 

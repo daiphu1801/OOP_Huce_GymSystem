@@ -49,11 +49,12 @@ public class ThemProduct_Controller {
             String quantitySoldStr = quantity_soldField.getText();
 
             // Parse numeric fields
+            double pricee = price.isEmpty() ? 0 : Double.parseDouble(price);
             int quantity = quantityStr.isEmpty() ? 0 : Integer.parseInt(quantityStr);
             int quantitySold = quantitySoldStr.isEmpty() ? 0 : Integer.parseInt(quantitySoldStr);
 
             // Create product and save
-            Products product = new Products(name, price, quantity, quantitySold);
+            Products product = new Products(name, pricee, quantity, quantitySold);
             productsService.addProduct(product);
 
             // Show success message and navigate back

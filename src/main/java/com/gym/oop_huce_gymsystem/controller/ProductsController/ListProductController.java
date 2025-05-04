@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -23,7 +24,7 @@ public class ListProductController implements Initializable {
     @FXML private TableView<Products> productTable;
     @FXML private TableColumn<Products, Integer> productListId;
     @FXML private TableColumn<Products, String> productListName;
-    @FXML private TableColumn<Products, String> productListPrice;
+    @FXML private TableColumn<Products, Double> productListPrice;
     @FXML private TableColumn<Products, Integer> productListQuantity;
     @FXML private TableColumn<Products, Integer> productListQuantity_sold;
 
@@ -54,10 +55,26 @@ public class ListProductController implements Initializable {
         productListQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         productListQuantity_sold.setCellValueFactory(new PropertyValueFactory<>("quantitySold"));
 
-        // Thiết lập cell factory với text màu trắng rõ ràng
+        // Định dạng cột giá tiền
+        productListPrice.setCellFactory(column -> {
+            return new TableCell<Products, Double>() {
+                private final DecimalFormat decimalFormat = new DecimalFormat("#,###");
+
+                @Override
+                protected void updateItem(Double price, boolean empty) {
+                    super.updateItem(price, empty);
+                    if (empty || price == null) {
+                        setText(null);
+                    } else {
+                        setText(decimalFormat.format(price) + " đ");
+                    }
+                }
+            };
+        });
+
+        // Thiết lập cell factory với text màu trắng rõ ràng cho các cột khác
         productListId.setCellFactory(column -> createStringTableCell());
         productListName.setCellFactory(column -> createStringTableCell());
-        productListPrice.setCellFactory(column -> createStringTableCell());
         productListQuantity.setCellFactory(column -> createStringTableCell());
         productListQuantity_sold.setCellFactory(column -> createStringTableCell());
 
@@ -73,7 +90,6 @@ public class ListProductController implements Initializable {
 
     @FXML
     public void handleDoubleClick(MouseEvent event) {
-        // Kiểm tra nhấp đúp (2 lần nhấp)
         if (event.getClickCount() == 2) {
             Products selected = productTable.getSelectionModel().getSelectedItem();
             if (selected == null) {
@@ -84,7 +100,6 @@ public class ListProductController implements Initializable {
 
             System.out.println("[ListProductController] Nhấp đúp vào sản phẩm: " + selected.getName() + ", ID: " + selected.getProductId());
             try {
-                // Giả định chuyển sang chi tiết sản phẩm với productId
                 scenceController.switchToProductDetail(new ActionEvent(event.getSource(), null), selected.getProductId());
                 System.out.println("[ListProductController] Đã chuyển sang chi tiết sản phẩm thành công.");
             } catch (Exception e) {
@@ -117,7 +132,6 @@ public class ListProductController implements Initializable {
             List<Products> products = productsService.getAllProducts();
             productList = FXCollections.observableArrayList(products);
 
-            // Kiểm tra danh sách sản phẩm
             if (products.isEmpty()) {
                 System.out.println("Danh sách sản phẩm trống!");
             } else {
@@ -128,12 +142,9 @@ public class ListProductController implements Initializable {
                 }
             }
 
-            // Sử dụng Platform.runLater để đảm bảo UI được cập nhật trên thread JavaFX
             Platform.runLater(() -> {
                 productTable.setItems(productList);
                 productTable.refresh();
-
-                // Debug: Kiểm tra số lượng dòng trong bảng
                 System.out.println("Số dòng trong bảng: " + productTable.getItems().size());
             });
 
@@ -191,9 +202,8 @@ public class ListProductController implements Initializable {
         });
     }
 
-
     @FXML
-    public void switchHome (javafx.scene.input.MouseEvent event) throws IOException {
+    public void switchHome(MouseEvent event) throws IOException {
         ActionEvent actionEvent = new ActionEvent(event.getSource(), event.getTarget());
         scenceController.switchToHelloView(actionEvent);
     }
@@ -247,6 +257,7 @@ public class ListProductController implements Initializable {
     public void switchToMemberCard(ActionEvent event) throws IOException {
         scenceController.switchToMemberCardList(event);
     }
+
     @FXML
     public void SwitchToCardAdd(ActionEvent event) throws IOException {
         scenceController.SwitchToCardAdd(event);
@@ -256,13 +267,14 @@ public class ListProductController implements Initializable {
     public void SwitchtoProduct(ActionEvent event) throws IOException {
         scenceController.SwitchtoProduct(event);
     }
+
     @FXML
     public void SwitchtoProductRegis(ActionEvent event) throws IOException {
         scenceController.SwitchtoProductRegis(event);
     }
+
     @FXML
     public void SwitchToPT_Regis(ActionEvent event) throws IOException {
         scenceController.SwitchToPT_Regis(event);
     }
-
 }

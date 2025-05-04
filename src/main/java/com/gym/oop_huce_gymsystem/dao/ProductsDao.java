@@ -16,7 +16,7 @@ public class ProductsDao {
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, product.getName());
-            stmt.setString(2, product.getPrice());
+            stmt.setDouble(2, product.getPrice());
             stmt.setInt(3, product.getQuantity());
             stmt.setInt(4,product.getQuantitySold());
 
@@ -39,7 +39,7 @@ public class ProductsDao {
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, product.getName());
-            stmt.setString(2, product.getPrice());
+            stmt.setDouble(2, product.getPrice());
             stmt.setInt(3, product.getQuantity());
             stmt.setInt(4, product.getQuantitySold());
             stmt.setInt(5, product.getProductId());
@@ -77,7 +77,7 @@ public class ProductsDao {
                 Products product = new Products(
                         rs.getInt("product_id"),
                         rs.getString("name"),
-                        rs.getString("price"),
+                        rs.getDouble("price"),
                         rs.getInt("quantity"),
                         rs.getInt("quantity_sold")
                 );
@@ -97,7 +97,7 @@ public class ProductsDao {
                     return new Products(
                             rs.getInt("product_id"),
                             rs.getString("name"),
-                            rs.getString("price"),
+                            rs.getDouble("price"),
                             rs.getInt("quantity"),
                             rs.getInt("quantity_sold")
                     );

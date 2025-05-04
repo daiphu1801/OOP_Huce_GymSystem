@@ -59,24 +59,19 @@ public class ProductsService {
         if (product.getName() == null || product.getName().trim().isEmpty()) {
             throw new IllegalArgumentException("Tên sản phẩm không được để trống.");
         }
-        // Validate price as a String
-        if (product.getPrice() == null || product.getPrice().trim().isEmpty()) {
-            throw new IllegalArgumentException("Giá sản phẩm không được để trống.");
-        }
-        try {
-            double priceValue = Double.parseDouble(product.getPrice());
-            if (priceValue < 0) {
-                throw new IllegalArgumentException("Giá sản phẩm phải lớn hơn hoặc bằng 0.");
-            }
-            if (Double.isNaN(priceValue) || Double.isInfinite(priceValue)) {
-                throw new IllegalArgumentException("Giá sản phẩm phải là một số hợp lệ.");
-            }
-        } catch (NumberFormatException e) {
+
+        double price = product.getPrice();
+        if (Double.isNaN(price) || Double.isInfinite(price)) {
             throw new IllegalArgumentException("Giá sản phẩm phải là một số hợp lệ.");
         }
+        if (price < 0) {
+            throw new IllegalArgumentException("Giá sản phẩm phải lớn hơn hoặc bằng 0.");
+        }
+
         if (product.getQuantity() <= 0) {
             throw new IllegalArgumentException("Số lượng sản phẩm phải lớn hơn 0.");
         }
+
         if (product.getQuantitySold() < 0) {
             throw new IllegalArgumentException("Số lượng đã bán phải lớn hơn hoặc bằng 0.");
         }
