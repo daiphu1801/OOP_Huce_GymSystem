@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.controller.TrainersController.ListTrainersController">
+<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.controller.EquipmentsController.ListEquipmentsController">
     <children>
         <HBox fx:id="mainLayout">
             <children>
@@ -91,7 +91,7 @@
                             <children>
                                 <HBox alignment="CENTER" prefHeight="39.0" prefWidth="996.0">
                                     <children>
-                                        <Button fx:id="addPTBTN" layoutX="749.0" layoutY="15.0" mnemonicParsing="false" onAction="#SwitchToPT_Regis" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Thêm PT" textFill="WHITE">
+                                        <Button fx:id="addEquipment" layoutX="749.0" layoutY="15.0" mnemonicParsing="false" onAction="#SwitchTothietbi_regis" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Thêm thiết bị" textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="13.0" />
                                             </font>
@@ -99,7 +99,7 @@
                                                 <Insets right="10.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button fx:id="deletePTBTN" layoutX="182.0" layoutY="15.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Xoá PT" textFill="WHITE">
+                                        <Button fx:id="deleteEquipment" onAction="#handleDeleteEquipment" layoutX="182.0" layoutY="15.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Xoá thiết bị" textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="13.0" />
                                             </font>
@@ -107,7 +107,7 @@
                                                 <Insets right="10.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <TextField fx:id="searchField" prefHeight="34.0" prefWidth="532.0" promptText="Nhập để tìm kiếm" style="-fx-background-radius: 15px; -fx-background-color: #1a1a1a;" styleClass="searching" />
+                                        <TextField fx:id="searchField" prefHeight="34.0" prefWidth="532.0" promptText="Nhập để tìm kiếm" style="-fx-background-radius: 15px; -fx-background-color: #1a1a1a;" styleClass="searching" stylesheets="@style.css" />
                                     </children>
                                     <VBox.margin>
                                         <Insets bottom="15.0" />
@@ -115,14 +115,12 @@
                                 </HBox>
                                 <VBox prefHeight="729.0" prefWidth="958.0" VBox.vgrow="ALWAYS">
                                     <children>
-                                        <TableView fx:id="trainerTable" prefHeight="614.0" prefWidth="934.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 20px;" styleClass="memberTable" stylesheets="@style.css" VBox.vgrow="ALWAYS">
+                                        <TableView id="equipmentTable" fx:id="equipmentTable" onMouseClicked="#handleDoubleClick" prefHeight="614.0" prefWidth="934.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 20px;" styleClass="memberTable" stylesheets="@style.css" VBox.vgrow="ALWAYS">
                                             <columns>
-                                                <TableColumn fx:id="trainerIdColumn" prefWidth="184.0" styleClass="cardNum" text="Mã PT" />
-                                                <TableColumn fx:id="nameColumn" prefWidth="190.33331298828125" styleClass="nameColumn" text="Họ và tên" />
-                                                <TableColumn fx:id="genderColumn" prefWidth="159.66668701171875" styleClass="genderColumn" text="Giới tính" />
-                                                <TableColumn fx:id="phoneColumn" prefWidth="159.66668701171875" styleClass="phoneColumn" text="Số điện thoại" />
-                                                <TableColumn fx:id="emailColumn" minWidth="0.0" prefWidth="227.0" styleClass="gtColumn" text="Email" />
-                                                <TableColumn fx:id="specializationColumn" prefWidth="196.0" styleClass="cardtypeColumn" text="Chuyên môn" />
+                                                <TableColumn fx:id="equipmentIdColumn" prefWidth="361.33331298828125" styleClass="cardNum" text="Mã thiết bị" />
+                                                <TableColumn fx:id="nameColumn" prefWidth="325.3333740234375" styleClass="nameColumn" text="Tên thiết bị" />
+                                                <TableColumn fx:id="quantityColumn" prefWidth="107.6666259765625" styleClass="phoneColumn" text="Số lượng" />
+                                                <TableColumn fx:id="statusColumn" minWidth="0.0" prefWidth="201.0" styleClass="gtColumn" text="Tình trạng" />
                                             </columns>
                                         </TableView>
                                     </children>

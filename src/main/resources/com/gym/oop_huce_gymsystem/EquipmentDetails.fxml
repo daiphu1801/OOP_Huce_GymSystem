@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.controller.ProductsController.ProductDetailsController">
+<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.controller.EquipmentsController.EquipmentsDetailsController">
     <children>
         <HBox fx:id="mainLayout">
             <children>
@@ -83,7 +83,7 @@
                             <children>
                                 <HBox alignment="CENTER" prefHeight="34.0" prefWidth="996.0">
                                     <children>
-                                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#SwitchtoProduct" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Trở về" textFill="WHITE">
+                                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#SwitchTothiet_bi" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Trở về" textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="13.0" />
                                             </font>
@@ -91,7 +91,7 @@
                                                 <Insets right="10.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button fx:id="editInfoButton" mnemonicParsing="false" onAction="#switchToEditProduct" prefHeight="30.0" prefWidth="140.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Sửa thông tin" textFill="WHITE">
+                                        <Button fx:id="editInfoButton" mnemonicParsing="false" onAction="#switchToEditEquipment" prefHeight="30.0" prefWidth="140.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Sửa thông tin" textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="13.0" />
                                             </font>
@@ -110,7 +110,7 @@
                                             <children>
                                                 <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="534.0" HBox.hgrow="ALWAYS">
                                                     <children>
-                                                        <Label minWidth="150.0" text="Mã sản phẩm: " textFill="WHITE">
+                                                        <Label minWidth="150.0" text="Mã thiết bị: " textFill="WHITE">
                                                             <font>
                                                                 <Font name="Tektur Regular" size="40.0" />
                                                             </font>
@@ -118,7 +118,7 @@
                                                                 <Insets left="30.0" />
                                                             </HBox.margin>
                                                         </Label>
-                                                        <Label fx:id="productIdLabel" text="N/A" textFill="WHITE">
+                                                        <Label fx:id="equipmentIdLabel" text="N/A" textFill="WHITE">
                                                             <font>
                                                                 <Font name="Tektur Regular" size="40.0" />
                                                             </font>
@@ -130,7 +130,7 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="534.0" HBox.hgrow="ALWAYS">
                                                     <children>
-                                                        <Label minWidth="150.0" text="Tên sản phẩm: " textFill="WHITE">
+                                                        <Label minWidth="150.0" text="Tên thiết bị: " textFill="WHITE">
                                                             <font>
                                                                 <Font name="Tektur Regular" size="40.0" />
                                                             </font>
@@ -150,27 +150,7 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="534.0" HBox.hgrow="ALWAYS">
                                                     <children>
-                                                        <Label minWidth="150.0" text="Giá sản phẩm: " textFill="WHITE">
-                                                            <font>
-                                                                <Font name="Tektur Regular" size="40.0" />
-                                                            </font>
-                                                            <HBox.margin>
-                                                                <Insets left="30.0" />
-                                                            </HBox.margin>
-                                                        </Label>
-                                                        <Label fx:id="priceLabel" text="N/A" textFill="WHITE">
-                                                            <font>
-                                                                <Font name="Tektur Regular" size="40.0" />
-                                                            </font>
-                                                        </Label>
-                                                    </children>
-                                                    <VBox.margin>
-                                                        <Insets top="10.0" />
-                                                    </VBox.margin>
-                                                </HBox>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="534.0" HBox.hgrow="ALWAYS">
-                                                    <children>
-                                                        <Label minWidth="150.0" text="Số lượng tồn: " textFill="WHITE">
+                                                        <Label minWidth="150.0" text="Số lượng: " textFill="WHITE">
                                                             <font>
                                                                 <Font name="Tektur Regular" size="40.0" />
                                                             </font>
@@ -190,7 +170,7 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="534.0" HBox.hgrow="ALWAYS">
                                                     <children>
-                                                        <Label minWidth="150.0" text="Số lượng bán: " textFill="WHITE">
+                                                        <Label minWidth="150.0" text="Tình trạng: " textFill="WHITE">
                                                             <font>
                                                                 <Font name="Tektur Regular" size="40.0" />
                                                             </font>
@@ -198,7 +178,27 @@
                                                                 <Insets left="30.0" />
                                                             </HBox.margin>
                                                         </Label>
-                                                        <Label fx:id="quantitySoldLabel" text="N/A" textFill="WHITE">
+                                                        <Label fx:id="statusLabel" text="N/A" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="Tektur Regular" size="40.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets top="10.0" />
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="534.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label minWidth="150.0" text="Ngày nhập: " textFill="WHITE">
+                                                            <font>
+                                                                <Font name="Tektur Regular" size="40.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="30.0" />
+                                                            </HBox.margin>
+                                                        </Label>
+                                                        <Label fx:id="purchaseDateLabel" text="N/A" textFill="WHITE">
                                                             <font>
                                                                 <Font name="Tektur Regular" size="40.0" />
                                                             </font>

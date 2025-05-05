@@ -87,9 +87,9 @@ public class ListTrainersController implements Initializable {
 
             System.out.println("[ListTrainersController] Nhấp đúp vào huấn luyện viên: " + selected.getName() + ", ID: " + selected.getTrainerId());
             try {
-                // Giả định chuyển sang chi tiết huấn luyện viên (cần triển khai giao diện chi tiết)
-                // scenceController.switchToTrainerDetail(new ActionEvent(event.getSource(), null), selected.getTrainerId());
-                showAlert(Alert.AlertType.INFORMATION, "Thông báo", "Chuyển đến chi tiết huấn luyện viên: " + selected.getName());
+                 //Giả định chuyển sang chi tiết huấn luyện viên (cần triển khai giao diện chi tiết)
+                 scenceController.switchToTrainerDetail(new ActionEvent(event.getSource(), null), selected.getTrainerId());
+//                showAlert(Alert.AlertType.INFORMATION, "Thông báo", "Chuyển đến chi tiết huấn luyện viên: " + selected.getName());
                 System.out.println("[ListTrainersController] Đã chuyển sang chi tiết huấn luyện viên thành công.");
             } catch (Exception e) {
                 System.out.println("[ListTrainersController] Lỗi khi chuyển sang chi tiết huấn luyện viên: " + e.getMessage());

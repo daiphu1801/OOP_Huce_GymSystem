@@ -1,9 +1,10 @@
 package com.gym.oop_huce_gymsystem;
 
-import com.gym.oop_huce_gymsystem.controller.ProductsController.ProductDetailsController;
-import com.gym.oop_huce_gymsystem.controller.ProductsController.ProductEditController;
-import com.gym.oop_huce_gymsystem.controller.MemberShipCardsController.MemberShipCardDetailsController;
-import com.gym.oop_huce_gymsystem.controller.MemberShipCardsController.MemberShipCardEditController;
+import com.gym.oop_huce_gymsystem.controller.EquipmentsController.EquipmentsDetailsController;
+import com.gym.oop_huce_gymsystem.controller.EquipmentsController.EquipmentsEditController;
+import com.gym.oop_huce_gymsystem.controller.ProductsController.*;
+import com.gym.oop_huce_gymsystem.controller.MemberShipCardsController.*;
+import com.gym.oop_huce_gymsystem.controller.TrainersController.*;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -118,7 +119,7 @@ public class ScenceController {
 //    public HoiVienFullInfoController switchToHoiVienFullInfo(ActionEvent event, int memberId) throws IOException {
 //        System.out.println("[ScenceController] Bắt đầu chuyển sang HoiVienFullInfoController với memberId: " + memberId);
 //        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/hoivien_full_info.fxml"));
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/HoiVienDetails.fxml"));
 //            if (loader.getLocation() == null) {
 //                System.out.println("[ScenceController] Lỗi: Không tìm thấy tệp HoiVienFullInfo.fxml");
 //                throw new IOException("Không tìm thấy tệp HoiVienFullInfo.fxml");
@@ -231,10 +232,62 @@ public class ScenceController {
     }
 
     public void switchToProductDetail(ActionEvent event, int productId) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/product_full_info.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/ProductDetails.fxml"));
         Parent root = loader.load();
         ProductDetailsController controller = loader.getController();
         controller.setProductId(productId);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    public void switchToTrainerDetail(ActionEvent event, int trainerId) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/TrainersDetails.fxml"));
+        Parent root = loader.load();
+
+        // Lấy controller và truyền trainerId
+        TrainersDetailsController controller = loader.getController();
+        controller.setTrainerId(trainerId);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    public void switchToEditTrainer(ActionEvent event, int trainerId) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/TrainersEdit.fxml"));
+        Parent root = loader.load();
+
+        // Lấy controller và truyền trainerId
+        TrainersEditController controller = loader.getController();
+        controller.setTrainerId(trainerId);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+
+    public void switchToEquipmentDetails(ActionEvent event, int equipmentId) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/EquipmentDetails.fxml"));
+        Parent root = loader.load();
+
+        EquipmentsDetailsController controller = loader.getController();
+        controller.setEquipmentId(equipmentId);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    public void switchToEquipmentEdit(ActionEvent event, int equipmentId) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/EquipmentEdit.fxml"));
+        Parent root = loader.load();
+
+        // Lấy controller và truyền trainerId
+        EquipmentsEditController controller = loader.getController();
+        controller.setEquipmentId(equipmentId);
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
@@ -248,72 +301,72 @@ public class ScenceController {
 
     @FXML
     public void switchToHelloView(ActionEvent event) throws IOException {
-        setupScene("hello-view.fxml", event);
+        setupScene("AmainView.fxml", event);
     }
 
     @FXML
     public void switchToMemberCardList(ActionEvent event) throws IOException {
-        setupScene("memberCardList.fxml", event);
+        setupScene("MemberCardList.fxml", event);
     }
 
     @FXML
     public void switchToHoiVienFullInfo(ActionEvent event) throws IOException {
-        setupScene("hoivien_full_info.fxml", event);
+        setupScene("HoiVienDetails.fxml", event);
     }
 
     @FXML
     public void switchToListHoiVien(ActionEvent event) throws IOException {
-        setupScene("list_hoivien.fxml", event);
+        setupScene("HoiVienList.fxml", event);
     }
 
     @FXML
     public void switchToRegister(ActionEvent event) throws IOException {
-        setupScene("register.fxml", event);
+        setupScene("HoiVienRegister.fxml", event);
     }
 
     @FXML
     public void switchToThietBi(ActionEvent event) throws IOException {
-        setupScene("thiet_bi.fxml", event);
+        setupScene("EquipmentList.fxml", event);
     }
 
     @FXML
     public void switchToThietBiInfoFull(ActionEvent event) throws IOException {
-        setupScene("thietbi_info_full.fxml", event);
+        setupScene("EquipmentDetails.fxml", event);
     }
 
     @FXML
     public void switchToThietBiRegis(ActionEvent event) throws IOException {
-        setupScene("thietbi_regis.fxml", event);
+        setupScene("EquipmentRegister.fxml", event);
     }
 
     @FXML
     public void switchToThongKe(ActionEvent event) throws IOException {
-        setupScene("thongke.fxml", event);
+        setupScene("Revenua.fxml", event);
     }
 
     @FXML
     public void switchToPTList(ActionEvent event) throws IOException {
-        setupScene("ptList.fxml", event);
+        setupScene("TrainersList.fxml", event);
     }
 
     @FXML
     public void switchToPTdangky(ActionEvent event) throws IOException {
-        setupScene("pt_register.fxml", event);
+        setupScene("TrainersRegister.fxml", event);
     }
 
     @FXML
     private void switchtoProduct(ActionEvent event) throws IOException {
-        setupScene("product.fxml", event);
+        setupScene("ProductList.fxml", event);
     }
 
     @FXML
     private void switchtoProductRegis(ActionEvent event) throws IOException {
-        setupScene("productRegis.fxml", event);
+        setupScene("ProductRegister.fxml", event);
     }
 
     @FXML
     private void switchtoCardAdd(ActionEvent event) throws IOException {
-        setupScene("cardAdd.fxml", event);
+        setupScene("MemberCardAdd.fxml", event);
     }
 
     @FXML

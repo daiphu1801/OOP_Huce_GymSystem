@@ -14,7 +14,6 @@ import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.ResourceBundle;

@@ -95,37 +95,12 @@ public class ProductEditController implements Initializable {
             String quantityStr = quantityField.getText().trim();
             String quantitySoldStr = quantity_soldField.getText().trim();
 
-            // Kiểm tra cơ bản để tránh gửi dữ liệu rỗng
-            if (name.isEmpty()) {
-                showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Tên sản phẩm không được để trống.");
-                return;
-            }
-
             // Chuyển đổi price
-            double price;
-            try {
-                price = Double.parseDouble(priceStr);
-            } catch (NumberFormatException e) {
-                showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Giá phải là một số hợp lệ.");
-                return;
-            }
+            double price = Double.parseDouble(priceStr);
 
             // Chuyển đổi quantity và quantitySold
-            int quantity;
-            try {
-                quantity = Integer.parseInt(quantityStr);
-            } catch (NumberFormatException e) {
-                showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Số lượng sản phẩm phải là một số nguyên hợp lệ.");
-                return;
-            }
-
-            int quantitySold;
-            try {
-                quantitySold = Integer.parseInt(quantitySoldStr);
-            } catch (NumberFormatException e) {
-                showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Số lượng đã bán phải là một số nguyên hợp lệ.");
-                return;
-            }
+            int quantity = Integer.parseInt(quantityStr);
+            int quantitySold = Integer.parseInt(quantitySoldStr);
 
             // Tạo đối tượng Products
             Products updatedProduct = new Products(

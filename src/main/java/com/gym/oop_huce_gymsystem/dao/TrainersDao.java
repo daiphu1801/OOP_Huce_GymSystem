@@ -1,12 +1,11 @@
 package com.gym.oop_huce_gymsystem.dao;
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import com.gym.oop_huce_gymsystem.model.*;
 import com.gym.oop_huce_gymsystem.util.*;
 
-public class TrainersDAO {
+public class TrainersDao {
     public void addTrainers(Trainers trainer) throws Exception {
         String query = "INSERT INTO trainers (name, gender, phone, email, specialization) " +
                 "VALUES (?, ?, ?, ?, ?)";
@@ -124,7 +123,7 @@ public class TrainersDAO {
         return false;
     }
 
-        //Kiem tra so dien thoai
+    //Kiem tra so dien thoai
     public boolean isPhoneExists(String phone) throws SQLException {
         String query = "SELECT COUNT(*) FROM trainers WHERE phone = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -138,4 +137,6 @@ public class TrainersDAO {
         }
         return false;
     }
+
+
 }

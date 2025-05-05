@@ -1,13 +1,10 @@
 package com.gym.oop_huce_gymsystem.controller.ProductsController;
 
 import com.gym.oop_huce_gymsystem.ScenceController;
-import com.gym.oop_huce_gymsystem.dao.ProductsDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import com.gym.oop_huce_gymsystem.model.Products;
 import com.gym.oop_huce_gymsystem.service.ProductsService;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,8 +12,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.awt.*;
 import java.io.IOException;
 
 public class ThemProduct_Controller {
