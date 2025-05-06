@@ -19,7 +19,6 @@ import java.util.ResourceBundle;
 
 public class HoiVienEditController implements Initializable {
 
-    @FXML private TextField memberIdField;
     @FXML private TextField cardCodeField;
     @FXML private TextField fullNameField;
     @FXML private TextField phoneField;
@@ -57,8 +56,6 @@ public class HoiVienEditController implements Initializable {
         try {
             Members member = membersDao.getMemberById(memberId);
             if (member != null) {
-                memberIdField.setText(String.valueOf(member.getMemberId()));
-                memberIdField.setEditable(false); // Không cho phép chỉnh sửa memberId
                 cardCodeField.setText(member.getCardCode());
                 fullNameField.setText(member.getFullName());
                 phoneField.setText(member.getPhone());
@@ -85,7 +82,6 @@ public class HoiVienEditController implements Initializable {
         try {
             // Tạo đối tượng Members với dữ liệu mới
             Members updatedMember = new Members(
-                    Integer.parseInt(memberIdField.getText()),
                     cardCodeField.getText(),
                     fullNameField.getText(),
                     phoneField.getText(),

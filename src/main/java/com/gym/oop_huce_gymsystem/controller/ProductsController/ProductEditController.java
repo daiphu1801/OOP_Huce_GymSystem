@@ -35,6 +35,7 @@ public class ProductEditController implements Initializable {
         this.isInitialized = false;
     }
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (productIdField == null) {

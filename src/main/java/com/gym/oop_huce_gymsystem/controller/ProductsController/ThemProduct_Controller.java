@@ -104,8 +104,8 @@ public class ThemProduct_Controller {
     }
 
     @FXML
-    public void SwitchToregister(ActionEvent event) throws IOException {
-        scenceController.switchToRegister(event);
+    public void SwitchToregister(ActionEvent event,String CardId) throws IOException {
+        scenceController.switchToRegister(event,CardId);
     }
 
     @FXML

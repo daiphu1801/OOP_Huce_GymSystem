@@ -17,7 +17,6 @@
     <children>
         <HBox fx:id="mainLayout">
             <children>
-                <!-- Sidebar menu - chiều rộng cố định -->
                 <VBox fx:id="sidebarVBox" alignment="CENTER" maxWidth="298.0" minWidth="250.0" prefHeight="720.0" prefWidth="274.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 0 40px 40px 0;" styleClass="menu-feature" stylesheets="@style.css">
                     <children>
                         <ImageView fitHeight="134.0" fitWidth="100.0" onMouseClicked="#switchHome" pickOnBounds="true" preserveRatio="true" styleClass="logo_gym" VBox.vgrow="NEVER">
@@ -30,7 +29,6 @@
                         </ImageView>
                         <VBox alignment="CENTER" prefHeight="141.0" prefWidth="274.0">
                             <children>
-
                                 <Button fx:id="hoivienBTN" alignment="BASELINE_LEFT" maxWidth="830.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTolisthoivien" prefHeight="49.0" prefWidth="288.0" style="-fx-background-color: #1a1a1a;" styleClass="hoivienBTN" text="Hội viên" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
@@ -71,7 +69,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="thongkeBTN" alignment="BASELINE_LEFT" maxWidth="400.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTothongke" prefHeight="49.0" prefWidth="400.0" style="-fx-background-color: #1a1a1a;" styleClass="thongkeBTN" text="Thống Kê &amp; Báo Cáo" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="thongkeBTN" alignment="BASELINE_LEFT" maxWidth="400.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTothongke" prefHeight="49.0" prefWidth="400.0" style="-fx-background-color: #1a1a1a;" styleClass="thongkeBTN" text="Thống Kê và Báo Cáo" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -86,7 +84,6 @@
                         </VBox>
                     </children>
                 </VBox>
-                <!-- Content area - registration form -->
                 <AnchorPane fx:id="contentArea" prefHeight="720.0" prefWidth="982.0" HBox.hgrow="ALWAYS">
                     <children>
                         <VBox alignment="CENTER" layoutX="12.0" layoutY="15.0" prefHeight="691.0" prefWidth="996.0" styleClass="register-form" stylesheets="@style.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="15.0">
@@ -99,7 +96,6 @@
                                         <Insets bottom="30.0" />
                                     </VBox.margin>
                                 </Label>
-
                                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
                                     <children>
                                         <Label text="Mã thẻ: " textFill="WHITE">
@@ -110,18 +106,16 @@
                                                 <Insets right="65.0" />
                                             </HBox.margin>
                                         </Label>
-                                        <TextField fx:id="cardCodeField" prefHeight="48.0" prefWidth="448.0" promptText="Mã thẻ (VD: CARD123)" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
+                                        <Label fx:id="cardCodeField" prefHeight="48.0" prefWidth="448.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
                                             <font>
                                                 <Font name="Tektur Regular" size="17.0" />
                                             </font>
-                                        </TextField>
+                                        </Label>
                                     </children>
                                     <VBox.margin>
                                         <Insets bottom="10.0" />
                                     </VBox.margin>
                                 </HBox>
-
-
                                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
                                     <children>
                                         <Label text="Họ và tên: " textFill="WHITE">
@@ -173,15 +167,15 @@
                                             </HBox.margin>
                                         </Label>
                                         <ComboBox fx:id="genderComboBox" prefHeight="48.0" prefWidth="444.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
-                                 <HBox.margin>
-                                    <Insets right="5.0" />
-                                 </HBox.margin></ComboBox>
+                                            <HBox.margin>
+                                                <Insets right="5.0" />
+                                            </HBox.margin>
+                                        </ComboBox>
                                     </children>
                                     <VBox.margin>
                                         <Insets bottom="10.0" />
                                     </VBox.margin>
                                 </HBox>
-
                                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
                                     <children>
                                         <Label text="Email: " textFill="WHITE">
@@ -199,7 +193,6 @@
                                         </TextField>
                                     </children>
                                 </HBox>
-
                                 <HBox alignment="CENTER" prefHeight="0.0" prefWidth="996.0" styleClass="regis_btn" stylesheets="@style.css">
                                     <children>
                                         <Button alignment="CENTER" mnemonicParsing="false" onAction="#SwitchTolisthoivien" prefHeight="54.0" prefWidth="150.0" style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="previous_page" text="Trở về" textAlignment="CENTER" textFill="WHITE">

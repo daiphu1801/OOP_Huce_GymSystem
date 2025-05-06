@@ -23,11 +23,34 @@ public class MembersDao {
         return false;
     }
 
-    // Thêm một thành viên mới vào cơ sở dữ liệu
-    public void addMember(Members member) throws SQLException {
+//    // Thêm một thành viên mới vào cơ sở dữ liệu
+//    public void addMember(Members member) throws SQLException {
+//        String query = "INSERT INTO members (card_code, full_name, phone, gender, email) VALUES (?, ?, ?, ?, ?)";
+//        try (Connection conn = DatabaseConnection.getConnection();
+//             PreparedStatement stmt = conn.prepareStatement(query)) {
+//            stmt.setString(1, member.getCardCode());
+//            stmt.setString(2, member.getFullName());
+//            stmt.setString(3, member.getPhone());
+//            stmt.setString(4, member.getGender());
+//            stmt.setString(5, member.getEmail());
+//            int rowsAffected = stmt.executeUpdate();
+//            if (rowsAffected > 0) {
+//                System.out.println("Đã thêm hội viên thành công: " + member.getPhone());
+//            } else {
+//                throw new SQLException("Không thể thêm hội viên: Không có hàng nào được thêm.");
+//            }
+//        } catch (SQLException e) {
+//            if (e.getErrorCode() == 2627) {
+//                throw new SQLException("Số điện thoại hoặc mã thẻ đã tồn tại trong hệ thống.");
+//            }
+//            throw e;
+//        }
+//    }
+
+    public int addMember(Members member) throws SQLException {
         String query = "INSERT INTO members (card_code, full_name, phone, gender, email) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, member.getCardCode());
             stmt.setString(2, member.getFullName());
             stmt.setString(3, member.getPhone());
@@ -36,6 +59,12 @@ public class MembersDao {
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Đã thêm hội viên thành công: " + member.getPhone());
+                // Lấy member_id vừa tạo
+                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        return generatedKeys.getInt(1); // Lấy member_id
+                    }
+                }
             } else {
                 throw new SQLException("Không thể thêm hội viên: Không có hàng nào được thêm.");
             }
@@ -45,6 +74,7 @@ public class MembersDao {
             }
             throw e;
         }
+        return -1; // Trường hợp lỗi
     }
 
     // Cập nhật thông tin một thành viên trong cơ sở dữ liệu
@@ -77,9 +107,13 @@ public class MembersDao {
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, memberId);
             int rowsAffected = stmt.executeUpdate();
-            if (rowsAffected == 0) {
-                throw new SQLException("Không tìm thấy hội viên với ID: " + memberId);
+            if (rowsAffected > 0) {
+                System.out.println("Đã xóa hội viên: " + memberId);
+            } else {
+                throw new SQLException("Không tìm thấy hội viên để xóa: " + memberId);
             }
+        } catch (SQLException e) {
+            throw new SQLException("Lỗi khi xóa hội viên: " + e.getMessage(), e);
         }
     }
 

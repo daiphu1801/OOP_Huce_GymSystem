@@ -294,6 +294,7 @@ public class ScenceController {
         stage.show();
     }
 
+
     @FXML
     public void switchHome(javafx.scene.input.MouseEvent event) throws IOException {
         ActionEvent actionEvent = new ActionEvent(event.getSource(), event.getTarget());
@@ -320,9 +321,20 @@ public class ScenceController {
         setupScene("HoiVienList.fxml", event);
     }
 
+//    @FXML
+//    public void switchToRegister(ActionEvent event) throws IOException {
+//        setupScene("HoiVienRegister.fxml", event);
+//    }
+
     @FXML
-    public void switchToRegister(ActionEvent event) throws IOException {
-        setupScene("HoiVienRegister.fxml", event);
+    public void switchToRegister(ActionEvent event, String cardId) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HoiVienRegister.fxml"));
+        Parent root = loader.load();
+        HoiVienDangKyController controller = loader.getController();
+        controller.setCardId(cardId);
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     @FXML
@@ -386,8 +398,8 @@ public class ScenceController {
     }
 
     @FXML
-    public void SwitchToregister(ActionEvent event) throws IOException {
-        switchToRegister(event);
+    public void SwitchToregister(ActionEvent event,String CardId) throws IOException {
+        switchToRegister(event,CardId);
     }
 
     @FXML
