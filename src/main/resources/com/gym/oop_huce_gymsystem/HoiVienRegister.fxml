@@ -166,7 +166,10 @@
                                                 <Insets right="65.0" />
                                             </HBox.margin>
                                         </Label>
-                                        <ComboBox fx:id="genderComboBox" prefHeight="48.0" prefWidth="444.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;" />
+                                        <ComboBox fx:id="genderComboBox" prefHeight="48.0" prefWidth="444.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin></ComboBox>
                                     </children>
                                     <VBox.margin>
                                         <Insets bottom="10.0" />

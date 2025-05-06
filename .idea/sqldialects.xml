@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/c434b531-7b57-4096-b92c-73cc88698778/console.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/gym_management.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/gym/oop_huce_gymsystem/dao/EquipmentsDao.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/gym/oop_huce_gymsystem/dao/MemberShipCardsDao.java" dialect="GenericSQL" />
