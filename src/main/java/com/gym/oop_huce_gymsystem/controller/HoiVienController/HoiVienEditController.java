@@ -8,10 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -19,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class HoiVienEditController implements Initializable {
 
-    @FXML private TextField cardCodeField;
+    @FXML private Label cardCodeField;
     @FXML private TextField fullNameField;
     @FXML private TextField phoneField;
     @FXML private ComboBox<String> genderComboBox;
@@ -82,6 +80,7 @@ public class HoiVienEditController implements Initializable {
         try {
             // Tạo đối tượng Members với dữ liệu mới
             Members updatedMember = new Members(
+                    memberId,
                     cardCodeField.getText(),
                     fullNameField.getText(),
                     phoneField.getText(),
