@@ -94,17 +94,19 @@ public class ProductsDao {
             stmt.setInt(1, productId);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    return new Products(
-                            rs.getInt("product_id"),
-                            rs.getString("name"),
-                            rs.getDouble("price"),
-                            rs.getInt("quantity"),
-                            rs.getInt("quantity_sold")
-                    );
+                   Products product = new Products();
+                   product.setProductId(rs.getInt("product_id"));
+                   product.setName(rs.getString("name"));
+                   product.setPrice(rs.getDouble("price"));
+                   product.setQuantity(rs.getInt("quantity"));
+                   product.setQuantitySold(rs.getInt("quantity_sold"));
+                   return product;
                 }
             }
+        }catch (SQLException e) {
+            throw new SQLException("Không tìm thấy sản phẩm với ID: " + productId);
         }
-        throw new SQLException("Không tìm thấy sản phẩm với ID: " + productId);
+        return null;
     }
 }
 
