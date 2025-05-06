@@ -1,27 +1,25 @@
 package com.gym.oop_huce_gymsystem.model;
 
 import java.time.*;
-import java.util.*;
 
 public class Equipments {
     private int equipmentId;
     private String Name;
     private String Status;
-    private String Quantity;
+    private int Quantity;
     private LocalDate Purchase_Date;
-    private LocalDate Create_at;
 
-    public Equipments(int equipmentId, String Name, String Status, String Quantity, LocalDate Purchase_Date, LocalDate Create_at) {
+    public Equipments() {}
+
+    public Equipments(int equipmentId, String Name, int Quantity,String Status, LocalDate Purchase_Date) {
         this.equipmentId = equipmentId;
         this.Name = Name;
         this.Status = Status;
         this.Quantity = Quantity;
         this.Purchase_Date = Purchase_Date;
-        this.Create_at = Create_at;
     }
 
-    public Equipments(int equipmentId, String Name, String Status, String Quantity, LocalDate Purchase_Date) {
-        this.equipmentId = equipmentId;
+    public Equipments(String Name, int Quantity, String Status, LocalDate Purchase_Date) {
         this.Name = Name;
         this.Status = Status;
         this.Quantity = Quantity;
@@ -53,11 +51,11 @@ public class Equipments {
         this.Status = Status;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return Quantity;
     }
 
-    public void setQuantity(String Quantity) {
+    public void setQuantity(int Quantity) {
         this.Quantity = Quantity;
     }
 
@@ -69,13 +67,6 @@ public class Equipments {
         this.Purchase_Date = Purchase_Date;
     }
 
-    public LocalDate getCreate_at() {
-        return Create_at;
-    }
-
-    public void setCreate_at(LocalDate Create_at) {
-        this.Create_at = Create_at;
-    }
 
     @Override
     public String toString() {
@@ -85,7 +76,6 @@ public class Equipments {
                 ", status='" + Status + '\'' +
                 ", quantity='" + Quantity + '\'' +
                 ", purchaseDate='" + Purchase_Date + '\'' +
-                ", createAt='" + Create_at + '\'' +
                 '}';
 
     }

@@ -3,36 +3,34 @@ package com.gym.oop_huce_gymsystem.model;
 import java.time.*;
 
 public class Members {
-    private int memberId; // ID của từng hội viên
-    private String name; // Tên hội viên
-    private String phone; // Số điện thoại hội viên
-    private String membershipType; // Loại thẻ hội viên đăng ký
-    private LocalDate registrationDate; // Ngày đăng ký
-    private LocalDateTime createdAt; // Thời điểm tạo
-    private String trainingPackage; // Gói tập luyện
+    private int memberId;
+    private String cardCode;
+    private String fullName;
+    private String phone;
+    private String gender;
+    private String email;
 
+    // Default constructor
     public Members() {
     }
 
-    // Constructor đầy đủ
-    public Members(int memberId, String name, String phone, String membershipType, String trainingPackage, LocalDate registrationDate, LocalDateTime createdAt) {
+    // Parameterized constructor
+    public Members(int memberId, String cardCode, String fullName, String phone, String gender, String email) {
         this.memberId = memberId;
-        this.name = name;
+        this.cardCode = cardCode;
+        this.fullName = fullName;
         this.phone = phone;
-        this.membershipType = membershipType;
-        this.trainingPackage = trainingPackage;
-        this.registrationDate = registrationDate;
-        this.createdAt = createdAt;
+        this.gender = gender;
+        this.email = email;
     }
 
-    // Constructor dùng khi tạo mới
-    public Members(String name, String phone, String membershipType, String trainingPackage, LocalDate registrationDate) {
-        this.name = name;
+    // Parameterized constructor
+    public Members(String cardCode, String fullName, String phone, String gender, String email) {
+        this.cardCode = cardCode;
+        this.fullName = fullName;
         this.phone = phone;
-        this.membershipType = membershipType;
-        this.trainingPackage = trainingPackage;
-        this.registrationDate = registrationDate;
-        this.createdAt = LocalDateTime.now(); // Có thể tự động gán createdAt
+        this.gender = gender;
+        this.email = email;
     }
 
     // Getters and Setters
@@ -44,12 +42,20 @@ public class Members {
         this.memberId = memberId;
     }
 
-    public String getName() {
-        return name;
+    public String getCardCode() {
+        return cardCode;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCardCode(String cardCode) {
+        this.cardCode = cardCode;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getPhone() {
@@ -60,40 +66,19 @@ public class Members {
         this.phone = phone;
     }
 
-    public String getMembershipType() {
-        return membershipType;
+    public String getGender() {
+        return gender;
     }
 
-    public void setMembershipType(String membershipType) {
-        this.membershipType = membershipType;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public LocalDate getRegistrationDate() {
-        return registrationDate;
+    public String getEmail() {
+        return email;
     }
 
-    public void setRegistrationDate(LocalDate registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getTrainingPackage() {
-        return trainingPackage;
-    }
-
-    public void setTrainingPackage(String trainingPackage) {
-        this.trainingPackage = trainingPackage;
-    }
-
-    @Override
-    public String toString() {
-        return "Members{" + "memberId=" + memberId + ", name='" + name + '\'' + ", phone='" + phone + '\'' + ", membershipType='" + membershipType + '\'' + ", registrationDate=" + registrationDate + ", createdAt=" + createdAt + ", trainingPackage='" + trainingPackage + '\'' + '}';
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

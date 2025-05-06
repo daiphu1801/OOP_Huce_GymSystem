@@ -13,74 +13,97 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.controller.HoiVienController.HoiVienEditController">
+<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" stylesheets="@style.css"
+           xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.gym.oop_huce_gymsystem.controller.HoiVienController.HoiVienEditController">
     <children>
         <HBox fx:id="mainLayout">
             <children>
                 <!-- Sidebar menu - chiều rộng cố định -->
-                <VBox fx:id="sidebarVBox" alignment="CENTER" maxWidth="298.0" minWidth="250.0" prefHeight="720.0" prefWidth="274.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 0 40px 40px 0;" styleClass="menu-feature" stylesheets="@style.css">
+                <VBox fx:id="sidebarVBox" alignment="CENTER" maxWidth="298.0" minWidth="250.0" prefHeight="720.0"
+                      prefWidth="274.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 0 40px 40px 0;"
+                      styleClass="menu-feature" stylesheets="@style.css">
                     <children>
-                        <ImageView fitHeight="134.0" fitWidth="100.0" onMouseClicked="#backToList" pickOnBounds="true" preserveRatio="true" styleClass="logo_gym" VBox.vgrow="NEVER">
+                        <ImageView fitHeight="134.0" fitWidth="100.0" onMouseClicked="#backToList" pickOnBounds="true"
+                                   preserveRatio="true" styleClass="logo_gym" VBox.vgrow="NEVER">
                             <image>
-                                <Image url="@../../../IMAGE/gym_logo.png" />
+                                <Image url="@../../../IMAGE/gym_logo.png"/>
                             </image>
                             <VBox.margin>
-                                <Insets bottom="30.0" />
+                                <Insets bottom="30.0"/>
                             </VBox.margin>
                         </ImageView>
                         <VBox alignment="CENTER" prefHeight="141.0" prefWidth="274.0">
                             <children>
-                                <Button fx:id="hoivienBTN" alignment="BASELINE_LEFT" maxWidth="830.0" minWidth="230.0" mnemonicParsing="false" onAction="#backToList" prefHeight="49.0" prefWidth="288.0" style="-fx-background-color: #1a1a1a;" styleClass="hoivienBTN" text="Hội viên" textFill="WHITE">
+                                <Button fx:id="hoivienBTN" alignment="BASELINE_LEFT" maxWidth="830.0" minWidth="230.0"
+                                        mnemonicParsing="false" onAction="#backToList" prefHeight="49.0"
+                                        prefWidth="288.0" style="-fx-background-color: #1a1a1a;" styleClass="hoivienBTN"
+                                        text="Hội viên" textFill="WHITE">
                                     <font>
-                                        <Font name="Tektur Regular" size="23.0" />
+                                        <Font name="Tektur Regular" size="23.0"/>
                                     </font>
                                     <VBox.margin>
-                                        <Insets bottom="10.0" top="10.0" />
+                                        <Insets bottom="10.0" top="10.0"/>
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="cardBTN" alignment="BASELINE_LEFT" maxWidth="673.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="673.0" style="-fx-background-color: #1a1a1a;" styleClass="cardBTN" text="Thẻ Tập" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="cardBTN" alignment="BASELINE_LEFT" maxWidth="673.0" minWidth="230.0"
+                                        mnemonicParsing="false" prefHeight="49.0" prefWidth="673.0"
+                                        style="-fx-background-color: #1a1a1a;" styleClass="cardBTN" text="Thẻ Tập"
+                                        textAlignment="CENTER" textFill="WHITE">
                                     <font>
-                                        <Font name="Tektur Regular" size="23.0" />
+                                        <Font name="Tektur Regular" size="23.0"/>
                                     </font>
                                     <VBox.margin>
-                                        <Insets bottom="10.0" top="10.0" />
+                                        <Insets bottom="10.0" top="10.0"/>
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="969.0" style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="ptBTN" alignment="BASELINE_LEFT" maxWidth="969.0" minWidth="230.0"
+                                        mnemonicParsing="false" prefHeight="49.0" prefWidth="969.0"
+                                        style="-fx-background-color: #1a1a1a;" styleClass="ptBTN" text="Huấn luyện viên"
+                                        textAlignment="CENTER" textFill="WHITE">
                                     <font>
-                                        <Font name="Tektur Regular" size="23.0" />
+                                        <Font name="Tektur Regular" size="23.0"/>
                                     </font>
                                     <VBox.margin>
-                                        <Insets bottom="10.0" top="10.0" />
+                                        <Insets bottom="10.0" top="10.0"/>
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="thietbiBTN" alignment="BASELINE_LEFT" maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Thiết Bị" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="thietbiBTN" alignment="BASELINE_LEFT" maxWidth="840.0" minWidth="230.0"
+                                        mnemonicParsing="false" prefHeight="49.0" prefWidth="840.0"
+                                        style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Thiết Bị"
+                                        textAlignment="CENTER" textFill="WHITE">
                                     <font>
-                                        <Font name="Tektur Regular" size="23.0" />
+                                        <Font name="Tektur Regular" size="23.0"/>
                                     </font>
                                     <VBox.margin>
-                                        <Insets bottom="10.0" top="10.0" />
+                                        <Insets bottom="10.0" top="10.0"/>
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="productBTN" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="152.0" maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN" text="Sản phẩm" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="productBTN" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="152.0"
+                                        maxWidth="840.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0"
+                                        prefWidth="840.0" style="-fx-background-color: #1a1a1a;" styleClass="thietbiBTN"
+                                        text="Sản phẩm" textAlignment="CENTER" textFill="WHITE">
                                     <font>
-                                        <Font name="Tektur Regular" size="23.0" />
+                                        <Font name="Tektur Regular" size="23.0"/>
                                     </font>
                                     <VBox.margin>
-                                        <Insets bottom="10.0" top="10.0" />
+                                        <Insets bottom="10.0" top="10.0"/>
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="thongkeBTN" alignment="BASELINE_LEFT" maxWidth="400.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="400.0" style="-fx-background-color: #1a1a1a;" styleClass="thongkeBTN" text="Thống Kê &amp; Báo Cáo" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="thongkeBTN" alignment="BASELINE_LEFT" maxWidth="400.0" minWidth="230.0"
+                                        mnemonicParsing="false" prefHeight="49.0" prefWidth="400.0"
+                                        style="-fx-background-color: #1a1a1a;" styleClass="thongkeBTN"
+                                        text="Thống Kê &amp; Báo Cáo" textAlignment="CENTER" textFill="WHITE">
                                     <font>
-                                        <Font name="Tektur Regular" size="23.0" />
+                                        <Font name="Tektur Regular" size="23.0"/>
                                     </font>
                                     <VBox.margin>
-                                        <Insets bottom="10.0" top="10.0" />
+                                        <Insets bottom="10.0" top="10.0"/>
                                     </VBox.margin>
                                 </Button>
                             </children>
                             <VBox.margin>
-                                <Insets bottom="50.0" />
+                                <Insets bottom="50.0"/>
                             </VBox.margin>
                         </VBox>
                     </children>
@@ -89,106 +112,160 @@
                 <!-- Content area - edit form -->
                 <AnchorPane fx:id="contentArea" prefHeight="720.0" prefWidth="982.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <VBox alignment="CENTER" layoutX="12.0" layoutY="15.0" prefHeight="691.0" prefWidth="996.0" styleClass="register-form" stylesheets="@style.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="15.0">
+                        <VBox alignment="CENTER" layoutX="12.0" layoutY="15.0" prefHeight="691.0" prefWidth="996.0"
+                              styleClass="register-form" stylesheets="@style.css" AnchorPane.bottomAnchor="15.0"
+                              AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="15.0">
                             <children>
                                 <Label text="CHỈNH SỬA HỘI VIÊN" textFill="WHITE">
                                     <font>
-                                        <Font name="Tektur Regular" size="28.0" />
+                                        <Font name="Tektur Regular" size="28.0"/>
                                     </font>
                                     <VBox.margin>
-                                        <Insets bottom="30.0" />
+                                        <Insets bottom="30.0"/>
                                     </VBox.margin>
                                 </Label>
-
+                                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
+                                    <children>
+                                        <Label text="Mã hội viên: " textFill="WHITE">
+                                            <font>
+                                                <Font name="Tektur Regular" size="24.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets right="45.0"/>
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="memberIdField" prefHeight="48.0" prefWidth="448.0" promptText="Mã hội viên"
+                                                   style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px; -fx-text-fill: white;"
+                                                   editable="false">
+                                            <font>
+                                                <Font name="Tektur Regular" size="17.0"/>
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0"/>
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
+                                    <children>
+                                        <Label text="Mã thẻ: " textFill="WHITE">
+                                            <font>
+                                                <Font name="Tektur Regular" size="24.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets right="65.0"/>
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="cardCodeField" prefHeight="48.0" prefWidth="448.0" promptText="Mã thẻ (VD: CARD123)"
+                                                   style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px; -fx-text-fill: white;">
+                                            <font>
+                                                <Font name="Tektur Regular" size="17.0"/>
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0"/>
+                                    </VBox.margin>
+                                </HBox>
                                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
                                     <children>
                                         <Label text="Họ và tên: " textFill="WHITE">
                                             <font>
-                                                <Font name="Tektur Regular" size="24.0" />
+                                                <Font name="Tektur Regular" size="24.0"/>
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="45.0" />
+                                                <Insets right="45.0"/>
                                             </HBox.margin>
                                         </Label>
-                                        <TextField fx:id="nameField" prefHeight="48.0" prefWidth="448.0" promptText="Nguyễn Văn A" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px; -fx-text-fill: white;">
+                                        <TextField fx:id="fullNameField" prefHeight="48.0" prefWidth="448.0" promptText="Nguyễn Văn A"
+                                                   style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px; -fx-text-fill: white;">
                                             <font>
-                                                <Font name="Tektur Regular" size="17.0" />
+                                                <Font name="Tektur Regular" size="17.0"/>
                                             </font>
                                         </TextField>
                                     </children>
                                     <VBox.margin>
-                                        <Insets bottom="10.0" />
+                                        <Insets bottom="10.0"/>
                                     </VBox.margin>
                                 </HBox>
-
                                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
                                     <children>
                                         <Label text="Số điện thoại: " textFill="WHITE">
                                             <font>
-                                                <Font name="Tektur Regular" size="24.0" />
+                                                <Font name="Tektur Regular" size="24.0"/>
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="5.0" />
+                                                <Insets right="5.0"/>
                                             </HBox.margin>
                                         </Label>
-                                        <TextField fx:id="phoneField" prefHeight="48.0" prefWidth="448.0" promptText="0123456789" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px; -fx-text-fill: white;">
+                                        <TextField fx:id="phoneField" prefHeight="48.0" prefWidth="448.0" promptText="0123456789"
+                                                   style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px; -fx-text-fill: white;">
                                             <font>
-                                                <Font name="Tektur Regular" size="17.0" />
+                                                <Font name="Tektur Regular" size="17.0"/>
                                             </font>
                                         </TextField>
                                     </children>
                                     <VBox.margin>
-                                        <Insets bottom="10.0" />
+                                        <Insets bottom="10.0"/>
                                     </VBox.margin>
                                 </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="361.0" prefHeight="65.0" prefWidth="996.0">
-                           <children>
-                              <Label text="Email: " textFill="WHITE">
-                                 <font>
-                                    <Font name="Tektur Regular" size="24.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets right="95.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <TextField fx:id="emailField" prefHeight="48.0" prefWidth="448.0" promptText="abc@gmail.com" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px; -fx-text-fill: white;">
-                                 <font>
-                                    <Font name="Tektur Regular" size="17.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
-
                                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
                                     <children>
                                         <Label text="Giới tính: " textFill="WHITE">
                                             <font>
-                                                <Font name="Tektur Regular" size="24.0" />
+                                                <Font name="Tektur Regular" size="24.0"/>
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="65.0" />
+                                                <Insets right="65.0"/>
                                             </HBox.margin>
                                         </Label>
-                                        <ComboBox fx:id="genderComboBox" prefHeight="48.0" prefWidth="444.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;" />
+                                        <ComboBox fx:id="genderComboBox" prefHeight="48.0" prefWidth="444.0"
+                                                  style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;"/>
                                     </children>
                                     <VBox.margin>
-                                        <Insets bottom="10.0" top="10.0" />
+                                        <Insets bottom="10.0" top="10.0"/>
                                     </VBox.margin>
                                 </HBox>
-
-                                <HBox alignment="CENTER" prefHeight="0.0" prefWidth="996.0" styleClass="regis_btn" stylesheets="@style.css">
+                                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
                                     <children>
-                                        <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#backToList" prefHeight="54.0" prefWidth="150.0" style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="previous_page" text="Trở về" textAlignment="CENTER" textFill="WHITE">
+                                        <Label text="Email: " textFill="WHITE">
                                             <font>
-                                                <Font name="Tektur Regular" size="25.0" />
+                                                <Font name="Tektur Regular" size="24.0"/>
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="100.0" />
+                                                <Insets right="95.0"/>
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="emailField" prefHeight="48.0" prefWidth="448.0" promptText="abc@gmail.com"
+                                                   style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px; -fx-text-fill: white;">
+                                            <font>
+                                                <Font name="Tektur Regular" size="17.0"/>
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0"/>
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="0.0" prefWidth="996.0" styleClass="regis_btn" stylesheets="@style.css">
+                                    <children>
+                                        <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#backToList"
+                                                prefHeight="54.0" prefWidth="150.0"
+                                                style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);"
+                                                styleClass="previous_page" text="Trở về" textAlignment="CENTER" textFill="WHITE">
+                                            <font>
+                                                <Font name="Tektur Regular" size="25.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets right="100.0"/>
                                             </HBox.margin>
                                         </Button>
-                                        <Button fx:id="saveButton" alignment="CENTER" mnemonicParsing="false" onAction="#saveChanges" prefHeight="55.0" prefWidth="156.0" style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="previous_page" text="Lưu" textAlignment="CENTER" textFill="WHITE">
+                                        <Button fx:id="saveButton" alignment="CENTER" mnemonicParsing="false" onAction="#saveChanges"
+                                                prefHeight="55.0" prefWidth="156.0"
+                                                style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);"
+                                                styleClass="previous_page" text="Lưu" textAlignment="CENTER" textFill="WHITE">
                                             <font>
-                                                <Font name="Tektur Regular" size="28.0" />
+                                                <Font name="Tektur Regular" size="28.0"/>
                                             </font>
                                         </Button>
                                     </children>

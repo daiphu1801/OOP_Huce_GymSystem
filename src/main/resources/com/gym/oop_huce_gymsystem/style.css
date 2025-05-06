@@ -9,6 +9,10 @@
     -fx-background-color: linear-gradient(to right, #2D7DFF, #5166FF);
 }
 
+.table-view .column-header.genderColumn {
+    -fx-background-color: linear-gradient(to right, #2D7DFF, #5166FF);
+}
+
 .table-view .column-header.phoneColumn {
     -fx-background-color: linear-gradient(to right, #5166FF, #714EFF);
 }

@@ -15,7 +15,7 @@ public class Main extends Application {
         // Lấy kích thước màn hình của người dùng
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("AmainView.fxml"));
 
         // Tạo scene với kích thước mặc định 1280x720
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);

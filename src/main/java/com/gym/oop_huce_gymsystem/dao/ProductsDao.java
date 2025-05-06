@@ -8,16 +8,18 @@ import com.gym.oop_huce_gymsystem.model.*;
 import com.gym.oop_huce_gymsystem.util.*;
 
 public class ProductsDao {
-    // them
+
+    // Thêm sản phẩm
     public void addProduct(Products product) throws Exception {
-        String query = "INSERT INTO products (name, price, quantity, create_at) " +
+        String query = "INSERT INTO products (name, price, quantity, quantity_sold) " +
                 "VALUES (?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, product.getName());
-            stmt.setString(2, product.getPrice());
-            stmt.setString(3, product.getQuantity());
-            stmt.setDate(4, product.getCreate_at());
+            stmt.setDouble(2, product.getPrice());
+            stmt.setInt(3, product.getQuantity());
+            stmt.setInt(4,product.getQuantitySold());
+
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
@@ -29,16 +31,17 @@ public class ProductsDao {
             throw e;
         }
     }
-    // sửa
+
+    // Sửa sản phẩm
     public void updateProduct(Products product) throws SQLException {
-        String query = "UPDATE product SET name = ?, price = ?, quantity = ?, " +
-                "create_at=? WHERE product_id = ?";
+        String query = "UPDATE products SET name = ?, price = ?, quantity = ?, " +
+                "quantity_sold = ? WHERE product_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, product.getName());
-            stmt.setString(2, product.getPrice());
-            stmt.setString(3, product.getQuantity());
-            stmt.setDate(4, product.getCreate_at());
+            stmt.setDouble(2, product.getPrice());
+            stmt.setInt(3, product.getQuantity());
+            stmt.setInt(4, product.getQuantitySold());
             stmt.setInt(5, product.getProductId());
 
             int rowsAffected = stmt.executeUpdate();
@@ -49,9 +52,10 @@ public class ProductsDao {
             throw new SQLException("Lỗi khi cập nhật sản phẩm: " + e.getMessage(), e);
         }
     }
-    //xóa
+
+    // Xóa sản phẩm
     public void deleteProduct(int productId) throws SQLException {
-        String query = "DELETE FROM product WHERE product_id = ?";
+        String query = "DELETE FROM products WHERE product_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, productId);
@@ -62,7 +66,48 @@ public class ProductsDao {
         }
     }
 
-
+    //Lấy tất cả sản paharm
+    public List<Products> getAllProducts() throws SQLException {
+        List<Products> products = new ArrayList<>();
+        String query = "SELECT * FROM products";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Products product = new Products(
+                        rs.getInt("product_id"),
+                        rs.getString("name"),
+                        rs.getDouble("price"),
+                        rs.getInt("quantity"),
+                        rs.getInt("quantity_sold")
+                );
+                products.add(product);
+            }
+        }
+        return products;
     }
+
+    public Products getProductById(int productId) throws SQLException {
+        String query = "SELECT * FROM products WHERE product_id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, productId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                   Products product = new Products();
+                   product.setProductId(rs.getInt("product_id"));
+                   product.setName(rs.getString("name"));
+                   product.setPrice(rs.getDouble("price"));
+                   product.setQuantity(rs.getInt("quantity"));
+                   product.setQuantitySold(rs.getInt("quantity_sold"));
+                   return product;
+                }
+            }
+        }catch (SQLException e) {
+            throw new SQLException("Không tìm thấy sản phẩm với ID: " + productId);
+        }
+        return null;
+    }
+}
 
 
