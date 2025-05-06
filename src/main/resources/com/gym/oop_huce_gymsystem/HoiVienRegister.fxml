@@ -39,7 +39,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="cardBTN" alignment="BASELINE_LEFT" maxWidth="673.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="673.0" style="-fx-background-color: #1a1a1a;" styleClass="cardBTN" text="Thẻ Tập" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="cardBTN" alignment="BASELINE_LEFT" maxWidth="673.0" minWidth="230.0" mnemonicParsing="false" onAction="#switchToMemberCardList" prefHeight="49.0" prefWidth="673.0" style="-fx-background-color: #1a1a1a;" styleClass="cardBTN" text="Thẻ Tập" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -99,6 +99,29 @@
                                         <Insets bottom="30.0" />
                                     </VBox.margin>
                                 </Label>
+
+                                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
+                                    <children>
+                                        <Label text="Mã thẻ: " textFill="WHITE">
+                                            <font>
+                                                <Font name="Tektur Regular" size="24.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets right="65.0" />
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="cardCodeField" prefHeight="48.0" prefWidth="448.0" promptText="Mã thẻ (VD: CARD123)" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
+                                            <font>
+                                                <Font name="Tektur Regular" size="17.0" />
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" />
+                                    </VBox.margin>
+                                </HBox>
+
+
                                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
                                     <children>
                                         <Label text="Họ và tên: " textFill="WHITE">
@@ -139,23 +162,6 @@
                                         <Insets bottom="10.0" />
                                     </VBox.margin>
                                 </HBox>
-                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
-                           <children>
-                              <Label text="Email: " textFill="WHITE">
-                                 <font>
-                                    <Font name="Tektur Regular" size="24.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets right="95.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <TextField fx:id="emailTextField" prefHeight="48.0" prefWidth="448.0" promptText="abc@gmail.com" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
-                                 <font>
-                                    <Font name="Tektur Regular" size="17.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
                                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
                                     <children>
                                         <Label text="Giới tính: " textFill="WHITE">
@@ -175,6 +181,25 @@
                                         <Insets bottom="10.0" />
                                     </VBox.margin>
                                 </HBox>
+
+                                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
+                                    <children>
+                                        <Label text="Email: " textFill="WHITE">
+                                            <font>
+                                                <Font name="Tektur Regular" size="24.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets right="95.0" />
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="emailTextField" prefHeight="48.0" prefWidth="448.0" promptText="abc@gmail.com" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
+                                            <font>
+                                                <Font name="Tektur Regular" size="17.0" />
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                </HBox>
+
                                 <HBox alignment="CENTER" prefHeight="0.0" prefWidth="996.0" styleClass="regis_btn" stylesheets="@style.css">
                                     <children>
                                         <Button alignment="CENTER" mnemonicParsing="false" onAction="#SwitchTolisthoivien" prefHeight="54.0" prefWidth="150.0" style="-fx-background-radius: 15px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff);" styleClass="previous_page" text="Trở về" textAlignment="CENTER" textFill="WHITE">

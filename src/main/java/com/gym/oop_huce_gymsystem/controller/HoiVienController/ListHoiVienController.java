@@ -11,12 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.application.Platform;
-
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -24,6 +21,7 @@ public class ListHoiVienController implements Initializable {
 
     @FXML private TableView<Members> memberTable;
     @FXML private TableColumn<Members, Integer> memberIdColumn;
+    @FXML private TableColumn<Members, String> cardIDColumn;
     @FXML private TableColumn<Members, String> fullNameColumn;
     @FXML private TableColumn<Members, String> phoneNumberColumn;
     @FXML private TableColumn<Members, String> genderColumn;
@@ -34,6 +32,7 @@ public class ListHoiVienController implements Initializable {
     private ObservableList<Members> memberList;
     private final ScenceController scenceController;
 
+    // Khởi tạo controller
     public ListHoiVienController() {
         this.memberService = new MembersService();
         this.scenceController = new ScenceController();
@@ -43,6 +42,7 @@ public class ListHoiVienController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // Thiết lập kích thước tối thiểu cho các cột
         memberIdColumn.setMinWidth(50);
+        cardIDColumn.setMinWidth(100);
         fullNameColumn.setMinWidth(150);
         phoneNumberColumn.setMinWidth(100);
         genderColumn.setMinWidth(120);
@@ -50,14 +50,15 @@ public class ListHoiVienController implements Initializable {
 
         // Thiết lập ánh xạ cột với thuộc tính của Members
         memberIdColumn.setCellValueFactory(new PropertyValueFactory<>("memberId"));
-        fullNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        cardIDColumn.setCellValueFactory(new PropertyValueFactory<>("cardCode"));
+        fullNameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
         genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-
         // Thiết lập cell factory với text màu trắng rõ ràng
         memberIdColumn.setCellFactory(column -> createStringTableCell());
+        cardIDColumn.setCellFactory(column -> createStringTableCell());
         fullNameColumn.setCellFactory(column -> createStringTableCell());
         phoneNumberColumn.setCellFactory(column -> createStringTableCell());
         genderColumn.setCellFactory(column -> createStringTableCell());
@@ -73,9 +74,9 @@ public class ListHoiVienController implements Initializable {
         memberTable.getStyleClass().add("memberTable");
     }
 
+    // Xử lý sự kiện nhấp đúp để xem chi tiết hội viên
     @FXML
     public void handleDoubleClick(MouseEvent event) {
-        // Kiểm tra nhấp đúp (2 lần nhấp)
         if (event.getClickCount() == 2) {
             Members selected = memberTable.getSelectionModel().getSelectedItem();
             if (selected == null) {
@@ -84,10 +85,9 @@ public class ListHoiVienController implements Initializable {
                 return;
             }
 
-            System.out.println("[ListHoiVienController] Nhấp đúp vào hội viên: " + selected.getName() + ", SĐT: " + selected.getPhone());
+            System.out.println("[ListHoiVienController] Nhấp đúp vào hội viên: " + selected.getFullName() + ", SĐT: " + selected.getPhone());
             try {
-                // Chỉ truyền memberId thay vì toàn bộ đối tượng Members
-                HoiVienFullInfoController controller = scenceController.switchToHoiVienFullInfo(new ActionEvent(event.getSource(), null), selected.getMemberId());
+                scenceController.switchToHoiVienFullInfo(new ActionEvent(event.getSource(), null), selected.getMemberId());
                 System.out.println("[ListHoiVienController] Đã chuyển sang HoiVienFullInfoController thành công.");
             } catch (Exception e) {
                 System.out.println("[ListHoiVienController] Lỗi khi chuyển sang HoiVienFullInfoController: " + e.getMessage());
@@ -97,48 +97,41 @@ public class ListHoiVienController implements Initializable {
         }
     }
 
-
-    // Helper method để tạo TableCell với style rõ ràng
+    // Tạo TableCell với style rõ ràng
     private <T> TableCell<Members, T> createStringTableCell() {
         return new TableCell<Members, T>() {
             @Override
             protected void updateItem(T item, boolean empty) {
                 super.updateItem(item, empty);
-
                 if (empty || item == null) {
                     setText(null);
                     setStyle("");
                 } else {
                     setText(item.toString());
-//                    setStyle("-fx-text-fill: white !important;");
                 }
             }
         };
     }
 
+    // Tải dữ liệu hội viên từ service
     private void loadMemberData() {
         try {
             List<Members> members = memberService.getAllMembers();
             memberList = FXCollections.observableArrayList(members);
 
-            // Kiểm tra danh sách thành viên
             if (members.isEmpty()) {
                 System.out.println("Danh sách hội viên trống!");
             } else {
                 System.out.println("Đã tải " + members.size() + " hội viên.");
                 for (Members member : members) {
-                    System.out.println("Hội viên: " + member.getMemberId() + ", " + member.getName() + ", " +
-                            member.getPhone() + ", " + member.getMembershipType() + ", " +
-                            member.getTrainingPackage() + ", " + member.getRegistrationDate());
+                    System.out.println("Hội viên: " + member.getMemberId() + ", " + member.getFullName() + ", " +
+                            member.getPhone() + ", " + member.getCardCode() + ", " + member.getGender() + ", " + member.getEmail());
                 }
             }
 
-            // Sử dụng Platform.runLater để đảm bảo UI được cập nhật trên thread JavaFX
             Platform.runLater(() -> {
                 memberTable.setItems(memberList);
                 memberTable.refresh();
-
-                // Debug: Kiểm tra số lượng dòng trong bảng
                 System.out.println("Số dòng trong bảng: " + memberTable.getItems().size());
             });
 
@@ -148,22 +141,25 @@ public class ListHoiVienController implements Initializable {
         }
     }
 
+    // Lọc danh sách hội viên dựa trên từ khóa tìm kiếm
     private void filterMembers(String keyword) {
         if (keyword == null || keyword.trim().isEmpty()) {
             memberTable.setItems(memberList);
         } else {
             String lowerKeyword = keyword.trim().toLowerCase();
             ObservableList<Members> filtered = memberList.filtered(m ->
-                    (m.getName() != null && m.getName().toLowerCase().contains(lowerKeyword)) ||
+                    (m.getFullName() != null && m.getFullName().toLowerCase().contains(lowerKeyword)) ||
                             (m.getPhone() != null && m.getPhone().contains(lowerKeyword)) ||
-                            (m.getMembershipType() != null && m.getMembershipType().toLowerCase().contains(lowerKeyword)) ||
-                            (m.getTrainingPackage() != null && m.getTrainingPackage().toLowerCase().contains(lowerKeyword))
+                            (m.getCardCode() != null && m.getCardCode().toLowerCase().contains(lowerKeyword)) ||
+                            (m.getGender() != null && m.getGender().toLowerCase().contains(lowerKeyword)) ||
+                            (m.getEmail() != null && m.getEmail().toLowerCase().contains(lowerKeyword))
             );
             memberTable.setItems(filtered);
         }
         memberTable.refresh();
     }
 
+    // Xử lý xóa hội viên
     @FXML
     private void handleDeleteMember(ActionEvent event) {
         Members selected = memberTable.getSelectionModel().getSelectedItem();
@@ -175,7 +171,7 @@ public class ListHoiVienController implements Initializable {
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
         confirm.setTitle("Xác nhận xóa");
         confirm.setHeaderText(null);
-        confirm.setContentText("Bạn có chắc muốn xóa hội viên " + selected.getName() + " (" + selected.getPhone() + ")?");
+        confirm.setContentText("Bạn có chắc muốn xóa hội viên " + selected.getFullName() + " (" + selected.getPhone() + ")?");
         confirm.showAndWait().ifPresent(resp -> {
             if (resp == ButtonType.OK) {
                 try {
@@ -191,6 +187,7 @@ public class ListHoiVienController implements Initializable {
         });
     }
 
+    // Hiển thị thông báo
     private void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
@@ -199,12 +196,13 @@ public class ListHoiVienController implements Initializable {
         alert.showAndWait();
     }
 
-    // Các phương thức chuyển scene giữ nguyên như cũ
+    // Các phương thức chuyển scene
     @FXML
-    public void switchHome (javafx.scene.input.MouseEvent event) throws IOException {
+    public void switchHome(javafx.scene.input.MouseEvent event) throws IOException {
         ActionEvent actionEvent = new ActionEvent(event.getSource(), event.getTarget());
         scenceController.switchToHelloView(actionEvent);
     }
+
     @FXML
     public void SwitchToregister(ActionEvent event) throws IOException {
         scenceController.switchToRegister(event);
@@ -216,8 +214,8 @@ public class ListHoiVienController implements Initializable {
     }
 
     @FXML
-    public void switchToHoiVienFullInfo(ActionEvent event,int memberId) throws IOException {
-        scenceController.switchToHoiVienFullInfo(event,memberId);
+    public void switchToHoiVienFullInfo(ActionEvent event, int memberId) throws IOException {
+        scenceController.switchToHoiVienFullInfo(event, memberId);
     }
 
     @FXML

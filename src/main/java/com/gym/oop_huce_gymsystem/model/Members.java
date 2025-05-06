@@ -24,6 +24,15 @@ public class Members {
         this.email = email;
     }
 
+    // Parameterized constructor
+    public Members(String cardCode, String fullName, String phone, String gender, String email) {
+        this.cardCode = cardCode;
+        this.fullName = fullName;
+        this.phone = phone;
+        this.gender = gender;
+        this.email = email;
+    }
+
     // Getters and Setters
     public int getMemberId() {
         return memberId;

@@ -1,10 +1,11 @@
 package com.gym.oop_huce_gymsystem;
 
-import com.gym.oop_huce_gymsystem.controller.EquipmentsController.EquipmentsDetailsController;
-import com.gym.oop_huce_gymsystem.controller.EquipmentsController.EquipmentsEditController;
+
+import com.gym.oop_huce_gymsystem.controller.EquipmentsController.*;
 import com.gym.oop_huce_gymsystem.controller.ProductsController.*;
 import com.gym.oop_huce_gymsystem.controller.MemberShipCardsController.*;
 import com.gym.oop_huce_gymsystem.controller.TrainersController.*;
+import com.gym.oop_huce_gymsystem.controller.HoiVienController.*;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.TableView;
-//import com.gym.oop_huce_gymsystem.controller.HoiVienController.*;
+
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -116,57 +117,57 @@ public class ScenceController {
         }
     }
 
-//    public HoiVienFullInfoController switchToHoiVienFullInfo(ActionEvent event, int memberId) throws IOException {
-//        System.out.println("[ScenceController] Bắt đầu chuyển sang HoiVienFullInfoController với memberId: " + memberId);
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/HoiVienDetails.fxml"));
-//            if (loader.getLocation() == null) {
-//                System.out.println("[ScenceController] Lỗi: Không tìm thấy tệp HoiVienFullInfo.fxml");
-//                throw new IOException("Không tìm thấy tệp HoiVienFullInfo.fxml");
-//            }
-//            Parent root = loader.load();
-//            HoiVienFullInfoController controller = loader.getController();
-//            if (controller == null) {
-//                System.out.println("[ScenceController] Lỗi: Không thể lấy HoiVienFullInfoController từ loader.");
-//                throw new IOException("Không thể lấy controller từ loader.");
-//            }
-//            controller.setMemberId(memberId);
-//            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//            stage.setScene(new Scene(root));
-//            stage.show();
-//            System.out.println("[ScenceController] Chuyển sang HoiVienFullInfoController thành công.");
-//            return controller;
-//        } catch (Exception e) {
-//            System.out.println("[ScenceController] Lỗi khi tải HoiVienFullInfo.fxml: " + e.getMessage());
-//            throw e;
-//        }
-//    }
+    public HoiVienFullInfoController switchToHoiVienFullInfo(ActionEvent event, int memberId) throws IOException {
+        System.out.println("[ScenceController] Bắt đầu chuyển sang HoiVienFullInfoController với memberId: " + memberId);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/HoiVienDetails.fxml"));
+            if (loader.getLocation() == null) {
+                System.out.println("[ScenceController] Lỗi: Không tìm thấy tệp HoiVienFullInfo.fxml");
+                throw new IOException("Không tìm thấy tệp HoiVienFullInfo.fxml");
+            }
+            Parent root = loader.load();
+            HoiVienFullInfoController controller = loader.getController();
+            if (controller == null) {
+                System.out.println("[ScenceController] Lỗi: Không thể lấy HoiVienFullInfoController từ loader.");
+                throw new IOException("Không thể lấy controller từ loader.");
+            }
+            controller.setMemberId(memberId);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+            System.out.println("[ScenceController] Chuyển sang HoiVienFullInfoController thành công.");
+            return controller;
+        } catch (Exception e) {
+            System.out.println("[ScenceController] Lỗi khi tải HoiVienFullInfo.fxml: " + e.getMessage());
+            throw e;
+        }
+    }
 
-//    public HoiVienEditController switchToHoiVienEdit(ActionEvent event, int memberId) throws IOException {
-//        System.out.println("[ScenceController] Bắt đầu chuyển sang HoiVienEditController với memberId: " + memberId);
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/HoiVienEdit.fxml"));
-//            if (loader.getLocation() == null) {
-//                System.out.println("[ScenceController] Lỗi: Không tìm thấy tệp HoiVienEdit.fxml");
-//                throw new IOException("Không tìm thấy tệp HoiVienEdit.fxml");
-//            }
-//            Parent root = loader.load();
-//            HoiVienEditController controller = loader.getController();
-//            if (controller == null) {
-//                System.out.println("[ScenceController] Lỗi: Không thể lấy HoiVienEditController từ loader.");
-//                throw new IOException("Không thể lấy controller từ loader.");
-//            }
-//            controller.setMemberId(memberId);
-//            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//            stage.setScene(new Scene(root));
-//            stage.show();
-//            System.out.println("[ScenceController] Chuyển sang HoiVienEditController thành công.");
-//            return controller;
-//        } catch (Exception e) {
-//            System.out.println("[ScenceController] Lỗi khi tải HoiVienEdit.fxml: " + e.getMessage());
-//            throw e;
-//        }
-//    }
+    public HoiVienEditController switchToHoiVienEdit(ActionEvent event, int memberId) throws IOException {
+        System.out.println("[ScenceController] Bắt đầu chuyển sang HoiVienEditController với memberId: " + memberId);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/HoiVienEdit.fxml"));
+            if (loader.getLocation() == null) {
+                System.out.println("[ScenceController] Lỗi: Không tìm thấy tệp HoiVienEdit.fxml");
+                throw new IOException("Không tìm thấy tệp HoiVienEdit.fxml");
+            }
+            Parent root = loader.load();
+            HoiVienEditController controller = loader.getController();
+            if (controller == null) {
+                System.out.println("[ScenceController] Lỗi: Không thể lấy HoiVienEditController từ loader.");
+                throw new IOException("Không thể lấy controller từ loader.");
+            }
+            controller.setMemberId(memberId);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+            System.out.println("[ScenceController] Chuyển sang HoiVienEditController thành công.");
+            return controller;
+        } catch (Exception e) {
+            System.out.println("[ScenceController] Lỗi khi tải HoiVienEdit.fxml: " + e.getMessage());
+            throw e;
+        }
+    }
 
     public void switchToMemberCardDetail(ActionEvent event, String cardId) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/MemberShipCardDetails.fxml"));

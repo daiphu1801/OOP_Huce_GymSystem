@@ -25,6 +25,15 @@ public class MemberShipCards {
         this.expiryDate = expiryDate;
     }
 
+    // Parameterized constructor
+    public MemberShipCards(double price, String trainingPackage, String cardType, LocalDate registrationDate, LocalDate expiryDate) {
+        this.trainingPackage = trainingPackage;
+        this.cardType = cardType;
+        this.price = price;
+        this.registrationDate = registrationDate;
+        this.expiryDate = expiryDate;
+    }
+
     public String getCardId() {
         return cardId;
     }

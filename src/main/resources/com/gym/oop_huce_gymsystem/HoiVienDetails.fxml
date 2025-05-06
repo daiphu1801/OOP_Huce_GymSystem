@@ -119,7 +119,7 @@
                                             <children>
                                                 <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="534.0" HBox.hgrow="ALWAYS">
                                                     <children>
-                                                        <Label minWidth="150.0" text="Mã thẻ: " textFill="WHITE">
+                                                        <Label minWidth="150.0" text="Mã hội viên: " textFill="WHITE">
                                                             <font>
                                                                 <Font name="Tektur Regular" size="40.0" />
                                                             </font>
@@ -127,7 +127,7 @@
                                                                 <Insets left="30.0" />
                                                             </HBox.margin>
                                                         </Label>
-                                                        <Label fx:id="memberIdLabel" layoutX="218.0" layoutY="39.0" text="N/A" textFill="WHITE">
+                                                        <Label fx:id="memberIdLabel" text="N/A" textFill="WHITE">
                                                             <font>
                                                                 <Font name="Tektur Regular" size="40.0" />
                                                             </font>
@@ -137,29 +137,9 @@
                                                         <Insets top="30.0" />
                                                     </VBox.margin>
                                                 </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="534.0">
-                                       <children>
-                                          <Label minWidth="150.0" text="Mã hội viên: " textFill="WHITE">
-                                             <font>
-                                                <Font name="Tektur Regular" size="40.0" />
-                                             </font>
-                                             <HBox.margin>
-                                                <Insets left="30.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                          <Label fx:id="memberIdLabel1" layoutX="218.0" layoutY="39.0" text="N/A" textFill="WHITE">
-                                             <font>
-                                                <Font name="Tektur Regular" size="40.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </HBox>
                                                 <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="534.0" HBox.hgrow="ALWAYS">
                                                     <children>
-                                                        <Label minWidth="150.0" text="Họ và tên: " textFill="WHITE">
+                                                        <Label minWidth="150.0" text="Mã thẻ: " textFill="WHITE">
                                                             <font>
                                                                 <Font name="Tektur Regular" size="40.0" />
                                                             </font>
@@ -167,7 +147,7 @@
                                                                 <Insets left="30.0" />
                                                             </HBox.margin>
                                                         </Label>
-                                                        <Label fx:id="fullNameLabel" layoutX="218.0" layoutY="39.0" text="N/A" textFill="WHITE">
+                                                        <Label fx:id="cardCodeLabel" text="N/A" textFill="WHITE">
                                                             <font>
                                                                 <Font name="Tektur Regular" size="40.0" />
                                                             </font>
@@ -179,7 +159,7 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="534.0" HBox.hgrow="ALWAYS">
                                                     <children>
-                                                        <Label minWidth="150.0" text="Giới tính: " textFill="WHITE">
+                                                        <Label minWidth="150.0" text="Họ và tên: " textFill="WHITE">
                                                             <font>
                                                                 <Font name="Tektur Regular" size="40.0" />
                                                             </font>
@@ -187,7 +167,7 @@
                                                                 <Insets left="30.0" />
                                                             </HBox.margin>
                                                         </Label>
-                                                        <Label fx:id="membershipTypeLabel" layoutX="218.0" layoutY="39.0" text="N/A" textFill="WHITE">
+                                                        <Label fx:id="fullNameLabel" text="N/A" textFill="WHITE">
                                                             <font>
                                                                 <Font name="Tektur Regular" size="40.0" />
                                                             </font>
@@ -207,7 +187,27 @@
                                                                 <Insets left="30.0" />
                                                             </HBox.margin>
                                                         </Label>
-                                                        <Label fx:id="phoneNumberLabel" layoutX="218.0" layoutY="39.0" text="N/A" textFill="WHITE">
+                                                        <Label fx:id="phoneNumberLabel" text="N/A" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="Tektur Regular" size="40.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets top="10.0" />
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="534.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label minWidth="150.0" text="Giới tính: " textFill="WHITE">
+                                                            <font>
+                                                                <Font name="Tektur Regular" size="40.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="30.0" />
+                                                            </HBox.margin>
+                                                        </Label>
+                                                        <Label fx:id="genderLabel" text="N/A" textFill="WHITE">
                                                             <font>
                                                                 <Font name="Tektur Regular" size="40.0" />
                                                             </font>
@@ -227,7 +227,7 @@
                                                                 <Insets left="30.0" />
                                                             </HBox.margin>
                                                         </Label>
-                                                        <Label fx:id="trainingPackageLabel" layoutX="218.0" layoutY="39.0" text="N/A" textFill="WHITE">
+                                                        <Label fx:id="emailLabel" text="N/A" textFill="WHITE">
                                                             <font>
                                                                 <Font name="Tektur Regular" size="40.0" />
                                                             </font>
