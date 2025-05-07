@@ -13,6 +13,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -31,6 +36,21 @@ public class ScenceController {
 
     @FXML
     private AnchorPane contentArea;
+
+    @FXML
+    private BarChart<String, Number> barChart;
+
+    @FXML
+    private CategoryAxis xAxis;
+
+    @FXML
+    private NumberAxis yAxis;
+
+    @FXML
+    private Button btnMonth;
+
+    @FXML
+    private Button btnQuarter;
 
     // Phương thức chung để thiết lập scene với cùng cài đặt
     void setupScene(String resourceName, ActionEvent event) throws IOException {
@@ -115,6 +135,48 @@ public class ScenceController {
                 memberTable.getColumns().forEach(col -> col.setPrefWidth(columnWidth));
             }
         }
+
+        // Khởi tạo biểu đồ với dữ liệu doanh thu tháng
+        if (barChart != null) {
+            showMonthlyRevenue();
+            btnMonth.setOnAction(event -> showMonthlyRevenue());
+            btnQuarter.setOnAction(event -> showQuarterlyRevenue());
+        }
+    }
+
+    private void showMonthlyRevenue() {
+        barChart.getData().clear();
+        xAxis.setLabel("Tháng");
+        yAxis.setLabel("Triệu (VNĐ)");
+
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Doanh thu 2025");
+
+        // Dữ liệu doanh thu tháng cố định (triệu VNĐ)
+        series.getData().add(new XYChart.Data<>("Tháng 1", 50));
+        series.getData().add(new XYChart.Data<>("Tháng 2", 60));
+        series.getData().add(new XYChart.Data<>("Tháng 3", 55));
+        series.getData().add(new XYChart.Data<>("Tháng 4", 70));
+        series.getData().add(new XYChart.Data<>("Tháng 5", 65));
+
+        barChart.getData().add(series);
+    }
+
+    private void showQuarterlyRevenue() {
+        barChart.getData().clear();
+        xAxis.setLabel("Quý");
+        yAxis.setLabel("Triệu (VNĐ)");
+
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Doanh thu 2025");
+
+        // Dữ liệu doanh thu quý cố định (triệu VNĐ)
+        series.getData().add(new XYChart.Data<>("Quý 1", 165));
+        series.getData().add(new XYChart.Data<>("Quý 2", 200));
+        series.getData().add(new XYChart.Data<>("Quý 3", 180));
+        series.getData().add(new XYChart.Data<>("Quý 4", 220));
+
+        barChart.getData().add(series);
     }
 
     public HoiVienFullInfoController switchToHoiVienFullInfo(ActionEvent event, int memberId) throws IOException {
