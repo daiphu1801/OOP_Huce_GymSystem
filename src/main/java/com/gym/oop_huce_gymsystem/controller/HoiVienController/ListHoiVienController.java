@@ -190,20 +190,6 @@ public class ListHoiVienController implements Initializable {
             } else {
                 System.out.println("Hủy xóa hội viên: " + selected.getFullName());
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         });
     }
 
