@@ -9,11 +9,37 @@ import java.util.List;
 public class MemberShipCardsDao {
 
     // Thêm một thẻ thành viên mới
-    public void addMemberShipCard(MemberShipCards card) throws SQLException {
+//    public void addMemberShipCard(MemberShipCards card) throws SQLException {
+//        String query = "INSERT INTO membership_cards (price, training_package, card_type, registration_date, expiry_date) " +
+//                "VALUES (?, ?, ?, ?, ?)";
+//        try (Connection conn = DatabaseConnection.getConnection();
+//             PreparedStatement stmt = conn.prepareStatement(query)) {
+//            stmt.setDouble(1, card.getPrice());
+//            stmt.setString(2, card.getTrainingPackage());
+//            stmt.setString(3, card.getCardType());
+//            stmt.setDate(4, java.sql.Date.valueOf(card.getRegistrationDate()));
+//            stmt.setDate(5, java.sql.Date.valueOf(card.getExpiryDate()));
+//
+//            int rowsAffected = stmt.executeUpdate();
+//            if (rowsAffected > 0) {
+//                System.out.println("Đã thêm thẻ thành viên thành công: " + card.getCardId());
+//            } else {
+//                throw new SQLException("Không thể thêm thẻ thành viên: Không có hàng nào được thêm.");
+//            }
+//        } catch (SQLException e) {
+//            throw new SQLException("Lỗi khi thêm thẻ thành viên: " + e.getMessage(), e);
+//        }
+//    }
+
+    public String addMemberShipCard(MemberShipCards card) throws SQLException {
         String query = "INSERT INTO membership_cards (price, training_package, card_type, registration_date, expiry_date) " +
                 "VALUES (?, ?, ?, ?, ?)";
+        String selectQuery = "SELECT card_id FROM membership_cards WHERE price = ? AND registration_date = ? AND expiry_date = ? ORDER BY card_id DESC LIMIT 1";
+
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+             PreparedStatement stmt = conn.prepareStatement(query);
+             PreparedStatement selectStmt = conn.prepareStatement(selectQuery)) {
+
             stmt.setDouble(1, card.getPrice());
             stmt.setString(2, card.getTrainingPackage());
             stmt.setString(3, card.getCardType());
@@ -23,6 +49,18 @@ public class MemberShipCardsDao {
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Đã thêm thẻ thành viên thành công: " + card.getCardId());
+                // Truy vấn lại để lấy card_id vừa tạo
+                selectStmt.setDouble(1, card.getPrice());
+                selectStmt.setDate(2, java.sql.Date.valueOf(card.getRegistrationDate()));
+                selectStmt.setDate(3, java.sql.Date.valueOf(card.getExpiryDate()));
+                try (ResultSet rs = selectStmt.executeQuery()) {
+                    if (rs.next()) {
+                        String cardId = rs.getString("card_id");
+                        return cardId;
+                    } else {
+                        throw new SQLException("Không thể lấy card_id sau khi thêm.");
+                    }
+                }
             } else {
                 throw new SQLException("Không thể thêm thẻ thành viên: Không có hàng nào được thêm.");
             }
@@ -60,8 +98,10 @@ public class MemberShipCardsDao {
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, cardId);
             int rowsAffected = stmt.executeUpdate();
-            if (rowsAffected == 0) {
-                throw new SQLException("Không tìm thấy thẻ thành viên với ID: " + cardId);
+            if (rowsAffected > 0) {
+                System.out.println("Đã xóa thẻ thành viên: " + cardId);
+            } else {
+                System.out.println("Không tìm thấy thẻ thành viên để xóa: " + cardId);
             }
         } catch (SQLException e) {
             throw new SQLException("Lỗi khi xóa thẻ thành viên: " + e.getMessage(), e);

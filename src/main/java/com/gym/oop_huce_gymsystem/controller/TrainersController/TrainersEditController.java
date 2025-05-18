@@ -26,7 +26,7 @@ public class TrainersEditController implements Initializable {
 
     private final ScenceController scenceController;
     private final TrainersService trainersService;
-    private int trainerId;
+    private String trainerId;
     private boolean isInitialized;
 
     public TrainersEditController() {
@@ -44,12 +44,12 @@ public class TrainersEditController implements Initializable {
         }
 
         isInitialized = true;
-        if (trainerId != 0) {
+        if (trainerId != null) {
             loadTrainerData();
         }
     }
 
-    public void setTrainerId(int trainerId) {
+    public void setTrainerId(String trainerId) {
         this.trainerId = trainerId;
         if (isInitialized && nameField != null) {
             loadTrainerData();

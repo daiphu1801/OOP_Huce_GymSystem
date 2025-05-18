@@ -13,6 +13,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -31,6 +36,21 @@ public class ScenceController {
 
     @FXML
     private AnchorPane contentArea;
+
+    @FXML
+    private BarChart<String, Number> barChart;
+
+    @FXML
+    private CategoryAxis xAxis;
+
+    @FXML
+    private NumberAxis yAxis;
+
+    @FXML
+    private Button btnMonth;
+
+    @FXML
+    private Button btnQuarter;
 
     // Phương thức chung để thiết lập scene với cùng cài đặt
     void setupScene(String resourceName, ActionEvent event) throws IOException {
@@ -115,9 +135,51 @@ public class ScenceController {
                 memberTable.getColumns().forEach(col -> col.setPrefWidth(columnWidth));
             }
         }
+
+        // Khởi tạo biểu đồ với dữ liệu doanh thu tháng
+        if (barChart != null) {
+            showMonthlyRevenue();
+            btnMonth.setOnAction(event -> showMonthlyRevenue());
+            btnQuarter.setOnAction(event -> showQuarterlyRevenue());
+        }
     }
 
-    public HoiVienFullInfoController switchToHoiVienFullInfo(ActionEvent event, int memberId) throws IOException {
+    private void showMonthlyRevenue() {
+        barChart.getData().clear();
+        xAxis.setLabel("Tháng");
+        yAxis.setLabel("Triệu (VNĐ)");
+
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Doanh thu 2025");
+
+        // Dữ liệu doanh thu tháng cố định (triệu VNĐ)
+        series.getData().add(new XYChart.Data<>("Tháng 1", 50));
+        series.getData().add(new XYChart.Data<>("Tháng 2", 60));
+        series.getData().add(new XYChart.Data<>("Tháng 3", 55));
+        series.getData().add(new XYChart.Data<>("Tháng 4", 70));
+        series.getData().add(new XYChart.Data<>("Tháng 5", 65));
+
+        barChart.getData().add(series);
+    }
+
+    private void showQuarterlyRevenue() {
+        barChart.getData().clear();
+        xAxis.setLabel("Quý");
+        yAxis.setLabel("Triệu (VNĐ)");
+
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Doanh thu 2025");
+
+        // Dữ liệu doanh thu quý cố định (triệu VNĐ)
+        series.getData().add(new XYChart.Data<>("Quý 1", 165));
+        series.getData().add(new XYChart.Data<>("Quý 2", 200));
+        series.getData().add(new XYChart.Data<>("Quý 3", 180));
+        series.getData().add(new XYChart.Data<>("Quý 4", 220));
+
+        barChart.getData().add(series);
+    }
+
+    public HoiVienFullInfoController switchToHoiVienFullInfo(ActionEvent event, String memberId) throws IOException {
         System.out.println("[ScenceController] Bắt đầu chuyển sang HoiVienFullInfoController với memberId: " + memberId);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/HoiVienDetails.fxml"));
@@ -143,7 +205,7 @@ public class ScenceController {
         }
     }
 
-    public HoiVienEditController switchToHoiVienEdit(ActionEvent event, int memberId) throws IOException {
+    public HoiVienEditController switchToHoiVienEdit(ActionEvent event, String memberId) throws IOException {
         System.out.println("[ScenceController] Bắt đầu chuyển sang HoiVienEditController với memberId: " + memberId);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/HoiVienEdit.fxml"));
@@ -206,7 +268,7 @@ public class ScenceController {
         }
     }
 
-    public ProductEditController switchToProductEdit(ActionEvent event, int productId) throws IOException {
+    public ProductEditController switchToProductEdit(ActionEvent event, String productId) throws IOException {
         System.out.println("[ScenceController] Bắt đầu chuyển sang HoiVienEditController với productId: " + productId);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/ProductEdit.fxml"));
@@ -220,7 +282,7 @@ public class ScenceController {
                 System.out.println("[ScenceController] Lỗi: Không thể lấy HoiVienEditController từ loader.");
                 throw new IOException("Không thể lấy controller từ loader.");
             }
-            controller.setProductId(productId);
+            controller.setProductId(String.valueOf(productId));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
@@ -232,7 +294,7 @@ public class ScenceController {
         }
     }
 
-    public void switchToProductDetail(ActionEvent event, int productId) throws IOException, SQLException {
+    public void switchToProductDetail(ActionEvent event, String productId) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/ProductDetails.fxml"));
         Parent root = loader.load();
         ProductDetailsController controller = loader.getController();
@@ -242,7 +304,7 @@ public class ScenceController {
         stage.show();
     }
 
-    public void switchToTrainerDetail(ActionEvent event, int trainerId) throws IOException {
+    public void switchToTrainerDetail(ActionEvent event, String trainerId) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/TrainersDetails.fxml"));
         Parent root = loader.load();
 
@@ -255,7 +317,7 @@ public class ScenceController {
         stage.show();
     }
 
-    public void switchToEditTrainer(ActionEvent event, int trainerId) throws IOException {
+    public void switchToEditTrainer(ActionEvent event, String trainerId) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/TrainersEdit.fxml"));
         Parent root = loader.load();
 
@@ -269,7 +331,7 @@ public class ScenceController {
     }
 
 
-    public void switchToEquipmentDetails(ActionEvent event, int equipmentId) throws IOException, SQLException {
+    public void switchToEquipmentDetails(ActionEvent event, String equipmentId) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/EquipmentDetails.fxml"));
         Parent root = loader.load();
 
@@ -281,7 +343,7 @@ public class ScenceController {
         stage.show();
     }
 
-    public void switchToEquipmentEdit(ActionEvent event, int equipmentId) throws IOException {
+    public void switchToEquipmentEdit(ActionEvent event, String equipmentId) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/EquipmentEdit.fxml"));
         Parent root = loader.load();
 
@@ -293,6 +355,7 @@ public class ScenceController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
 
     @FXML
     public void switchHome(javafx.scene.input.MouseEvent event) throws IOException {
@@ -320,9 +383,20 @@ public class ScenceController {
         setupScene("HoiVienList.fxml", event);
     }
 
+//    @FXML
+//    public void switchToRegister(ActionEvent event) throws IOException {
+//        setupScene("HoiVienRegister.fxml", event);
+//    }
+
     @FXML
-    public void switchToRegister(ActionEvent event) throws IOException {
-        setupScene("HoiVienRegister.fxml", event);
+    public void switchToRegister(ActionEvent event, String cardId) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HoiVienRegister.fxml"));
+        Parent root = loader.load();
+        HoiVienDangKyController controller = loader.getController();
+        controller.setCardId(cardId);
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     @FXML
@@ -386,8 +460,8 @@ public class ScenceController {
     }
 
     @FXML
-    public void SwitchToregister(ActionEvent event) throws IOException {
-        switchToRegister(event);
+    public void SwitchToregister(ActionEvent event,String CardId) throws IOException {
+        switchToRegister(event,CardId);
     }
 
     @FXML

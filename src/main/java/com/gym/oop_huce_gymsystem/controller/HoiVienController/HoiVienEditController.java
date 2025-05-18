@@ -8,10 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -19,8 +17,7 @@ import java.util.ResourceBundle;
 
 public class HoiVienEditController implements Initializable {
 
-    @FXML private TextField memberIdField;
-    @FXML private TextField cardCodeField;
+    @FXML private Label cardCodeField;
     @FXML private TextField fullNameField;
     @FXML private TextField phoneField;
     @FXML private ComboBox<String> genderComboBox;
@@ -31,7 +28,7 @@ public class HoiVienEditController implements Initializable {
     private final ScenceController scenceController;
     private final MembersDao membersDao;
     private final MembersService membersService;
-    private int memberId;
+    private String memberId;
 
     // Khởi tạo controller
     public HoiVienEditController() {
@@ -47,7 +44,7 @@ public class HoiVienEditController implements Initializable {
     }
 
     // Thiết lập memberId và tải dữ liệu
-    public void setMemberId(int memberId) {
+    public void setMemberId(String memberId) {
         this.memberId = memberId;
         loadMemberData();
     }
@@ -57,8 +54,6 @@ public class HoiVienEditController implements Initializable {
         try {
             Members member = membersDao.getMemberById(memberId);
             if (member != null) {
-                memberIdField.setText(String.valueOf(member.getMemberId()));
-                memberIdField.setEditable(false); // Không cho phép chỉnh sửa memberId
                 cardCodeField.setText(member.getCardCode());
                 fullNameField.setText(member.getFullName());
                 phoneField.setText(member.getPhone());
@@ -85,7 +80,7 @@ public class HoiVienEditController implements Initializable {
         try {
             // Tạo đối tượng Members với dữ liệu mới
             Members updatedMember = new Members(
-                    Integer.parseInt(memberIdField.getText()),
+                    memberId,
                     cardCodeField.getText(),
                     fullNameField.getText(),
                     phoneField.getText(),

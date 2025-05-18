@@ -26,7 +26,7 @@ public class ProductEditController implements Initializable {
 
     private final ScenceController scenceController;
     private final ProductsService productsService;
-    private int productId;
+    private String productId;
     private boolean isInitialized;
 
     public ProductEditController() {
@@ -34,6 +34,7 @@ public class ProductEditController implements Initializable {
         this.productsService = new ProductsService();
         this.isInitialized = false;
     }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,12 +44,12 @@ public class ProductEditController implements Initializable {
             System.out.println("[ProductEditController] productIdField đã được inject thành công.");
         }
         isInitialized = true;
-        if (productId != 0) {
+        if (productId != null) {
             loadProductData();
         }
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
         System.out.println("[ProductEditController] Đặt productId: " + productId);
         if (isInitialized && productIdField != null) {
@@ -61,7 +62,7 @@ public class ProductEditController implements Initializable {
     private void loadProductData() {
         try {
             System.out.println("[ProductEditController] Tải dữ liệu cho productId: " + productId);
-            Products product = productsService.getProductById(productId);
+            Products product = productsService.getProductById(String.valueOf(productId));
             if (product != null) {
                 nameField.setText(product.getName() != null ? product.getName() : "");
                 priceField.setText(String.valueOf(product.getPrice()));

@@ -168,6 +168,8 @@ public class ListHoiVienController implements Initializable {
             return;
         }
 
+        System.out.println("Bắt đầu xóa hội viên: " + selected.getFullName() + ", memberId: " + selected.getMemberId() + ", cardCode: " + selected.getCardCode());
+
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
         confirm.setTitle("Xác nhận xóa");
         confirm.setHeaderText(null);
@@ -178,11 +180,15 @@ public class ListHoiVienController implements Initializable {
                     memberService.deleteMember(selected.getMemberId());
                     memberList.remove(selected);
                     memberTable.refresh();
+                    System.out.println("Xóa hội viên thành công: " + selected.getFullName());
                     showAlert(Alert.AlertType.INFORMATION, "Thành công", "Đã xóa hội viên.");
                 } catch (Exception e) {
+                    System.out.println("Lỗi khi xóa hội viên: " + e.getMessage());
                     showAlert(Alert.AlertType.ERROR, "Lỗi", "Xóa thất bại: " + e.getMessage());
                     e.printStackTrace();
                 }
+            } else {
+                System.out.println("Hủy xóa hội viên: " + selected.getFullName());
             }
         });
     }
@@ -204,8 +210,8 @@ public class ListHoiVienController implements Initializable {
     }
 
     @FXML
-    public void SwitchToregister(ActionEvent event) throws IOException {
-        scenceController.switchToRegister(event);
+    public void SwitchToregister(ActionEvent event,String CardId) throws IOException {
+        scenceController.switchToRegister(event,CardId);
     }
 
     @FXML
@@ -214,7 +220,7 @@ public class ListHoiVienController implements Initializable {
     }
 
     @FXML
-    public void switchToHoiVienFullInfo(ActionEvent event, int memberId) throws IOException {
+    public void switchToHoiVienFullInfo(ActionEvent event, String memberId) throws IOException {
         scenceController.switchToHoiVienFullInfo(event, memberId);
     }
 

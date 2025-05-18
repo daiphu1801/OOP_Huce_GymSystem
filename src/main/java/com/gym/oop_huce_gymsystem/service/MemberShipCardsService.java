@@ -47,10 +47,15 @@ public class MemberShipCardsService {
     }
 
     // Thêm thẻ thành viên
-    public void addMemberShipCard(MemberShipCards card) throws SQLException, IllegalArgumentException {
+//    public void addMemberShipCard(MemberShipCards card) throws SQLException, IllegalArgumentException {
+//        validateMemberShipCard(card);
+//        validateCardIdNotExists(card.getCardId());
+//        memberShipCardDao.addMemberShipCard(card);
+//    }
+
+    public String addMemberShipCard(MemberShipCards card) throws SQLException, IllegalArgumentException {
         validateMemberShipCard(card);
-        validateCardIdNotExists(card.getCardId());
-        memberShipCardDao.addMemberShipCard(card);
+        return memberShipCardDao.addMemberShipCard(card);
     }
 
     // Cập nhật thẻ thành viên

@@ -42,7 +42,7 @@ public class ProductsDao {
             stmt.setDouble(2, product.getPrice());
             stmt.setInt(3, product.getQuantity());
             stmt.setInt(4, product.getQuantitySold());
-            stmt.setInt(5, product.getProductId());
+            stmt.setString(5, product.getProductId());
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 0) {
@@ -54,11 +54,11 @@ public class ProductsDao {
     }
 
     // Xóa sản phẩm
-    public void deleteProduct(int productId) throws SQLException {
+    public void deleteProduct(String productId) throws SQLException {
         String query = "DELETE FROM products WHERE product_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, productId);
+            stmt.setString(1, productId);
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 0) {
                 throw new SQLException("Không tìm thấy sản phầm với ID: " + productId);
@@ -75,7 +75,7 @@ public class ProductsDao {
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 Products product = new Products(
-                        rs.getInt("product_id"),
+                        rs.getString("product_id"),
                         rs.getString("name"),
                         rs.getDouble("price"),
                         rs.getInt("quantity"),
@@ -87,15 +87,15 @@ public class ProductsDao {
         return products;
     }
 
-    public Products getProductById(int productId) throws SQLException {
+    public Products getProductById(String productId) throws SQLException {
         String query = "SELECT * FROM products WHERE product_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, productId);
+            stmt.setString(1, productId);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                    Products product = new Products();
-                   product.setProductId(rs.getInt("product_id"));
+                   product.setProductId(rs.getString("product_id"));
                    product.setName(rs.getString("name"));
                    product.setPrice(rs.getDouble("price"));
                    product.setQuantity(rs.getInt("quantity"));

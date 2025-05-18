@@ -1,9 +1,7 @@
 package com.gym.oop_huce_gymsystem.model;
 
-import java.time.LocalDate;
-
 public class Trainers {
-    private int trainerId;
+    private String trainerId;
     private String name;
     private String gender;
     private String phone;
@@ -12,7 +10,7 @@ public class Trainers {
 
     public Trainers() {}
 
-    public Trainers(int trainerId, String name, String gender, String phone, String email, String specialization) {
+    public Trainers(String trainerId, String name, String gender, String phone, String email, String specialization) {
         this.trainerId = trainerId;
         this.name = name;
         this.gender = gender;
@@ -29,11 +27,11 @@ public class Trainers {
         this.specialization = specialization;
     }
 
-    public int getTrainerId() {
+    public String getTrainerId() {
         return trainerId;
     }
 
-    public void setTrainerId(int trainerId) {
+    public void setTrainerId(String trainerId) {
         this.trainerId = trainerId;
     }
 

@@ -1,9 +1,7 @@
 package com.gym.oop_huce_gymsystem.model;
 
-import java.time.*;
-
 public class Members {
-    private int memberId;
+    private String memberId;
     private String cardCode;
     private String fullName;
     private String phone;
@@ -15,7 +13,7 @@ public class Members {
     }
 
     // Parameterized constructor
-    public Members(int memberId, String cardCode, String fullName, String phone, String gender, String email) {
+    public Members(String memberId, String cardCode, String fullName, String phone, String gender, String email) {
         this.memberId = memberId;
         this.cardCode = cardCode;
         this.fullName = fullName;
@@ -34,11 +32,11 @@ public class Members {
     }
 
     // Getters and Setters
-    public int getMemberId() {
+    public String getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(int memberId) {
+    public void setMemberId(String memberId) {
         this.memberId = memberId;
     }
 

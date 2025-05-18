@@ -10,7 +10,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,7 +26,7 @@ public class EquipmentsDetailsController implements Initializable {
 
     private final ScenceController scenceController;
     private final EquipmentsService equipmentsService;
-    private int equipmentId;
+    private String equipmentId;
     private boolean isInitialized;
 
     public EquipmentsDetailsController() {
@@ -45,12 +44,12 @@ public class EquipmentsDetailsController implements Initializable {
         }
 
         isInitialized = true;
-        if (equipmentId != 0) {
+        if (equipmentId != null) {
             loadEquipmentData();
         }
     }
 
-    public void setEquipmentId(int equipmentId) {
+    public void setEquipmentId(String equipmentId) {
         this.equipmentId = equipmentId;
         if (isInitialized && equipmentIdLabel != null) {
             loadEquipmentData();
@@ -134,6 +133,6 @@ public class EquipmentsDetailsController implements Initializable {
 
     @FXML
     private void switchToEditEquipment(ActionEvent event) throws IOException {
-        scenceController.switchToEquipmentEdit(event, equipmentId);
+        scenceController.switchToEquipmentEdit(event, String.valueOf(equipmentId));
     }
 }

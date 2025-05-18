@@ -24,7 +24,7 @@ public class TrainersDetailsController implements Initializable {
 
     private final ScenceController scenceController = new ScenceController();
     private final TrainersService trainersService = new TrainersService();
-    private int trainerId; // ID của huấn luyện viên được truyền vào
+    private String trainerId; // ID của huấn luyện viên được truyền vào
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -32,7 +32,7 @@ public class TrainersDetailsController implements Initializable {
     }
 
     // Phương thức để thiết lập trainerId và tải dữ liệu
-    public void setTrainerId(int trainerId) {
+    public void setTrainerId(String trainerId) {
         this.trainerId = trainerId;
         loadTrainerData();
     }

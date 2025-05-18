@@ -33,7 +33,7 @@ public class TrainersService {
 
     // Cập nhật thông tin huấn luyện viên với validation
     public void updateTrainers(Trainers trainer) throws Exception {
-        if (trainer == null || trainer.getTrainerId() <= 0) {
+        if (trainer == null || trainer.getTrainerId() == null) {
             throw new IllegalArgumentException("ID huấn luyện viên không hợp lệ.");
         }
 
@@ -77,8 +77,8 @@ public class TrainersService {
     }
 
     // Xóa huấn luyện viên với validation
-    public void deleteTrainers(int trainerId) throws SQLException {
-        if (trainerId <= 0) {
+    public void deleteTrainers(String trainerId) throws SQLException {
+        if (trainerId == null) {
             throw new IllegalArgumentException("ID huấn luyện viên không hợp lệ.");
         }
         if (!trainersDAO.trainerExists(trainerId)) {
@@ -93,8 +93,8 @@ public class TrainersService {
     }
 
     // Lấy chi tiết huấn luyện viên theo ID với validation
-    public Trainers getTrainerById(int trainerId) throws SQLException {
-        if (trainerId <= 0) {
+    public Trainers getTrainerById(String trainerId) throws SQLException {
+        if (trainerId == null) {
             throw new IllegalArgumentException("ID huấn luyện viên không hợp lệ.");
         }
         return trainersDAO.getTrainerById(trainerId);
