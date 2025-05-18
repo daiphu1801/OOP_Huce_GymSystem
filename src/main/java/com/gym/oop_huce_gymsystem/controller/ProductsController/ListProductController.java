@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 public class ListProductController implements Initializable {
 
     @FXML private TableView<Products> productTable;
-    @FXML private TableColumn<Products, Integer> productListId;
+    @FXML private TableColumn<Products, String> productListId;
     @FXML private TableColumn<Products, String> productListName;
     @FXML private TableColumn<Products, Double> productListPrice;
     @FXML private TableColumn<Products, Integer> productListQuantity;

@@ -3,7 +3,7 @@ package com.gym.oop_huce_gymsystem.model;
 import java.time.LocalDate;
 
 public class Products {
-    private int productId;
+    private String productId;
     private String name;
     private double price;
     private int quantity;
@@ -12,7 +12,7 @@ public class Products {
     public Products() {
     }
 
-    public Products(int productId, String name, double price, int quantity, int quantitySold) {
+    public Products(String productId, String name, double price, int quantity, int quantitySold) {
         this.productId = productId;
         this.name = name;
         this.price = price;
@@ -27,11 +27,11 @@ public class Products {
         this.quantitySold = quantitySold;
     }
 
-    public int getProductId() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
     }
 

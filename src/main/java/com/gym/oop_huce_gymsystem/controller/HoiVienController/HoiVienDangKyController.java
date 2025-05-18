@@ -48,11 +48,6 @@ public class HoiVienDangKyController implements Initializable {
         genderComboBox.setItems(genders);
         genderComboBox.setValue(genders.get(0));
 
-        // Gán cardId sau khi initialize
-        if (cardId != null && cardCodeField != null) {
-            cardCodeField.setText(cardId);
-            System.out.println("Initialized cardId: " + cardId);
-        }
     }
 
     public void setCardId(String cardId) {
@@ -87,8 +82,8 @@ public class HoiVienDangKyController implements Initializable {
             newMember.setGender(gender);
             newMember.setEmail(email);
 
-            int memberId = membersService.addMember(newMember);
-            if (memberId > 0) {
+            String memberId = membersService.addMember(newMember);
+            if (memberId != null) {
                 conn.commit();
                 isMemberCreated = true; // Đánh dấu hội viên đã được tạo thành công
                 showAlert(Alert.AlertType.INFORMATION, "Thành công",

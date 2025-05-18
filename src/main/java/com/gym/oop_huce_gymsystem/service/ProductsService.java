@@ -21,15 +21,15 @@ public class ProductsService {
     // Sửa sản phẩm
     public void updateProduct(Products product) throws Exception {
         validateProduct(product);
-        if (product.getProductId() <= 0) {
+        if (product.getProductId() == null) {
             throw new IllegalArgumentException("ID sản phẩm không hợp lệ.");
         }
         productsDao.updateProduct(product);
     }
 
     // Xóa sản phẩm
-    public void deleteProduct(int productId) throws Exception {
-        if (productId <= 0) {
+    public void deleteProduct(String productId) throws Exception {
+        if (productId == null) {
             throw new IllegalArgumentException("ID sản phẩm không hợp lệ.");
         }
         productsDao.deleteProduct(productId);
@@ -44,8 +44,8 @@ public class ProductsService {
         }
     }
 
-    public Products getProductById(int productId) throws SQLException {
-        if (productId <= 0) {
+    public Products getProductById(String productId) throws SQLException {
+        if (productId==null) {
             throw new IllegalArgumentException("ID sản phẩm không hợp lệ.");
         }
         return productsDao.getProductById(productId);

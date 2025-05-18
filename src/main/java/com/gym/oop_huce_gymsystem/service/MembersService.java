@@ -2,11 +2,14 @@ package com.gym.oop_huce_gymsystem.service;
 
 import com.gym.oop_huce_gymsystem.dao.MembersDao;
 import com.gym.oop_huce_gymsystem.model.Members;
+
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
 public class MembersService {
     private final MembersDao membersDao;
+    private Connection conn;
 
     // Khởi tạo MembersService với MembersDao
     public MembersService() {
@@ -44,7 +47,7 @@ public class MembersService {
 //        }
 //    }
 
-    public int addMember(Members member) throws Exception {
+    public String addMember(Members member) throws Exception {
         if (member.getFullName() == null || member.getFullName().trim().isEmpty()) {
             throw new Exception("Tên hội viên không được để trống.");
         }
@@ -61,7 +64,7 @@ public class MembersService {
             throw new Exception("Email không hợp lệ.");
         }
 
-        if (membersDao.isPhoneExists(member.getPhone())) {
+        if (membersDao.isPhoneExists(member.getPhone())) {  // Cũng cần sửa hàm kiểm tra tồn tại truyền conn
             throw new Exception("Số điện thoại đã tồn tại trong hệ thống.");
         }
 
@@ -110,7 +113,7 @@ public class MembersService {
     }
 
     // Xóa một hội viên
-    public void deleteMember(int memberId) throws Exception {
+    public void deleteMember(String memberId) throws Exception {
         try {
             membersDao.deleteMember(memberId);
         } catch (SQLException e) {

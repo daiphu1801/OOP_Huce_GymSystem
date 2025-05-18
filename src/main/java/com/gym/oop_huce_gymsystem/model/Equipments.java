@@ -3,7 +3,7 @@ package com.gym.oop_huce_gymsystem.model;
 import java.time.*;
 
 public class Equipments {
-    private int equipmentId;
+    private String equipmentId;
     private String Name;
     private String Status;
     private int Quantity;
@@ -11,7 +11,7 @@ public class Equipments {
 
     public Equipments() {}
 
-    public Equipments(int equipmentId, String Name, int Quantity,String Status, LocalDate Purchase_Date) {
+    public Equipments(String equipmentId, String Name, int Quantity,String Status, LocalDate Purchase_Date) {
         this.equipmentId = equipmentId;
         this.Name = Name;
         this.Status = Status;
@@ -27,11 +27,11 @@ public class Equipments {
     }
 
     //getter setter
-    public int getEquipmentId() {
+    public String getEquipmentId() {
         return equipmentId;
     }
 
-    public void setEquipmentId(int equipmentId) {
+    public void setEquipmentId(String equipmentId) {
         this.equipmentId = equipmentId;
     }
 

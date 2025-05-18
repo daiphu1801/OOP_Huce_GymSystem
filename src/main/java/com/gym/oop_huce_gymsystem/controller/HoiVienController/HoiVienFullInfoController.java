@@ -27,7 +27,7 @@ public class HoiVienFullInfoController implements Initializable {
     private final ScenceController scenceController;
     private final MembersDao membersDao;
     private Members currentMember;
-    private int memberId;
+    private String memberId;
 
     // Khởi tạo controller
     public HoiVienFullInfoController() {
@@ -44,13 +44,13 @@ public class HoiVienFullInfoController implements Initializable {
             System.out.println("[HoiVienFullInfoController] Tất cả Label đã được inject thành công.");
         }
 
-        if (memberId != 0) {
+        if (memberId != null) {
             loadMemberData();
         }
     }
 
     // Thiết lập memberId và tải dữ liệu
-    public void setMemberId(int memberId) {
+    public void setMemberId(String memberId) {
         this.memberId = memberId;
         if (memberIdLabel != null) {
             loadMemberData();
@@ -97,7 +97,7 @@ public class HoiVienFullInfoController implements Initializable {
     }
 
     @FXML
-    public void switchToHoiVienFullInfo(ActionEvent event, int memberId) throws IOException {
+    public void switchToHoiVienFullInfo(ActionEvent event, String memberId) throws IOException {
         scenceController.switchToHoiVienFullInfo(event, memberId);
     }
 
@@ -151,6 +151,6 @@ public class HoiVienFullInfoController implements Initializable {
     public void switchToEdit(ActionEvent event) throws IOException {
         System.out.println("[HoiVienFullInfoController] Chuyển sang giao diện sửa thông tin cho: " +
                 (currentMember != null ? currentMember.getFullName() : "N/A"));
-        scenceController.switchToHoiVienEdit(event, memberId);
+        scenceController.switchToHoiVienEdit(event, String.valueOf(memberId));
     }
 }

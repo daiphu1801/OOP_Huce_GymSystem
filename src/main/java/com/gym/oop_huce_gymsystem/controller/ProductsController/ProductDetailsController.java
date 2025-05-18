@@ -26,7 +26,7 @@ public class ProductDetailsController implements Initializable {
     private final ScenceController scenceController;
     private final ProductsDao productsDao;
     private Products currentProduct;
-    private int productId;
+    private String productId;
 
     public ProductDetailsController() {
         this.scenceController = new ScenceController();
@@ -41,12 +41,12 @@ public class ProductDetailsController implements Initializable {
             System.out.println("[ProductFullInfoController] productIdLabel đã được inject thành công.");
         }
 
-        if (productId != 0) {
+        if (productId != null) {
             loadProductData();
         }
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
         if (productIdLabel != null) {
             loadProductData();
@@ -57,7 +57,7 @@ public class ProductDetailsController implements Initializable {
 
     private void loadProductData() {
         try {
-            this.currentProduct = productsDao.getProductById(productId);
+            this.currentProduct = productsDao.getProductById(String.valueOf(productId));
             if (currentProduct != null) {
                 productIdLabel.setText(String.valueOf(currentProduct.getProductId()));
                 nameLabel.setText(currentProduct.getName());

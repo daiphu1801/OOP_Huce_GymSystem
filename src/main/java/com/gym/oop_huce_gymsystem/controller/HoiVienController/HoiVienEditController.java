@@ -28,7 +28,7 @@ public class HoiVienEditController implements Initializable {
     private final ScenceController scenceController;
     private final MembersDao membersDao;
     private final MembersService membersService;
-    private int memberId;
+    private String memberId;
 
     // Khởi tạo controller
     public HoiVienEditController() {
@@ -44,7 +44,7 @@ public class HoiVienEditController implements Initializable {
     }
 
     // Thiết lập memberId và tải dữ liệu
-    public void setMemberId(int memberId) {
+    public void setMemberId(String memberId) {
         this.memberId = memberId;
         loadMemberData();
     }

@@ -220,7 +220,7 @@ public class ListHoiVienController implements Initializable {
     }
 
     @FXML
-    public void switchToHoiVienFullInfo(ActionEvent event, int memberId) throws IOException {
+    public void switchToHoiVienFullInfo(ActionEvent event, String memberId) throws IOException {
         scenceController.switchToHoiVienFullInfo(event, memberId);
     }
 

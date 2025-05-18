@@ -179,7 +179,7 @@ public class ScenceController {
         barChart.getData().add(series);
     }
 
-    public HoiVienFullInfoController switchToHoiVienFullInfo(ActionEvent event, int memberId) throws IOException {
+    public HoiVienFullInfoController switchToHoiVienFullInfo(ActionEvent event, String memberId) throws IOException {
         System.out.println("[ScenceController] Bắt đầu chuyển sang HoiVienFullInfoController với memberId: " + memberId);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/HoiVienDetails.fxml"));
@@ -205,7 +205,7 @@ public class ScenceController {
         }
     }
 
-    public HoiVienEditController switchToHoiVienEdit(ActionEvent event, int memberId) throws IOException {
+    public HoiVienEditController switchToHoiVienEdit(ActionEvent event, String memberId) throws IOException {
         System.out.println("[ScenceController] Bắt đầu chuyển sang HoiVienEditController với memberId: " + memberId);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/HoiVienEdit.fxml"));
@@ -268,7 +268,7 @@ public class ScenceController {
         }
     }
 
-    public ProductEditController switchToProductEdit(ActionEvent event, int productId) throws IOException {
+    public ProductEditController switchToProductEdit(ActionEvent event, String productId) throws IOException {
         System.out.println("[ScenceController] Bắt đầu chuyển sang HoiVienEditController với productId: " + productId);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/ProductEdit.fxml"));
@@ -282,7 +282,7 @@ public class ScenceController {
                 System.out.println("[ScenceController] Lỗi: Không thể lấy HoiVienEditController từ loader.");
                 throw new IOException("Không thể lấy controller từ loader.");
             }
-            controller.setProductId(productId);
+            controller.setProductId(String.valueOf(productId));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
@@ -294,7 +294,7 @@ public class ScenceController {
         }
     }
 
-    public void switchToProductDetail(ActionEvent event, int productId) throws IOException, SQLException {
+    public void switchToProductDetail(ActionEvent event, String productId) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/ProductDetails.fxml"));
         Parent root = loader.load();
         ProductDetailsController controller = loader.getController();
@@ -304,7 +304,7 @@ public class ScenceController {
         stage.show();
     }
 
-    public void switchToTrainerDetail(ActionEvent event, int trainerId) throws IOException {
+    public void switchToTrainerDetail(ActionEvent event, String trainerId) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/TrainersDetails.fxml"));
         Parent root = loader.load();
 
@@ -317,7 +317,7 @@ public class ScenceController {
         stage.show();
     }
 
-    public void switchToEditTrainer(ActionEvent event, int trainerId) throws IOException {
+    public void switchToEditTrainer(ActionEvent event, String trainerId) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/TrainersEdit.fxml"));
         Parent root = loader.load();
 
@@ -331,7 +331,7 @@ public class ScenceController {
     }
 
 
-    public void switchToEquipmentDetails(ActionEvent event, int equipmentId) throws IOException, SQLException {
+    public void switchToEquipmentDetails(ActionEvent event, String equipmentId) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/EquipmentDetails.fxml"));
         Parent root = loader.load();
 
@@ -343,7 +343,7 @@ public class ScenceController {
         stage.show();
     }
 
-    public void switchToEquipmentEdit(ActionEvent event, int equipmentId) throws IOException {
+    public void switchToEquipmentEdit(ActionEvent event, String equipmentId) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/EquipmentEdit.fxml"));
         Parent root = loader.load();
 

@@ -41,7 +41,7 @@ public class EquipmentsDao {
             stmt.setInt(2, equipment.getQuantity());
             stmt.setString(3, equipment.getStatus());;
             stmt.setDate(4, java.sql.Date.valueOf(equipment.getPurchase_Date()));
-            stmt.setInt(5, equipment.getEquipmentId());
+            stmt.setString(5, equipment.getEquipmentId());
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 0) {
                 throw new SQLException("Không tìm thấy thiết bij  với ID: " + equipment.getEquipmentId());
@@ -51,11 +51,11 @@ public class EquipmentsDao {
         }
     }
 
-    public void deleteEquipment(int equipmentId) throws SQLException {
+    public void deleteEquipment(String equipmentId) throws SQLException {
         String query = "DELETE FROM equipment WHERE equipment_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, equipmentId);
+            stmt.setString(1, equipmentId);
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 0) {
                 throw new SQLException("Không tìm thấy thiết bị  với ID: " + equipmentId);
@@ -73,7 +73,7 @@ public class EquipmentsDao {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Equipments equipment = new Equipments();
-                equipment.setEquipmentId(rs.getInt("equipment_id"));
+                equipment.setEquipmentId(rs.getString("equipment_id"));
                 equipment.setName(rs.getString("name"));
                 equipment.setQuantity(rs.getInt("quantity"));
                 equipment.setStatus(rs.getString("status"));
@@ -85,15 +85,15 @@ public class EquipmentsDao {
     }
 
     //Hàm lấy details 1 equipments
-    public Equipments getEquipmentById(int equipmentId) throws SQLException {
+    public Equipments getEquipmentById(String equipmentId) throws SQLException {
         String query = "SELECT * FROM equipment WHERE equipment_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, equipmentId);
+            stmt.setString(1, equipmentId);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 Equipments equipment = new Equipments();
-                equipment.setEquipmentId(rs.getInt("equipment_id"));
+                equipment.setEquipmentId(rs.getString("equipment_id"));
                 equipment.setName(rs.getString("name"));
                 equipment.setQuantity(rs.getInt("quantity"));
                 equipment.setStatus(rs.getString("status"));

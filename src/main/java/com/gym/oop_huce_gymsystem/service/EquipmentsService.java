@@ -25,15 +25,15 @@ public class EquipmentsService {
     }
 
     public void updateEquipment(Equipments equipment) throws SQLException {
-        if (equipment == null || equipment.getEquipmentId() <= 0) {
+        if (equipment == null || equipment.getEquipmentId() == null) {
             throw new IllegalArgumentException("ID thiết bị không hợp lệ.");
         }
         validateEquipments(equipment); // Kiểm tra tính hợp lệ
         equipmentsDao.updateEquipment(equipment);
     }
 
-    public void deleteEquipment(int equipmentId) throws SQLException {
-        if (equipmentId <= 0) {
+    public void deleteEquipment(String equipmentId) throws SQLException {
+        if (equipmentId == null) {
             throw new IllegalArgumentException("ID thiết bị không hợp lệ.");
         }
         equipmentsDao.deleteEquipment(equipmentId);
@@ -43,8 +43,8 @@ public class EquipmentsService {
         return equipmentsDao.getAllEquipments();
     }
 
-    public Equipments getEquipmentById(int equipmentId) throws SQLException {
-        if (equipmentId <= 0) {
+    public Equipments getEquipmentById(String equipmentId) throws SQLException {
+        if (equipmentId == null) {
             throw new IllegalArgumentException("ID thiết bị không hợp lệ.");
         }
         return equipmentsDao.getEquipmentById(equipmentId);

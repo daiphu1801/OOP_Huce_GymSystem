@@ -29,7 +29,7 @@ public class EquipmentsEditController implements Initializable {
 
     private final ScenceController scenceController;
     private final EquipmentsService equipmentsService;
-    private int equipmentId;
+    private String equipmentId;
     private boolean isInitialized;
 
     public EquipmentsEditController() {
@@ -47,12 +47,12 @@ public class EquipmentsEditController implements Initializable {
         }
 
         isInitialized = true;
-        if (equipmentId != 0) {
+        if (equipmentId != null) {
             loadEquipmentData();
         }
     }
 
-    public void setEquipmentId(int equipmentId) {
+    public void setEquipmentId(String equipmentId) {
         this.equipmentId = equipmentId;
         if (isInitialized && equipmentIdField != null) {
             loadEquipmentData();
