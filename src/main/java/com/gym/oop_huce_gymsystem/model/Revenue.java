@@ -1,26 +1,36 @@
 package com.gym.oop_huce_gymsystem.model;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class Revenue {
     private int revenueId;
-    private String source_type;
-    private double amount;
-    private LocalDate transaction_date;
+    private String sourceType;
+    private BigDecimal amount;
+    private LocalDateTime transactionDate;
+    private String cardId;
+    private Integer productId;
+    private String paymentMethod;
     private String description;
-    private LocalDate create_at;
 
-    public Revenue(int revenueId, String source_type, double amount, LocalDate transaction_date, String description, LocalDate create_at) {
-        this.revenueId = revenueId;
-        this.source_type = source_type;
-        this.amount = amount;
-        this.transaction_date = transaction_date;
-        this.description = description;
-        this.create_at = create_at;
-
-
+    // Constructor mặc định
+    public Revenue() {
     }
 
+    // Constructor đầy đủ
+    public Revenue(int revenueId, String sourceType, BigDecimal amount, LocalDateTime transactionDate,
+                   String cardId, Integer productId, String paymentMethod, String description) {
+        this.revenueId = revenueId;
+        this.sourceType = sourceType;
+        this.amount = amount;
+        this.transactionDate = transactionDate;
+        this.cardId = cardId;
+        this.productId = productId;
+        this.paymentMethod = paymentMethod;
+        this.description = description;
+    }
+
+    // Getters và Setters
     public int getRevenueId() {
         return revenueId;
     }
@@ -29,28 +39,52 @@ public class Revenue {
         this.revenueId = revenueId;
     }
 
-    public String getSource_type() {
-        return source_type;
+    public String getSourceType() {
+        return sourceType;
     }
 
-    public void setSource_type(String source_type) {
-        this.source_type = source_type;
+    public void setSourceType(String sourceType) {
+        this.sourceType = sourceType;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
-    public LocalDate getTransaction_date() {
-        return transaction_date;
+    public LocalDateTime getTransactionDate() {
+        return transactionDate;
     }
 
-    public void setTransaction_date(LocalDate transaction_date) {
-        this.transaction_date = transaction_date;
+    public void setTransactionDate(LocalDateTime transactionDate) {
+        this.transactionDate = transactionDate;
+    }
+
+    public String getCardId() {
+        return cardId;
+    }
+
+    public void setCardId(String cardId) {
+        this.cardId = cardId;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     public String getDescription() {
@@ -60,26 +94,4 @@ public class Revenue {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public LocalDate getCreate_at() {
-        return create_at;
-    }
-
-    public void setCreate_at(LocalDate create_at) {
-        this.create_at = create_at;
-    }
-
-    @Override
-    public String toString() {
-        return "Revenue[" +
-                "revenueId=" + revenueId +
-                ", sourceType=" + source_type +
-                ", amount=" + amount +
-                ", transactionDate=" + transaction_date +
-                ", description=" + description +
-                ", createAt=" + create_at +
-                "]";
-    }
 }
-
-

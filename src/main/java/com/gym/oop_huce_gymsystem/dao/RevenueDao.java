@@ -1,67 +1,62 @@
 package com.gym.oop_huce_gymsystem.dao;
-import java.sql.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import com.gym.oop_huce_gymsystem.model.*;
-import com.gym.oop_huce_gymsystem.util.*;
 
+import com.gym.oop_huce_gymsystem.util.DatabaseConnection;
 
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RevenueDao {
-    public void addRevenue(Revenue revenue) throws SQLException {
-        String query = "INSERT INTO revenue (source_type, amount, description, transaction_date) " +
-                "VALUES (?, ?, ?, ?)";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, revenue.getSource_type());
-            stmt.setDouble(2, revenue.getAmount());
-            stmt.setString(3, revenue.getDescription());
-            stmt.setDate(5, java.sql.Date.valueOf(revenue.getTransaction_date()));
+    private final Connection connection;
 
-            int rowsAffected = stmt.executeUpdate();
-            if (rowsAffected > 0) {
-                System.out.println("Đã thêm doanh thu thành công: " + revenue.getSource_type());
-            } else {
-                throw new SQLException("Không thể thêm doanh thu : Không có hàng nào được thêm.");
-            }
-        } catch (SQLException e) {
-            throw e;
-        }
-
-    }
-    public void updateRevenue(Revenue revenue) throws SQLException {
-        String query = "UPDATE revenue SET source_type = ?, amount = ?, description = ?, " +
-                "transaction_date=? WHERE revenue_id = ?";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, revenue.getSource_type());
-            stmt.setDouble(2, revenue.getAmount());
-            stmt.setString(3, revenue.getDescription());
-            stmt.setDate(4, java.sql.Date.valueOf(revenue.getTransaction_date()));
-            stmt.setInt(5, revenue.getRevenueId());
-
-            int rowsAffected = stmt.executeUpdate();
-            if (rowsAffected == 0) {
-                throw new SQLException("Không tìm thấy doanh thu với ID: " + revenue.getRevenueId());
-            }
-        } catch (SQLException e) {
-            throw new SQLException("Lỗi khi cập nhật doanh thu: " + e.getMessage(), e);
-        }
-    }
-    public void deleteRevenue(int revenueId) throws SQLException {
-        String query = "DELETE FROM revenue WHERE revenue_id = ?";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, revenueId);
-            int rowsAffected = stmt.executeUpdate();
-            if (rowsAffected == 0) {
-                throw new SQLException("Không tìm thấy doanh thu với ID: " + revenueId);
-            }
-        }
+    public RevenueDao() throws SQLException {
+        this.connection = DatabaseConnection.getConnection();
     }
 
+    // Lấy doanh thu từ membership_cards theo tháng
+    public Map<String, Map<String, BigDecimal>> getMembershipRevenueByMonth(int year) throws SQLException {
+        Map<String, Map<String, BigDecimal>> monthlyRevenue = new HashMap<>();
+        String query = "SELECT DATE_FORMAT(registration_date, '%Y-%m') AS period, SUM(price) AS total_amount " +
+                "FROM membership_cards " +
+                "WHERE YEAR(registration_date) = ? " +
+                "GROUP BY DATE_FORMAT(registration_date, '%Y-%m')";
 
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, year);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                String period = rs.getString("period");
+                BigDecimal totalAmount = rs.getBigDecimal("total_amount").divide(BigDecimal.valueOf(1000000)); // Chia cho 1 triệu để hiển thị Triệu VNĐ
+                monthlyRevenue.computeIfAbsent(period, k -> new HashMap<>());
+                monthlyRevenue.get(period).put("MEMBERSHIP", totalAmount);
+            }
+        }
+        return monthlyRevenue;
+    }
 
+    // Lấy doanh thu từ revenue (sản phẩm) theo tháng
+    public Map<String, Map<String, BigDecimal>> getProductRevenueByMonth(int year) throws SQLException {
+        Map<String, Map<String, BigDecimal>> monthlyRevenue = new HashMap<>();
+        String query = "SELECT DATE_FORMAT(transaction_date, '%Y-%m') AS period, source_type, SUM(amount) AS total_amount " +
+                "FROM revenue " +
+                "WHERE YEAR(transaction_date) = ? AND source_type = 'PRODUCT' " +
+                "GROUP BY DATE_FORMAT(transaction_date, '%Y-%m'), source_type";
+
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, year);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                String period = rs.getString("period");
+                String sourceType = rs.getString("source_type");
+                BigDecimal totalAmount = rs.getBigDecimal("total_amount").divide(BigDecimal.valueOf(1000000)); // Chia cho 1 triệu để hiển thị Triệu VNĐ
+                monthlyRevenue.computeIfAbsent(period, k -> new HashMap<>());
+                monthlyRevenue.get(period).put(sourceType, totalAmount);
+            }
+        }
+        return monthlyRevenue;
+    }
 }
-

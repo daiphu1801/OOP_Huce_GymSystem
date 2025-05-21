@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.ScenceController">
+<StackPane fx:id="rootStackPane" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gym.oop_huce_gymsystem.controller.RevenuaController.RevenueController">
     <children>
         <HBox fx:id="mainLayout">
             <children>
@@ -29,7 +29,6 @@
                         </ImageView>
                         <VBox alignment="CENTER" prefHeight="141.0" prefWidth="274.0">
                             <children>
-
                                 <Button fx:id="hoivienBTN" alignment="BASELINE_LEFT" maxWidth="830.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTolisthoivien" prefHeight="49.0" prefWidth="288.0" style="-fx-background-color: #1a1a1a;" styleClass="hoivienBTN" text="Hội viên" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
@@ -70,7 +69,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="thongkeBTN" alignment="BASELINE_LEFT" maxWidth="400.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTothongke" prefHeight="49.0" prefWidth="400.0" style="-fx-background-color: #1a1a1a;" styleClass="thongkeBTN" text="Thống Kê &amp; Báo Cáo" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="thongkeBTN" alignment="BASELINE_LEFT" maxWidth="400.0" minWidth="230.0" mnemonicParsing="false" onAction="#SwitchTothongke" prefHeight="49.0" prefWidth="400.0" style="-fx-background-color: #1a1a1a;" styleClass="thongkeBTN" text="Thống Kê và Báo Cáo" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
