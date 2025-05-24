@@ -49,12 +49,19 @@ public class RevenueDao {
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, year);
             ResultSet rs = stmt.executeQuery();
+            System.out.println("Kiểm tra dữ liệu sản phẩm từ bảng revenue:");
+            int rowCount = 0;
             while (rs.next()) {
+                rowCount++;
                 String period = rs.getString("period");
                 String sourceType = rs.getString("source_type");
                 BigDecimal totalAmount = rs.getBigDecimal("total_amount").divide(BigDecimal.valueOf(1000000)); // Chia cho 1 triệu để hiển thị Triệu VNĐ
+                System.out.println(" - Period: " + period + ", Source Type: " + sourceType + ", Total Amount: " + totalAmount + " triệu VNĐ");
                 monthlyRevenue.computeIfAbsent(period, k -> new HashMap<>());
                 monthlyRevenue.get(period).put(sourceType, totalAmount);
+            }
+            if (rowCount == 0) {
+                System.out.println("Không tìm thấy dữ liệu sản phẩm trong bảng revenue cho năm " + year + " với source_type = 'PRODUCT'");
             }
         }
         return monthlyRevenue;

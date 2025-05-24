@@ -40,7 +40,7 @@ BEGIN
 
     -- Cập nhật lại next_val
     UPDATE card_sequence SET next_val = next_val + 1;
-END$$
+end;
 
 DELIMITER ;
 
@@ -83,14 +83,33 @@ CREATE TABLE trainers (
                           specialization VARCHAR(100) NOT NULL
 );
 
--- Bảng Revenue (Lưu trữ thông tin doanh thu)
+-- Xóa bảng revenue cũ nếu tồn tại
+DROP TABLE IF EXISTS revenue;
+
+-- Tạo bảng revenue mới
 CREATE TABLE revenue (
                          revenue_id INT AUTO_INCREMENT PRIMARY KEY,
-                         source_type VARCHAR(20) NOT NULL CHECK (source_type IN ('MEMBERSHIP', 'PRODUCT')),
-                         amount DECIMAL(10,2) NOT NULL CHECK (amount >= 0),
-                         transaction_date DATE NOT NULL,
-                         description VARCHAR(255)
+                         source_type VARCHAR(20) NOT NULL, -- Loại nguồn (MEMBERSHIP, PRODUCT, hoặc các nguồn khác trong tương lai)
+                         amount DECIMAL(10,2) NOT NULL CHECK (amount >= 0), -- Số tiền (không âm)
+                         transaction_date DATETIME NOT NULL, -- Thời gian giao dịch chi tiết
+                         card_id VARCHAR(20) NULL, -- Khóa ngoại liên kết với membership_cards
+                         product_id INT NULL, -- Khóa ngoại liên kết với products
+                         payment_method VARCHAR(20) NULL, -- Phương thức thanh toán (ví dụ: CASH, CREDIT_CARD, ONLINE)
+                         description VARCHAR(255) NULL, -- Mô tả tùy chọn
+                         FOREIGN KEY (card_id) REFERENCES membership_cards(card_id) ON DELETE SET NULL,
+                         FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE SET NULL
 );
 
--- Thêm chỉ mục cho các cột thường xuyên được tìm kiếm
+-- Thêm chỉ mục cho transaction_date để tối ưu hóa truy vấn theo thời gian
 CREATE INDEX idx_transaction_date ON revenue(transaction_date);
+
+-- Bảng mới cho Check-ins
+CREATE TABLE checkins (
+                          checkin_id INT AUTO_INCREMENT PRIMARY KEY,
+                          member_id INT NOT NULL,
+                          checkin_time DATETIME NOT NULL,
+                          FOREIGN KEY (member_id) REFERENCES members(member_id) ON DELETE CASCADE
+);
+
+-- Chỉ mục cho checkin_time để tối ưu hóa truy vấn theo thời gian
+CREATE INDEX idx_checkin_time ON checkins(checkin_time);

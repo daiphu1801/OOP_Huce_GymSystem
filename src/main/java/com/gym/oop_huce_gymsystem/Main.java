@@ -10,6 +10,9 @@ import javafx.geometry.Rectangle2D;
 import java.io.IOException;
 
 public class Main extends Application {
+    static {
+        System.setProperty("user.timezone", "Asia/Ho_Chi_Minh");
+    }
     @Override
     public void start(Stage stage) throws IOException {
         // Lấy kích thước màn hình của người dùng

@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/gym_management?useSSL=false&serverTimezone=UTC";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/gym_management?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh";
     private static final String USER = "root";  // Thay đổi với username của bạn
     private static final String PASSWORD = "1234";  // Thay đổi với mật khẩu của bạn
 
