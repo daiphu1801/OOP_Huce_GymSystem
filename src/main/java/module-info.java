@@ -32,6 +32,9 @@ module com.gym.oop_huce_gymsystem {
     exports com.gym.oop_huce_gymsystem.controller.EquipmentsController;
     opens com.gym.oop_huce_gymsystem.controller.EquipmentsController to javafx.fxml;
 
+    exports com.gym.oop_huce_gymsystem.controller.RevenuaController;
+    opens com.gym.oop_huce_gymsystem.controller.RevenuaController to javafx.fxml;
+
     exports com.gym.oop_huce_gymsystem.view;
     opens com.gym.oop_huce_gymsystem.view to javafx.fxml;
 }
