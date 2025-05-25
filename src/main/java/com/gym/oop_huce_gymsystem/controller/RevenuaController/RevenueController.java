@@ -2,6 +2,7 @@ package com.gym.oop_huce_gymsystem.controller.RevenuaController;
 
 import com.gym.oop_huce_gymsystem.ScenceController;
 import com.gym.oop_huce_gymsystem.service.RevenueService;
+import com.gym.oop_huce_gymsystem.util.AppContext;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,11 +53,19 @@ public class RevenueController implements Initializable {
         System.out.println("Khởi tạo RevenueController");
         if (barChart == null) {
             System.out.println("Lỗi: barChart không được khởi tạo");
-        } else {
-            System.out.println("barChart được khởi tạo thành công");
+            return;
         }
+        System.out.println("barChart được khởi tạo thành công");
+
+        // Đăng ký RevenueController với AppContext
+        AppContext.getInstance().setRevenueController(this);
+
         btnMonth.setOnAction(event -> showMonthlyRevenue());
         btnQuarter.setOnAction(event -> showQuarterlyRevenue());
+        showMonthlyRevenue(); // Hiển thị doanh thu tháng mặc định khi khởi tạo
+    }
+
+    public void refreshMonthlyRevenue() {
         showMonthlyRevenue();
     }
 
@@ -64,8 +73,10 @@ public class RevenueController implements Initializable {
         System.out.println("Hiển thị doanh thu tháng");
         if (barChart == null) {
             System.out.println("Lỗi: barChart không khả dụng");
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Biểu đồ không khả dụng");
             return;
         }
+
         barChart.getData().clear();
         xAxis.setLabel("Tháng");
         yAxis.setLabel("Triệu (VNĐ)");
@@ -86,28 +97,18 @@ public class RevenueController implements Initializable {
         }
 
         // Đảm bảo luôn có 12 tháng, ngay cả khi không có dữ liệu
-        Map<String, Map<String, BigDecimal>> fullMonthlyRevenue = new HashMap<>();
         for (int month = 1; month <= 12; month++) {
             String period = "Tháng " + month;
-            fullMonthlyRevenue.put(period, monthlyRevenue.getOrDefault(period, new HashMap<>()));
-            fullMonthlyRevenue.get(period).putIfAbsent("MEMBERSHIP", BigDecimal.ZERO);
-            fullMonthlyRevenue.get(period).putIfAbsent("PRODUCT", BigDecimal.ZERO);
-        }
-
-        // Vẽ dữ liệu lên biểu đồ
-        for (Map.Entry<String, Map<String, BigDecimal>> entry : fullMonthlyRevenue.entrySet()) {
-            String period = entry.getKey();
-            Map<String, BigDecimal> revenues = entry.getValue();
-            System.out.println("Vẽ dữ liệu cho " + period + ": " + revenues);
+            Map<String, BigDecimal> revenues = monthlyRevenue.getOrDefault(period, new HashMap<>());
             membershipSeries.getData().add(new XYChart.Data<>(period,
                     revenues.getOrDefault("MEMBERSHIP", BigDecimal.ZERO).doubleValue()));
             productSeries.getData().add(new XYChart.Data<>(period,
                     revenues.getOrDefault("PRODUCT", BigDecimal.ZERO).doubleValue()));
         }
-        System.out.println("Số lượng dữ liệu membershipSeries: " + membershipSeries.getData().size());
-        System.out.println("Số lượng dữ liệu productSeries: " + productSeries.getData().size());
 
         barChart.getData().addAll(membershipSeries, productSeries);
+        System.out.println("Số lượng dữ liệu membershipSeries: " + membershipSeries.getData().size());
+        System.out.println("Số lượng dữ liệu productSeries: " + productSeries.getData().size());
         System.out.println("Số lượng series trong barChart: " + barChart.getData().size());
 
         Platform.runLater(() -> {
@@ -121,8 +122,10 @@ public class RevenueController implements Initializable {
         System.out.println("Hiển thị doanh thu quý");
         if (barChart == null) {
             System.out.println("Lỗi: barChart không khả dụng");
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Biểu đồ không khả dụng");
             return;
         }
+
         barChart.getData().clear();
         xAxis.setLabel("Quý");
         yAxis.setLabel("Triệu (VNĐ)");
@@ -143,28 +146,18 @@ public class RevenueController implements Initializable {
         }
 
         // Đảm bảo luôn có 4 quý, ngay cả khi không có dữ liệu
-        Map<String, Map<String, BigDecimal>> fullQuarterlyRevenue = new HashMap<>();
         for (int quarter = 1; quarter <= 4; quarter++) {
             String period = "Quý " + quarter;
-            fullQuarterlyRevenue.put(period, quarterlyRevenue.getOrDefault(period, new HashMap<>()));
-            fullQuarterlyRevenue.get(period).putIfAbsent("MEMBERSHIP", BigDecimal.ZERO);
-            fullQuarterlyRevenue.get(period).putIfAbsent("PRODUCT", BigDecimal.ZERO);
-        }
-
-        // Vẽ dữ liệu lên biểu đồ
-        for (Map.Entry<String, Map<String, BigDecimal>> entry : fullQuarterlyRevenue.entrySet()) {
-            String period = entry.getKey();
-            Map<String, BigDecimal> revenues = entry.getValue();
-            System.out.println("Vẽ dữ liệu cho " + period + ": " + revenues);
+            Map<String, BigDecimal> revenues = quarterlyRevenue.getOrDefault(period, new HashMap<>());
             membershipSeries.getData().add(new XYChart.Data<>(period,
                     revenues.getOrDefault("MEMBERSHIP", BigDecimal.ZERO).doubleValue()));
             productSeries.getData().add(new XYChart.Data<>(period,
                     revenues.getOrDefault("PRODUCT", BigDecimal.ZERO).doubleValue()));
         }
-        System.out.println("Số lượng dữ liệu membershipSeries: " + membershipSeries.getData().size());
-        System.out.println("Số lượng dữ liệu productSeries: " + productSeries.getData().size());
 
         barChart.getData().addAll(membershipSeries, productSeries);
+        System.out.println("Số lượng dữ liệu membershipSeries: " + membershipSeries.getData().size());
+        System.out.println("Số lượng dữ liệu productSeries: " + productSeries.getData().size());
         System.out.println("Số lượng series trong barChart: " + barChart.getData().size());
 
         Platform.runLater(() -> {

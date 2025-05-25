@@ -1,16 +1,25 @@
 package com.gym.oop_huce_gymsystem.controller.HoiVienController;
 
+import com.gym.oop_huce_gymsystem.model.Checkins;
 import com.gym.oop_huce_gymsystem.model.Members;
 import com.gym.oop_huce_gymsystem.ScenceController;
 import com.gym.oop_huce_gymsystem.dao.MembersDao;
+import com.gym.oop_huce_gymsystem.service.CheckinsService;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class HoiVienFullInfoController implements Initializable {
@@ -23,9 +32,14 @@ public class HoiVienFullInfoController implements Initializable {
     @FXML private Label emailLabel;
     @FXML private Button backButton;
     @FXML private Button editInfoButton;
+    @FXML private TableView<Checkins> historyTable;
+    @FXML private TableColumn<Checkins, String> dateCheckColumn;
+    @FXML private TableColumn<Checkins, String> timeCheckinColumn;
+    @FXML private TextField dateSearch;
 
     private final ScenceController scenceController;
     private final MembersDao membersDao;
+    private final CheckinsService checkinsService;
     private Members currentMember;
     private String memberId;
 
@@ -33,27 +47,48 @@ public class HoiVienFullInfoController implements Initializable {
     public HoiVienFullInfoController() {
         this.scenceController = new ScenceController();
         this.membersDao = new MembersDao();
+        this.checkinsService = new CheckinsService();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Kiểm tra các thành phần FXML
         if (memberIdLabel == null || fullNameLabel == null || phoneNumberLabel == null ||
-                cardCodeLabel == null || genderLabel == null || emailLabel == null) {
-            System.out.println("[HoiVienFullInfoController] Lỗi: Một hoặc nhiều Label không được inject từ FXML.");
+                cardCodeLabel == null || genderLabel == null || emailLabel == null ||
+                historyTable == null || dateCheckColumn == null || timeCheckinColumn == null || dateSearch == null) {
+            System.out.println("[HoiVienFullInfoController] Lỗi: Một hoặc nhiều thành phần FXML không được inject.");
         } else {
-            System.out.println("[HoiVienFullInfoController] Tất cả Label đã được inject thành công.");
+            System.out.println("[HoiVienFullInfoController] Tất cả thành phần FXML đã được inject thành công.");
         }
 
+        // Thiết lập TableView
+        dateCheckColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getCheckinTime()
+                        .format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
+        timeCheckinColumn.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getCheckinTime()
+                        .format(DateTimeFormatter.ofPattern("HH:mm:ss"))));
+
+        // Xử lý tìm kiếm theo ngày
+        dateSearch.textProperty().addListener((obs, oldValue, newValue) -> {
+            if (memberId != null) {
+                loadCheckinHistory(newValue);
+            }
+        });
+
+        // Tải dữ liệu nếu memberId đã được thiết lập
         if (memberId != null) {
             loadMemberData();
+            loadCheckinHistory(null);
         }
     }
 
     // Thiết lập memberId và tải dữ liệu
     public void setMemberId(String memberId) {
         this.memberId = memberId;
-        if (memberIdLabel != null) {
+        if (memberIdLabel != null && historyTable != null) {
             loadMemberData();
+            loadCheckinHistory(null);
         } else {
             System.out.println("[HoiVienFullInfoController] Chờ initialize hoàn tất để load dữ liệu.");
         }
@@ -75,8 +110,75 @@ public class HoiVienFullInfoController implements Initializable {
             }
         } catch (SQLException e) {
             System.out.println("[HoiVienFullInfoController] Lỗi khi lấy dữ liệu hội viên từ database: " + e.getMessage());
-            e.printStackTrace();
+            showErrorAlert("Lỗi", "Không thể tải thông tin hội viên: " + e.getMessage());
         }
+    }
+
+    // Tải lịch sử check-in
+    private void loadCheckinHistory(String date) {
+        try {
+            List<Checkins> checkins;
+            if (date == null || date.trim().isEmpty()) {
+                checkins = checkinsService.getCheckinsByMemberId(Integer.parseInt(memberId));
+            } else {
+                // Chuyển đổi định dạng ngày từ DD/MM/YYYY sang YYYY-MM-DD
+                String formattedDate = convertDateFormat(date);
+                checkins = checkinsService.getCheckinsByDate(Integer.parseInt(memberId), formattedDate);
+            }
+            ObservableList<Checkins> data = FXCollections.observableArrayList(checkins);
+            historyTable.setItems(data);
+            if (checkins.isEmpty()) {
+                historyTable.setPlaceholder(new Label("Không có lịch sử check-in."));
+            }
+        } catch (SQLException e) {
+            System.out.println("[HoiVienFullInfoController] Lỗi khi lấy lịch sử check-in: " + e.getMessage());
+            showErrorAlert("Lỗi", "Không thể tải lịch sử check-in: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("[HoiVienFullInfoController] Lỗi định dạng ngày: " + e.getMessage());
+            showErrorAlert("Lỗi", "Định dạng ngày không hợp lệ. Vui lòng nhập theo định dạng DD/MM/YYYY.");
+        }
+    }
+
+    // Xử lý sự kiện check-in
+    @FXML
+    private void handleCheckin(ActionEvent event) {
+        try {
+            checkinsService.addCheckin(Integer.parseInt(memberId));
+            loadCheckinHistory(null); // Tải lại lịch sử check-in
+            showInfoAlert("Thành công", "Check-in thành công cho hội viên ID: " + memberId);
+        } catch (SQLException e) {
+            System.out.println("[HoiVienFullInfoController] Lỗi khi check-in: " + e.getMessage());
+            showErrorAlert("Lỗi", "Không thể check-in: " + e.getMessage());
+        }
+    }
+
+    // Chuyển đổi định dạng ngày từ DD/MM/YYYY sang YYYY-MM-DD
+    private String convertDateFormat(String inputDate) {
+        try {
+            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            return LocalDate.parse(inputDate, inputFormatter).format(outputFormatter);
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("Định dạng ngày không hợp lệ: " + inputDate);
+        }
+    }
+
+    // Hiển thị thông báo lỗi
+    private void showErrorAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    // Hiển thị thông báo thành công
+    private void showInfoAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     // Các phương thức chuyển scene
@@ -87,8 +189,8 @@ public class HoiVienFullInfoController implements Initializable {
     }
 
     @FXML
-    public void SwitchToregister(ActionEvent event,String CardId) throws IOException {
-        scenceController.switchToRegister(event,CardId);
+    public void SwitchToregister(ActionEvent event, String CardId) throws IOException {
+        scenceController.switchToRegister(event, CardId);
     }
 
     @FXML
@@ -146,7 +248,6 @@ public class HoiVienFullInfoController implements Initializable {
         scenceController.SwitchToPT_Regis(event);
     }
 
-    // Chuyển sang giao diện chỉnh sửa thông tin
     @FXML
     public void switchToEdit(ActionEvent event) throws IOException {
         System.out.println("[HoiVienFullInfoController] Chuyển sang giao diện sửa thông tin cho: " +

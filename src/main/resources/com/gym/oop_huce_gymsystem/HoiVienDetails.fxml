@@ -107,7 +107,15 @@
                                                 <Insets right="10.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <TextField fx:id="dateSearch" prefHeight="30.0" prefWidth="532.0" promptText="Tìm kiếm theo ngày" style="-fx-background-radius: 15px; -fx-background-color: #1a1a1a;" styleClass="searching" stylesheets="@style.css" />
+                                        <Button fx:id="checkinButton" text="Check-in" onAction="#handleCheckin" style="-fx-background-radius: 30px;  -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" textFill="WHITE">
+                                            <font>
+                                                <Font name="Tektur Regular" size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets right="10.0" />
+                                            </HBox.margin>
+                                        </Button>
+                                        <TextField fx:id="dateSearch" prefHeight="30.0" prefWidth="532.0" promptText="Tìm kiếm theo ngày (DD/MM/YYYY)" style="-fx-background-radius: 15px; -fx-background-color: #1a1a1a;" styleClass="searching" stylesheets="@style.css" />
                                     </children>
                                     <VBox.margin>
                                         <Insets bottom="5.0" />
