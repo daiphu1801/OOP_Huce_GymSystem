@@ -2,6 +2,7 @@ package com.gym.oop_huce_gymsystem.controller.RevenuaController;
 
 import com.gym.oop_huce_gymsystem.ScenceController;
 import com.gym.oop_huce_gymsystem.service.RevenueService;
+import com.gym.oop_huce_gymsystem.util.AppContext;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,6 +56,10 @@ public class RevenueController implements Initializable {
             return;
         }
         System.out.println("barChart được khởi tạo thành công");
+
+        // Đăng ký RevenueController với AppContext
+        AppContext.getInstance().setRevenueController(this);
+
         btnMonth.setOnAction(event -> showMonthlyRevenue());
         btnQuarter.setOnAction(event -> showQuarterlyRevenue());
         showMonthlyRevenue(); // Hiển thị doanh thu tháng mặc định khi khởi tạo

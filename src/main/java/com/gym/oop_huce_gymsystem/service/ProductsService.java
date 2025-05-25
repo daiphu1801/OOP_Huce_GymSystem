@@ -21,7 +21,7 @@ public class ProductsService {
     // Sửa sản phẩm
     public void updateProduct(Products product) throws Exception {
         validateProduct(product);
-        if (product.getProductId() == null) {
+        if (product.getProductId() == null || product.getProductId().trim().isEmpty()) {
             throw new IllegalArgumentException("ID sản phẩm không hợp lệ.");
         }
         productsDao.updateProduct(product);
@@ -29,7 +29,7 @@ public class ProductsService {
 
     // Xóa sản phẩm
     public void deleteProduct(String productId) throws Exception {
-        if (productId == null) {
+        if (productId == null || productId.trim().isEmpty()) {
             throw new IllegalArgumentException("ID sản phẩm không hợp lệ.");
         }
         productsDao.deleteProduct(productId);
@@ -44,8 +44,9 @@ public class ProductsService {
         }
     }
 
+    // Lấy sản phẩm theo ID
     public Products getProductById(String productId) throws SQLException {
-        if (productId==null) {
+        if (productId == null || productId.trim().isEmpty()) {
             throw new IllegalArgumentException("ID sản phẩm không hợp lệ.");
         }
         return productsDao.getProductById(productId);

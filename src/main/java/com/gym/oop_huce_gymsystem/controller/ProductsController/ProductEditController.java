@@ -16,7 +16,6 @@ import java.util.ResourceBundle;
 
 public class ProductEditController implements Initializable {
 
-    @FXML private TextField productIdField;
     @FXML private TextField nameField;
     @FXML private TextField priceField;
     @FXML private TextField quantityField;
@@ -35,13 +34,13 @@ public class ProductEditController implements Initializable {
         this.isInitialized = false;
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (productIdField == null) {
-            System.out.println("[ProductEditController] Lỗi: productIdField không được inject từ FXML.");
+        System.out.println("[ProductEditController] Bắt đầu initialize...");
+        if (nameField == null || priceField == null || quantityField == null || quantity_soldField == null) {
+            System.out.println("[ProductEditController] Lỗi: Một hoặc nhiều TextField không được inject từ FXML.");
         } else {
-            System.out.println("[ProductEditController] productIdField đã được inject thành công.");
+            System.out.println("[ProductEditController] Tất cả TextField đã được inject thành công.");
         }
         isInitialized = true;
         if (productId != null) {
@@ -52,7 +51,7 @@ public class ProductEditController implements Initializable {
     public void setProductId(String productId) {
         this.productId = productId;
         System.out.println("[ProductEditController] Đặt productId: " + productId);
-        if (isInitialized && productIdField != null) {
+        if (isInitialized) {
             loadProductData();
         } else {
             System.out.println("[ProductEditController] Chờ initialize hoàn tất để load dữ liệu với productId: " + productId);
@@ -60,9 +59,16 @@ public class ProductEditController implements Initializable {
     }
 
     private void loadProductData() {
+        if (productId == null || productId.trim().isEmpty()) {
+            System.out.println("[ProductEditController] Lỗi: productId không hợp lệ (null hoặc rỗng).");
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Không có ID sản phẩm để tải dữ liệu.");
+            clearFields();
+            return;
+        }
+
         try {
             System.out.println("[ProductEditController] Tải dữ liệu cho productId: " + productId);
-            Products product = productsService.getProductById(String.valueOf(productId));
+            Products product = productsService.getProductById(productId);
             if (product != null) {
                 nameField.setText(product.getName() != null ? product.getName() : "");
                 priceField.setText(String.valueOf(product.getPrice()));
@@ -83,7 +89,6 @@ public class ProductEditController implements Initializable {
     }
 
     private void clearFields() {
-        productIdField.setText("");
         nameField.setText("");
         priceField.setText("");
         quantityField.setText("");

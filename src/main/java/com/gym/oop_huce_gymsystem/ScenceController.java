@@ -297,20 +297,25 @@ public class ScenceController {
     }
 
     public ProductEditController switchToProductEdit(ActionEvent event, String productId) throws IOException {
-        System.out.println("[ScenceController] Bắt đầu chuyển sang HoiVienEditController với productId: " + productId);
+        System.out.println("[ScenceController] Bắt đầu chuyển sang ProductEditController với productId: " + productId);
+        if (productId == null || productId.trim().isEmpty()) {
+            System.out.println("[ScenceController] Lỗi: productId không hợp lệ (null hoặc rỗng).");
+            throw new IllegalArgumentException("productId không hợp lệ.");
+        }
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gym/oop_huce_gymsystem/ProductEdit.fxml"));
             if (loader.getLocation() == null) {
-                System.out.println("[ScenceController] Lỗi: Không tìm thấy tệp HoiVienEdit.fxml");
-                throw new IOException("Không tìm thấy tệp HoiVienEdit.fxml");
+                System.out.println("[ScenceController] Lỗi: Không tìm thấy tệp ProductEdit.fxml");
+                throw new IOException("Không tìm thấy tệp ProductEdit.fxml");
             }
             Parent root = loader.load();
             ProductEditController controller = loader.getController();
             if (controller == null) {
-                System.out.println("[ScenceController] Lỗi: Không thể lấy HoiVienEditController từ loader.");
+                System.out.println("[ScenceController] Lỗi: Không thể lấy ProductEditController từ loader.");
                 throw new IOException("Không thể lấy controller từ loader.");
             }
-            controller.setProductId(String.valueOf(productId));
+            controller.setProductId(productId); // Truyền productId trực tiếp
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
