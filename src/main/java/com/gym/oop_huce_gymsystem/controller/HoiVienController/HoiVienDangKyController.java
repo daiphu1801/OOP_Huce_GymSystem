@@ -69,11 +69,14 @@ public class HoiVienDangKyController implements Initializable {
             String fullName = tenHoiVienField.getText().trim();
             String phoneNumber = soDienThoaiField.getText().trim();
             String cardCode = cardCodeField.getText() != null ? cardCodeField.getText().trim() : null;
-            if (cardCode == null || cardCode.isEmpty()) {
-                throw new IllegalArgumentException("Mã thẻ không được để trống!");
-            }
             String gender = genderComboBox.getValue();
             String email = emailTextField.getText().trim();
+
+            // Kiểm tra nếu cardCode rỗng hoặc không hợp lệ
+            if (cardCode == null || cardCode.isEmpty() || cardCode.equals("Chưa có mã thẻ")) {
+                showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Bạn cần tạo thêm thẻ trước khi nhập hội viên!");
+                return; // Dừng thực thi nếu không có mã thẻ
+            }
 
             Members newMember = new Members();
             newMember.setFullName(fullName);

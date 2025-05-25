@@ -54,16 +54,16 @@ public class ListEquipmentsController implements Initializable {
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         // Thiết lập cell factory với text rõ ràng
-        equipmentIdColumn.setCellFactory(column -> createStringTableCell());
-        nameColumn.setCellFactory(column -> createStringTableCell());
-        quantityColumn.setCellFactory(column -> createStringTableCell());
-        statusColumn.setCellFactory(column -> createStringTableCell());
+        equipmentIdColumn.setCellFactory(_ -> createStringTableCell());
+        nameColumn.setCellFactory(_ -> createStringTableCell());
+        quantityColumn.setCellFactory(_ -> createStringTableCell());
+        statusColumn.setCellFactory(_ -> createStringTableCell());
 
         // Tải dữ liệu ban đầu
         loadEquipmentData();
 
         // Thiết lập tính năng tìm kiếm
-        searchField.textProperty().addListener((obs, oldVal, newVal) -> filterEquipments(newVal));
+        searchField.textProperty().addListener((_, _, newVal) -> filterEquipments(newVal));
 
         // Đảm bảo bảng được style đúng
         equipmentTable.getStyleClass().add("memberTable");
