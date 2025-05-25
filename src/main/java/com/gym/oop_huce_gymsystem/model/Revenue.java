@@ -10,22 +10,26 @@ public class Revenue {
     private LocalDateTime transactionDate;
     private String cardId;
     private Integer productId;
-    private String paymentMethod;
+    private Integer quantitySold; // Thêm thuộc tính cho quantity_sold
+    private BigDecimal unitPrice; // Thêm thuộc tính cho unit_price
     private String description;
-
+    private String paymentMethod;
     // Constructor mặc định
     public Revenue() {
     }
 
     // Constructor đầy đủ
     public Revenue(int revenueId, String sourceType, BigDecimal amount, LocalDateTime transactionDate,
-                   String cardId, Integer productId, String paymentMethod, String description) {
+                   String cardId, Integer productId, Integer quantitySold, BigDecimal unitPrice,
+                   String paymentMethod, String description) {
         this.revenueId = revenueId;
         this.sourceType = sourceType;
         this.amount = amount;
         this.transactionDate = transactionDate;
         this.cardId = cardId;
         this.productId = productId;
+        this.quantitySold = quantitySold;
+        this.unitPrice = unitPrice;
         this.paymentMethod = paymentMethod;
         this.description = description;
     }
@@ -79,12 +83,20 @@ public class Revenue {
         this.productId = productId;
     }
 
-    public String getPaymentMethod() {
-        return paymentMethod;
+    public Integer getQuantitySold() {
+        return quantitySold;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setQuantitySold(Integer quantitySold) {
+        this.quantitySold = quantitySold;
+    }
+
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(BigDecimal unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
     public String getDescription() {
@@ -93,5 +105,13 @@ public class Revenue {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 }

@@ -107,6 +107,14 @@
                                                 <Insets right="10.0" />
                                             </HBox.margin>
                                         </Button>
+                                        <Button fx:id="showChart" layoutX="182.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleDeleteMember" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Biểu đồ" textFill="WHITE">
+                                            <font>
+                                                <Font name="Tektur Regular" size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets right="10.0" />
+                                            </HBox.margin>
+                                        </Button>
                                         <TextField fx:id="searchField" prefHeight="34.0" prefWidth="532.0" promptText="Nhập để tìm kiếm" style="-fx-background-radius: 15px; -fx-background-color: #1a1a1a;" styleClass="searching" stylesheets="@style.css" />
                                     </children>
                                     <VBox.margin>

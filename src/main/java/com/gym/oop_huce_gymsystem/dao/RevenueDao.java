@@ -41,10 +41,11 @@ public class RevenueDao {
     // Lấy doanh thu từ revenue (sản phẩm) theo tháng
     public Map<String, Map<String, BigDecimal>> getProductRevenueByMonth(int year) throws SQLException {
         Map<String, Map<String, BigDecimal>> monthlyRevenue = new HashMap<>();
-        String query = "SELECT DATE_FORMAT(transaction_date, '%Y-%m') AS period, source_type, SUM(amount) AS total_amount " +
-                "FROM revenue " +
-                "WHERE YEAR(transaction_date) = ? AND source_type = 'PRODUCT' " +
-                "GROUP BY DATE_FORMAT(transaction_date, '%Y-%m'), source_type";
+        String query = "SELECT DATE_FORMAT(r.transaction_date, '%Y-%m') AS period, r.source_type, " +
+                "SUM(r.unit_price * r.quantity_sold) AS total_amount " +
+                "FROM revenue r " +
+                "WHERE YEAR(r.transaction_date) = ? AND r.source_type = 'PRODUCT' " +
+                "GROUP BY DATE_FORMAT(r.transaction_date, '%Y-%m'), r.source_type";
 
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, year);
