@@ -144,25 +144,7 @@ public class ProductEditController implements Initializable {
                 return;
             }
 
-            int quantitySold;
-            try {
-                quantitySold = Integer.parseInt(quantitySoldStr);
-                if (quantitySold < 0) {
-                    showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Số lượng đã bán không được âm.");
-                    return;
-                }
-                if (quantitySold > quantity) {
-                    showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Số lượng đã bán không được lớn hơn số lượng tồn kho.");
-                    return;
-                }
-                if (quantitySold > 10_000) {
-                    showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Số lượng đã bán không được vượt quá 10,000.");
-                    return;
-                }
-            } catch (NumberFormatException e) {
-                showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Số lượng đã bán phải là một số nguyên hợp lệ.");
-                return;
-            }
+            int quantitySold = Integer.parseInt(quantitySoldStr);
 
             Products updatedProduct = new Products(
                     productId,

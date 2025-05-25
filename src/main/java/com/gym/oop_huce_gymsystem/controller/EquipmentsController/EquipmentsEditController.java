@@ -19,7 +19,6 @@ import java.util.ResourceBundle;
 
 public class EquipmentsEditController implements Initializable {
 
-    @FXML private TextField equipmentIdField;
     @FXML private TextField nameField;
     @FXML private TextField quantityField;
     @FXML private ComboBox<String> statusComboBox;
@@ -40,7 +39,7 @@ public class EquipmentsEditController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (equipmentIdField == null) {
+        if (equipmentId == null) {
             System.out.println("[EquipmentsEditController] Lỗi: equipmentIdField không được inject từ FXML.");
         } else {
             System.out.println("[EquipmentsEditController] equipmentIdField đã được inject thành công.");
@@ -54,7 +53,7 @@ public class EquipmentsEditController implements Initializable {
 
     public void setEquipmentId(String equipmentId) {
         this.equipmentId = equipmentId;
-        if (isInitialized && equipmentIdField != null) {
+        if (isInitialized && equipmentId != null) {
             loadEquipmentData();
         } else {
             System.out.println("[EquipmentsEditController] Chờ initialize hoàn tất để load dữ liệu với equipmentId: " + equipmentId);
@@ -65,7 +64,6 @@ public class EquipmentsEditController implements Initializable {
         try {
             Equipments equipment = equipmentsService.getEquipmentById(equipmentId);
             if (equipment != null) {
-                equipmentIdField.setText(String.valueOf(equipment.getEquipmentId()));
                 nameField.setText(equipment.getName() != null ? equipment.getName() : "");
                 quantityField.setText(String.valueOf(equipment.getQuantity()));
                 statusComboBox.setValue(equipment.getStatus() != null ? equipment.getStatus() : "");
@@ -82,7 +80,6 @@ public class EquipmentsEditController implements Initializable {
     }
 
     private void clearFields() {
-        equipmentIdField.setText("");
         nameField.setText("");
         quantityField.setText("");
         statusComboBox.setValue(null);
@@ -98,26 +95,8 @@ public class EquipmentsEditController implements Initializable {
             String status = statusComboBox.getValue();
             LocalDate purchaseDate = purchaseDatePicker.getValue();
 
-            // Kiểm tra dữ liệu
-            if (name.isEmpty()) {
-                throw new IllegalArgumentException("Tên thiết bị không được để trống.");
-            }
-
             // Chuyển đổi quantity
             int quantity = Integer.parseInt(quantityStr);
-            if (quantity <= 0) {
-                throw new IllegalArgumentException("Số lượng phải lớn hơn 0.");
-            }
-
-            // Kiểm tra status
-            if (status == null || status.isEmpty()) {
-                throw new IllegalArgumentException("Tình trạng không được để trống.");
-            }
-
-            // Kiểm tra purchaseDate
-            if (purchaseDate == null) {
-                throw new IllegalArgumentException("Ngày nhập không được để trống.");
-            }
 
             // Tạo đối tượng Equipments
             Equipments updatedEquipment = new Equipments(
