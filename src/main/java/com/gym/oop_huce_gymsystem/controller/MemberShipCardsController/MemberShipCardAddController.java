@@ -40,16 +40,24 @@ public class MemberShipCardAddController {
     private void handleSubmit(ActionEvent event) {
         try {
             String priceStr = priceCard.getText();
-            double price = Double.parseDouble(priceStr.replace(",", "").replace("đ", ""));
-
             String cardType = loaiTheComboBox.getValue();
             String trainingPackage = trainingPackageComboBox.getValue();
             LocalDate registrationDate = regisDatePicker.getValue();
+
+            if (priceStr.isEmpty() || cardType == null || trainingPackage == null || registrationDate == null) {
+                showAlert(Alert.AlertType.ERROR, "Lỗi", "Vui lòng điền đầy đủ thông tin!");
+                return;
+            }
+
+            double price = Double.parseDouble(priceStr.replace(",", "").replace("đ", ""));
             LocalDate expiryDate = calculateExpiryDate(registrationDate, trainingPackage);
+            if (expiryDate == null) {
+                showAlert(Alert.AlertType.ERROR, "Lỗi", "Không thể tính ngày hết hạn cho gói tập này.");
+                return;
+            }
 
             MemberShipCards card = new MemberShipCards(price, trainingPackage, cardType, registrationDate, expiryDate);
-            String cardId = memberShipCardsService.addMemberShipCard(card); // validate sẽ xảy ra trong service
-
+            String cardId = memberShipCardsService.addMemberShipCard(card);
             if (cardId == null) {
                 throw new IllegalArgumentException("Không thể tạo mã thẻ thành viên!");
             }
@@ -57,8 +65,6 @@ public class MemberShipCardAddController {
             showAlert(Alert.AlertType.INFORMATION, "Thành công", "Thêm thẻ thành viên thành công!");
             scenceController.switchToRegister(event, cardId);
 
-        } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.ERROR, "Lỗi", "Giá thẻ không hợp lệ, vui lòng nhập số!");
         } catch (IllegalArgumentException e) {
             showAlert(Alert.AlertType.ERROR, "Lỗi", "Lỗi khi thêm thẻ thành viên: " + e.getMessage());
         } catch (Exception e) {

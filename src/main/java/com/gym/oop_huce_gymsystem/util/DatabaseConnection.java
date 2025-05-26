@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DatabaseConnection {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/gym_management?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh";
     private static final String USER = "root";  // Thay đổi với username của bạn
-    private static final String PASSWORD = "1234";  // Thay đổi với mật khẩu của bạn
+    private static final String PASSWORD = "123456";  // Thay đổi với mật khẩu của bạn
 
 //    private static final String JDBC_URL = "jdbc:sqlserver://localhost:1433;databaseName=gym_management;encrypt=true;trustServerCertificate=true";
 //    private static final String USER = "sa";

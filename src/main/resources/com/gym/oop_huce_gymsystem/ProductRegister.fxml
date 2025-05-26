@@ -38,7 +38,7 @@
                                         <Insets bottom="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="cardBTN" alignment="BASELINE_LEFT" maxWidth="673.0" minWidth="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="673.0" style="-fx-background-color: #1a1a1a;" styleClass="cardBTN" text="Thẻ Tập" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="cardBTN" alignment="BASELINE_LEFT" maxWidth="673.0" minWidth="230.0" mnemonicParsing="false" onAction="#switchToMemberCard" prefHeight="49.0" prefWidth="673.0" style="-fx-background-color: #1a1a1a;" styleClass="cardBTN" text="Thẻ Tập" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Tektur Regular" size="23.0" />
                                     </font>
@@ -117,7 +117,7 @@
                                                 <Font name="Tektur Regular" size="24.0" />
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="5.0" />
+                                                <Insets right="70.0" />
                                             </HBox.margin>
                                         </Label>
                                         <TextField fx:id="priceField" prefHeight="48.0" prefWidth="448.0" promptText="500.000đ" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
@@ -137,33 +137,13 @@
                                                 <Font name="Tektur Regular" size="24.0" />
                                             </font>
                                             <HBox.margin>
-                                                <Insets right="70.0" />
+                                                <Insets />
                                             </HBox.margin>
                                         </Label>
                                      <TextField fx:id="quantityField" prefHeight="48.0" prefWidth="448.0" promptText="100" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
                                         <font>
                                             <Font name="Tektur Regular" size="17.0" />
                                         </font>
-                                        </TextField>
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets bottom="10.0" />
-                                    </VBox.margin>
-                                </HBox>
-                                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="996.0">
-                                    <children>
-                                        <Label text="Số lượng đã bán: " textFill="WHITE">
-                                            <font>
-                                                <Font name="Tektur Regular" size="24.0" />
-                                            </font>
-                                            <HBox.margin>
-                                                <Insets right="70.0" />
-                                            </HBox.margin>
-                                        </Label>
-                                        <TextField fx:id="quantity_soldField" prefHeight="48.0" prefWidth="448.0" promptText="0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 15px; -fx-border-color: linear-gradient(to right, #0093ff, #9700ff); -fx-border-radius: 15px;">
-                                            <font>
-                                                <Font name="Tektur Regular" size="17.0" />
-                                            </font>
                                         </TextField>
                                     </children>
                                     <VBox.margin>

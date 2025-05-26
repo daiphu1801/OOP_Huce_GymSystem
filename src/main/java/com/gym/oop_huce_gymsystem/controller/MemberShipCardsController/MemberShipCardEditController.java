@@ -102,8 +102,22 @@ public class MemberShipCardEditController implements Initializable {
             LocalDate regDate = registrationDateField.getValue();
             LocalDate expDate = expiryDateField.getValue();
 
+            // Kiểm tra cơ bản để tránh dữ liệu rỗng
+            if (priceStr.isEmpty() || trainingPackage == null || cardType == null ||
+                    regDate == null || expDate == null) {
+                showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Tất cả các trường phải được điền.");
+                return;
+            }
+
             // Chuyển đổi giá và kiểm tra
-            double price = Double.parseDouble(priceStr);
+            double price;
+            try {
+                price = Double.parseDouble(priceStr);
+                if (price <= 0) throw new NumberFormatException();
+            } catch (NumberFormatException e) {
+                showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Giá thẻ phải là một số dương hợp lệ.");
+                return;
+            }
 
             // Kiểm tra ngày hợp lệ
             if (expDate.isBefore(regDate)) {

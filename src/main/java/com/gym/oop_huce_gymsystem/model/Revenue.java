@@ -10,24 +10,22 @@ public class Revenue {
     private LocalDateTime transactionDate;
     private String cardId;
     private Integer productId;
-    private Integer quantitySold; // Thêm thuộc tính cho quantity_sold
-    private String description;
     private String paymentMethod;
+    private String description;
+
     // Constructor mặc định
     public Revenue() {
     }
 
     // Constructor đầy đủ
     public Revenue(int revenueId, String sourceType, BigDecimal amount, LocalDateTime transactionDate,
-                   String cardId, Integer productId, Integer quantitySold,
-                   String paymentMethod, String description) {
+                   String cardId, Integer productId, String paymentMethod, String description) {
         this.revenueId = revenueId;
         this.sourceType = sourceType;
         this.amount = amount;
         this.transactionDate = transactionDate;
         this.cardId = cardId;
         this.productId = productId;
-        this.quantitySold = quantitySold;
         this.paymentMethod = paymentMethod;
         this.description = description;
     }
@@ -81,14 +79,13 @@ public class Revenue {
         this.productId = productId;
     }
 
-    public Integer getQuantitySold() {
-        return quantitySold;
+    public String getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public void setQuantitySold(Integer quantitySold) {
-        this.quantitySold = quantitySold;
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
-
 
     public String getDescription() {
         return description;
@@ -96,13 +93,5 @@ public class Revenue {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
     }
 }

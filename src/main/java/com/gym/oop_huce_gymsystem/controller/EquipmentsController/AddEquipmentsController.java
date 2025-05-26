@@ -48,13 +48,30 @@ public class AddEquipmentsController implements Initializable {
             String quantityStr = quantityField.getText().trim();
             LocalDate purchaseDate = purchaseDatePicker.getValue();
 
+            if (name.isEmpty()) {
+                showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Tên thiết bị không được để trống.");
+                return;
+            }
+            if (status.isEmpty()) {
+                showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Trạng thái không được để trống.");
+                return;
+            }
             int quantity;
             try {
                 quantity = Integer.parseInt(quantityStr);
+                if (quantity <= 0) {
+                    showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Số lượng phải lớn hơn 0.");
+                    return;
+                }
             } catch (NumberFormatException e) {
                 showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Số lượng phải là một số nguyên hợp lệ.");
                 return;
             }
+            if (purchaseDate == null) {
+                showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Ngày nhập không được để trống.");
+                return;
+            }
+
             Equipments newEquipment = new Equipments(name, quantity, status, purchaseDate);
             equipmentsService.addEquipment(newEquipment);
             showAlert(Alert.AlertType.INFORMATION, "Thành công", "Thêm thiết bị thành công!");
