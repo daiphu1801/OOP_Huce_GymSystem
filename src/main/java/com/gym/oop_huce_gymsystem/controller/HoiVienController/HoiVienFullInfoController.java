@@ -99,7 +99,7 @@ public class HoiVienFullInfoController implements Initializable {
         try {
             this.currentMember = membersDao.getMemberById(memberId);
             if (currentMember != null) {
-                memberIdLabel.setText(String.valueOf(currentMember.getMemberId()));
+                memberIdLabel.setText(currentMember.getMemberId());
                 cardCodeLabel.setText(currentMember.getCardCode() != null ? currentMember.getCardCode() : "N/A");
                 fullNameLabel.setText(currentMember.getFullName() != null ? currentMember.getFullName() : "N/A");
                 phoneNumberLabel.setText(currentMember.getPhone() != null ? currentMember.getPhone() : "N/A");
@@ -119,11 +119,11 @@ public class HoiVienFullInfoController implements Initializable {
         try {
             List<Checkins> checkins;
             if (date == null || date.trim().isEmpty()) {
-                checkins = checkinsService.getCheckinsByMemberId(Integer.parseInt(memberId));
+                checkins = checkinsService.getCheckinsByMemberId(memberId);
             } else {
                 // Chuyển đổi định dạng ngày từ DD/MM/YYYY sang YYYY-MM-DD
                 String formattedDate = convertDateFormat(date);
-                checkins = checkinsService.getCheckinsByDate(Integer.parseInt(memberId), formattedDate);
+                checkins = checkinsService.getCheckinsByDate((memberId), formattedDate);
             }
             ObservableList<Checkins> data = FXCollections.observableArrayList(checkins);
             historyTable.setItems(data);
@@ -143,7 +143,7 @@ public class HoiVienFullInfoController implements Initializable {
     @FXML
     private void handleCheckin(ActionEvent event) {
         try {
-            checkinsService.addCheckin(Integer.parseInt(memberId));
+            checkinsService.addCheckin(memberId);
             loadCheckinHistory(null); // Tải lại lịch sử check-in
             showInfoAlert("Thành công", "Check-in thành công cho hội viên ID: " + memberId);
         } catch (SQLException e) {

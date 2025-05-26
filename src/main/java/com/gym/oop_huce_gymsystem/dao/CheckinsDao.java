@@ -12,11 +12,11 @@ import java.util.List;
 
 public class CheckinsDao {
     // Thêm một bản ghi check-in mới
-    public void addCheckin(int memberId) throws SQLException {
+    public void addCheckin(String memberId) throws SQLException {
         String query = "INSERT INTO checkins (member_id, checkin_time) VALUES (?, NOW())";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, memberId);
+            stmt.setString(1, memberId);
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Đã thêm bản ghi check-in thành công cho member_id: " + memberId);
@@ -29,17 +29,17 @@ public class CheckinsDao {
     }
 
     // Lấy danh sách tất cả check-in của một hội viên theo member_id
-    public List<Checkins> getCheckinsByMemberId(int memberId) throws SQLException {
+    public List<Checkins> getCheckinsByMemberId(String memberId) throws SQLException {
         List<Checkins> checkins = new ArrayList<>();
         String query = "SELECT checkin_id, member_id, checkin_time FROM checkins WHERE member_id = ? ORDER BY checkin_time DESC";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, memberId);
+            stmt.setString(1, memberId);
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     Checkins checkin = new Checkins(
                             rs.getInt("checkin_id"),
-                            rs.getInt("member_id"),
+                            rs.getString("member_id"),
                             rs.getTimestamp("checkin_time").toLocalDateTime()
                     );
                     checkins.add(checkin);
@@ -53,18 +53,18 @@ public class CheckinsDao {
     }
 
     // Lấy danh sách check-in của một hội viên theo member_id và ngày
-    public List<Checkins> getCheckinsByDate(int memberId, String date) throws SQLException {
+    public List<Checkins> getCheckinsByDate(String memberId, String date) throws SQLException {
         List<Checkins> checkins = new ArrayList<>();
         String query = "SELECT checkin_id, member_id, checkin_time FROM checkins WHERE member_id = ? AND DATE(checkin_time) = ? ORDER BY checkin_time DESC";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, memberId);
+            stmt.setString(1, memberId);
             stmt.setString(2, date);
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     Checkins checkin = new Checkins(
                             rs.getInt("checkin_id"),
-                            rs.getInt("member_id"),
+                            rs.getString("member_id"),
                             rs.getTimestamp("checkin_time").toLocalDateTime()
                     );
                     checkins.add(checkin);
@@ -87,7 +87,7 @@ public class CheckinsDao {
                 if (rs.next()) {
                     Checkins checkin = new Checkins(
                             rs.getInt("checkin_id"),
-                            rs.getInt("member_id"),
+                            rs.getString("member_id"),
                             rs.getTimestamp("checkin_time").toLocalDateTime()
                     );
                     System.out.println("Lấy check-in từ DB: checkin_id = " + checkin.getCheckinId());
@@ -119,13 +119,13 @@ public class CheckinsDao {
     }
 
     // Kiểm tra thẻ tập còn hiệu lực
-    public boolean isMembershipCardValid(int memberId) throws SQLException {
+    public boolean isMembershipCardValid(String memberId) throws SQLException {
         String query = "SELECT mc.expiry_date FROM membership_cards mc " +
                 "JOIN members m ON m.card_code = mc.card_id " +
                 "WHERE m.member_id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, memberId);
+            stmt.setString(1, memberId);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     LocalDate expiryDate = rs.getDate("expiry_date").toLocalDate();

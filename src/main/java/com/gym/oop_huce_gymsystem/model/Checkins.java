@@ -4,13 +4,13 @@ import java.time.LocalDateTime;
 
 public class Checkins {
     private int checkinId;
-    private int memberId;
+    private String memberId;
     private LocalDateTime checkinTime;
 
     public Checkins() {
     }
 
-    public Checkins(int checkinId, int memberId, LocalDateTime checkinTime) {
+    public Checkins(int checkinId, String memberId, LocalDateTime checkinTime) {
         this.checkinId = checkinId;
         this.memberId = memberId;
         this.checkinTime = checkinTime;
@@ -24,11 +24,11 @@ public class Checkins {
         this.checkinId = checkinId;
     }
 
-    public int getMemberId() {
+    public String getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(int memberId) {
+    public void setMemberId(String memberId) {
         this.memberId = memberId;
     }
 

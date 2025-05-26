@@ -23,10 +23,10 @@ public class CheckinsService {
     }
 
     // Thêm bản ghi check-in với kiểm tra hợp lệ
-    public void addCheckin(int memberId) throws SQLException {
+    public void addCheckin(String memberId) throws SQLException {
         // Kiểm tra hội viên tồn tại
         try {
-            membersDao.getMemberById(String.valueOf(memberId));
+            membersDao.getMemberById(memberId);
         } catch (SQLException e) {
             throw new SQLException("Hội viên với ID " + memberId + " không tồn tại.");
         }
@@ -41,10 +41,10 @@ public class CheckinsService {
     }
 
     // Lấy danh sách check-in theo member_id
-    public List<Checkins> getCheckinsByMemberId(int memberId) throws SQLException {
+    public List<Checkins> getCheckinsByMemberId(String memberId) throws SQLException {
         // Kiểm tra hội viên tồn tại
         try {
-            membersDao.getMemberById(String.valueOf(memberId));
+            membersDao.getMemberById(memberId);
         } catch (SQLException e) {
             throw new SQLException("Hội viên với ID " + memberId + " không tồn tại.");
         }
@@ -53,10 +53,10 @@ public class CheckinsService {
     }
 
     // Lấy danh sách check-in theo member_id và ngày
-    public List<Checkins> getCheckinsByDate(int memberId, String date) throws SQLException {
+    public List<Checkins> getCheckinsByDate(String memberId, String date) throws SQLException {
         // Kiểm tra hội viên tồn tại
         try {
-            membersDao.getMemberById(String.valueOf(memberId));
+            membersDao.getMemberById(memberId);
         } catch (SQLException e) {
             throw new SQLException("Hội viên với ID " + memberId + " không tồn tại.");
         }
