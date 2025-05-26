@@ -296,3 +296,12 @@
 /*.hvInfo .hbox {*/
 /*    -fx-alignment: center-left;*/
 /*}*/
+
+.addhv_btn,
+.quy_btn,
+.month_btn,
+.revenua_btn_box{
+    -fx-opacity: 0;
+    -fx-max-height: 0;
+    -fx-max-width: 0;
+}

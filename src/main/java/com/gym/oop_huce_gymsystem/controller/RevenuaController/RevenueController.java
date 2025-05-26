@@ -101,7 +101,6 @@ public class RevenueController implements Initializable {
         // Thiết lập nhãn trục
         xAxis.setLabel("Tháng");
         yAxis.setLabel("Doanh thu (Triệu VNĐ)");
-        barChart.setTitle("Doanh thu theo tháng năm 2025");
 
         // Tạo các series dữ liệu
         XYChart.Series<String, Number> membershipSeries = new XYChart.Series<>();

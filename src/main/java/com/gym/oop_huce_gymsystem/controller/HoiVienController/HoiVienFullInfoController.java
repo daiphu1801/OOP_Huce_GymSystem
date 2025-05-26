@@ -135,7 +135,6 @@ public class HoiVienFullInfoController implements Initializable {
             showErrorAlert("Lỗi", "Không thể tải lịch sử check-in: " + e.getMessage());
         } catch (IllegalArgumentException e) {
             System.out.println("[HoiVienFullInfoController] Lỗi định dạng ngày: " + e.getMessage());
-            showErrorAlert("Lỗi", "Định dạng ngày không hợp lệ. Vui lòng nhập theo định dạng DD/MM/YYYY.");
         }
     }
 

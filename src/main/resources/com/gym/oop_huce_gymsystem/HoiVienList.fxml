@@ -91,7 +91,7 @@
                             <children>
                                 <HBox alignment="CENTER" prefHeight="39.0" prefWidth="996.0">
                                     <children>
-                                        <Button fx:id="addMemberButton" layoutX="749.0" layoutY="15.0" mnemonicParsing="false" onAction="#SwitchTolisthoivien" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="search_button" text="Thêm hội viên" textFill="WHITE">
+                                        <Button fx:id="addMemberButton" layoutX="749.0" layoutY="15.0" mnemonicParsing="false" onAction="#SwitchTolisthoivien" prefHeight="30.0" prefWidth="107.0" style="-fx-background-radius: 30px; -fx-background-color: linear-gradient(to right, #0093ff, #9700ff); -fx-cursor: hand;" styleClass="addhv_btn" stylesheets="@style.css" text="Thêm hội viên" textFill="WHITE">
                                             <font>
                                                 <Font name="Tektur Regular" size="13.0" />
                                             </font>
